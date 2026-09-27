@@ -1,5 +1,6 @@
 ---
 name: application-security-engineer
+description: Autonomous counterpart to the human "Application Security Engineer" role (Security & Compliance).
 role_id: 12.3
 area: Security & Compliance
 ---

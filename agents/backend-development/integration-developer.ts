@@ -3,10 +3,9 @@
 // Builds connections to external systems
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { container } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import integration_developer from '../../skills/integration-developer/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import integration_developer from '../../skills/integration-developer/SKILL.md';
 
 /**
  * Integration Developer
@@ -17,9 +16,9 @@ import integration_developer from '../../skills/integration-developer/SKILL.md' 
  */
 export function IntegrationDeveloperAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(container({ ephemeral: true }));
+  useSandbox(local());
   useSkill(integration_developer);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Integration Developer" role.
 Builds connections to external systems.
@@ -29,7 +28,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(IntegrationDeveloperAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+IntegrationDeveloperAgent.agentName = 'integration-developer';
 export const meta = {
   id: '7.7',
   name: 'Integration Developer',

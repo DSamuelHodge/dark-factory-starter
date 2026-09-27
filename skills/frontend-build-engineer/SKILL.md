@@ -1,5 +1,6 @@
 ---
 name: frontend-build-engineer
+description: Autonomous counterpart to the human "Frontend Build Engineer" role (Frontend Development).
 role_id: 6.7
 area: Frontend Development
 ---

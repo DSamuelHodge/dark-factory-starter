@@ -1,5 +1,6 @@
 ---
 name: microservices-developer
+description: Autonomous counterpart to the human "Microservices Developer" role (Backend Development).
 role_id: 7.5
 area: Backend Development
 ---

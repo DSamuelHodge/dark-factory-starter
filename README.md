@@ -32,8 +32,9 @@ Regenerate everything after editing `roles.json` or `area-config.json`:
 This mirrors the "AI digital twin" stack described in the source doc:
 Kubernetes/Temporal are retired in favor of **Durable Objects + Workflows +
 Containers** — purpose-built for long-running, stateful, serverless agents —
-and **Flue** replaces raw LLM-API glue code with `createAgent()` sessions
-plus Markdown skills/blueprints.
+and **Flue** replaces raw LLM-API glue code with agent functions plus hooks
+(`useModel` / `useSandbox` / `useSkill` / `useMcpConnection`) and Markdown
+skills.
 
 ### The three execution tiers
 
@@ -95,7 +96,7 @@ instead of importing all 150 modules directly.
 ## Deploying
 
 ```bash
-npm install @flue/runtime @flue/cli --save
+pnpm install          # @flue/runtime + @flue/cli
 npx wrangler deploy
 ```
 

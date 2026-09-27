@@ -3,10 +3,9 @@
 // Quickly builds MVPs and proofs of concept
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { container } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import rapid_prototyper from '../../skills/rapid-prototyper/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import rapid_prototyper from '../../skills/rapid-prototyper/SKILL.md';
 
 /**
  * Rapid Prototyper
@@ -17,10 +16,10 @@ import rapid_prototyper from '../../skills/rapid-prototyper/SKILL.md' with { typ
  */
 export function RapidPrototyperAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(container({ ephemeral: true }));
+  useSandbox(local());
   useSkill(rapid_prototyper);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
-  useTool(...defineMcpTools('figma', 'https://mcp.figma.com/mcp'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
+  useMcpConnection({ name: 'figma', url: 'https://mcp.figma.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Rapid Prototyper" role.
 Quickly builds MVPs and proofs of concept.
@@ -30,7 +29,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(RapidPrototyperAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+RapidPrototyperAgent.agentName = 'rapid-prototyper';
 export const meta = {
   id: '8.4',
   name: 'Rapid Prototyper',

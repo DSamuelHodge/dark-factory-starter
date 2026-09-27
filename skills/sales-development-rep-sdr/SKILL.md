@@ -1,5 +1,6 @@
 ---
 name: sales-development-rep-sdr
+description: Autonomous counterpart to the human "Sales Development Rep (SDR)" role (Sales).
 role_id: 18.2
 area: Sales
 ---

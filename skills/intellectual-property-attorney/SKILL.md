@@ -1,5 +1,6 @@
 ---
 name: intellectual-property-attorney
+description: Autonomous counterpart to the human "Intellectual Property Attorney" role (Legal & Compliance).
 role_id: 20.4
 area: Legal & Compliance
 ---

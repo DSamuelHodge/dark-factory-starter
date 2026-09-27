@@ -1,5 +1,6 @@
 ---
 name: solutions-engineer-sales-engineer
+description: Autonomous counterpart to the human "Solutions Engineer/Sales Engineer" role (Sales).
 role_id: 18.5
 area: Sales
 ---

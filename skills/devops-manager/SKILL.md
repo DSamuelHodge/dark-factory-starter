@@ -1,5 +1,6 @@
 ---
 name: devops-manager
+description: Autonomous counterpart to the human "DevOps Manager" role (DevOps & Infrastructure).
 role_id: 10.1
 area: DevOps & Infrastructure
 ---

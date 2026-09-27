@@ -1,5 +1,6 @@
 ---
 name: security-engineer
+description: Autonomous counterpart to the human "Security Engineer" role (Security & Compliance).
 role_id: 12.2
 area: Security & Compliance
 ---

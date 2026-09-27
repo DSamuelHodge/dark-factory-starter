@@ -1,5 +1,6 @@
 ---
 name: product-operations
+description: Autonomous counterpart to the human "Product Operations" role (Product Management & Strategy).
 role_id: 1.7
 area: Product Management & Strategy
 ---

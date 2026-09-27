@@ -1,5 +1,6 @@
 ---
 name: react-native-developer
+description: Autonomous counterpart to the human "React Native Developer" role (Mobile Development).
 role_id: 9.4
 area: Mobile Development
 ---

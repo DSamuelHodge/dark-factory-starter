@@ -3,10 +3,9 @@
 // Leads DevOps team and strategy
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { container } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import devops_manager from '../../skills/devops-manager/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import devops_manager from '../../skills/devops-manager/SKILL.md';
 
 /**
  * DevOps Manager
@@ -17,10 +16,10 @@ import devops_manager from '../../skills/devops-manager/SKILL.md' with { type: '
  */
 export function DevOpsManagerAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(container({ ephemeral: true }));
+  useSandbox(local());
   useSkill(devops_manager);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
-  useTool(...defineMcpTools('cloudflare', 'https://bindings.mcp.cloudflare.com/mcp'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
+  useMcpConnection({ name: 'cloudflare', url: 'https://bindings.mcp.cloudflare.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "DevOps Manager" role.
 Leads DevOps team and strategy.
@@ -30,7 +29,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(DevOpsManagerAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+DevOpsManagerAgent.agentName = 'devops-manager';
 export const meta = {
   id: '10.1',
   name: 'DevOps Manager',

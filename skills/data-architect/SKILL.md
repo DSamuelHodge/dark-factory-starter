@@ -1,5 +1,6 @@
 ---
 name: data-architect
+description: Autonomous counterpart to the human "Data Architect" role (Software Architecture).
 role_id: 5.4
 area: Software Architecture
 ---

@@ -1,5 +1,6 @@
 ---
 name: database-developer
+description: Autonomous counterpart to the human "Database Developer" role (Backend Development).
 role_id: 7.4
 area: Backend Development
 ---

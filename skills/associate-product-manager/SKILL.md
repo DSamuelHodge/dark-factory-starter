@@ -1,5 +1,6 @@
 ---
 name: associate-product-manager
+description: Autonomous counterpart to the human "Associate Product Manager" role (Product Management & Strategy).
 role_id: 1.3
 area: Product Management & Strategy
 ---

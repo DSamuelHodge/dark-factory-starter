@@ -1,5 +1,6 @@
 ---
 name: devops-engineer
+description: Autonomous counterpart to the human "DevOps Engineer" role (DevOps & Infrastructure).
 role_id: 10.2
 area: DevOps & Infrastructure
 ---

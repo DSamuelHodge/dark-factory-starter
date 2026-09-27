@@ -3,10 +3,9 @@
 // Builds automated test frameworks
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { container } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import test_automation_engineer from '../../skills/test-automation-engineer/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import test_automation_engineer from '../../skills/test-automation-engineer/SKILL.md';
 
 /**
  * Test Automation Engineer
@@ -16,10 +15,10 @@ import test_automation_engineer from '../../skills/test-automation-engineer/SKIL
  *             → Workflow sleeps and routes to the human owner of this function.
  */
 export function TestAutomationEngineerAgent() {
-  useModel('workers-ai/@cf/meta/llama-3.3-70b-instruct');
-  useSandbox(container({ ephemeral: true }));
+  useModel('cloudflare/@cf/meta/llama-3.3-70b-instruct');
+  useSandbox(local());
   useSkill(test_automation_engineer);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Test Automation Engineer" role.
 Builds automated test frameworks.
@@ -29,7 +28,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(TestAutomationEngineerAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+TestAutomationEngineerAgent.agentName = 'test-automation-engineer';
 export const meta = {
   id: '11.4',
   name: 'Test Automation Engineer',

@@ -1,5 +1,6 @@
 ---
 name: motion-designer
+description: Autonomous counterpart to the human "Motion Designer" role (Design).
 role_id: 4.6
 area: Design
 ---

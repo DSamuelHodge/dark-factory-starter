@@ -3,10 +3,8 @@
 // Ensures timely delivery of commitments
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import delivery_manager from '../../skills/delivery-manager/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import delivery_manager from '../../skills/delivery-manager/SKILL.md';
 
 /**
  * Delivery Manager
@@ -17,10 +15,9 @@ import delivery_manager from '../../skills/delivery-manager/SKILL.md' with { typ
  */
 export function DeliveryManagerAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
   useSkill(delivery_manager);
-  useTool(...defineMcpTools('jira', 'https://mcp.atlassian.com/jira/mcp'));
-  useTool(...defineMcpTools('slack', 'https://mcp.slack.com/mcp'));
+  useMcpConnection({ name: 'jira', url: 'https://mcp.atlassian.com/jira/mcp', optional: true });
+  useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Delivery Manager" role.
 Ensures timely delivery of commitments.
@@ -30,7 +27,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(DeliveryManagerAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+DeliveryManagerAgent.agentName = 'delivery-manager';
 export const meta = {
   id: '15.4',
   name: 'Delivery Manager',

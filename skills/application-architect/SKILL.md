@@ -1,5 +1,6 @@
 ---
 name: application-architect
+description: Autonomous counterpart to the human "Application Architect" role (Software Architecture).
 role_id: 5.3
 area: Software Architecture
 ---

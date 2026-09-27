@@ -1,5 +1,6 @@
 ---
 name: rapid-prototyper
+description: Autonomous counterpart to the human "Rapid Prototyper" role (Full Stack Development).
 role_id: 8.4
 area: Full Stack Development
 ---

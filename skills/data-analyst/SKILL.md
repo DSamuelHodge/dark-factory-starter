@@ -1,5 +1,6 @@
 ---
 name: data-analyst
+description: Autonomous counterpart to the human "Data Analyst" role (Data Engineering & Analytics).
 role_id: 13.5
 area: Data Engineering & Analytics
 ---

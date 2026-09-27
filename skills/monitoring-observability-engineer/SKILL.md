@@ -1,5 +1,6 @@
 ---
 name: monitoring-observability-engineer
+description: Autonomous counterpart to the human "Monitoring/Observability Engineer" role (DevOps & Infrastructure).
 role_id: 10.10
 area: DevOps & Infrastructure
 ---

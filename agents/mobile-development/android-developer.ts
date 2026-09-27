@@ -3,10 +3,9 @@
 // Develops native Android apps (Kotlin/Java)
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { container } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import android_developer from '../../skills/android-developer/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import android_developer from '../../skills/android-developer/SKILL.md';
 
 /**
  * Android Developer
@@ -17,9 +16,9 @@ import android_developer from '../../skills/android-developer/SKILL.md' with { t
  */
 export function AndroidDeveloperAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(container({ ephemeral: true }));
+  useSandbox(local());
   useSkill(android_developer);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Android Developer" role.
 Develops native Android apps (Kotlin/Java).
@@ -29,7 +28,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(AndroidDeveloperAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+AndroidDeveloperAgent.agentName = 'android-developer';
 export const meta = {
   id: '9.3',
   name: 'Android Developer',

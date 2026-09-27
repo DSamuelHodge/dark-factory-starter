@@ -3,10 +3,9 @@
 // Transforms raw data into analytics-ready datasets
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { container } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import analytics_engineer from '../../skills/analytics-engineer/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import analytics_engineer from '../../skills/analytics-engineer/SKILL.md';
 
 /**
  * Analytics Engineer
@@ -17,10 +16,10 @@ import analytics_engineer from '../../skills/analytics-engineer/SKILL.md' with {
  */
 export function AnalyticsEngineerAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(container({ ephemeral: true }));
+  useSandbox(local());
   useSkill(analytics_engineer);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
-  useTool(...defineMcpTools('gdrive', 'https://drivemcp.googleapis.com/mcp/v1'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
+  useMcpConnection({ name: 'gdrive', url: 'https://drivemcp.googleapis.com/mcp/v1', optional: true });
 
   return `You are the autonomous agent standing in for the human "Analytics Engineer" role.
 Transforms raw data into analytics-ready datasets.
@@ -30,7 +29,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(AnalyticsEngineerAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+AnalyticsEngineerAgent.agentName = 'analytics-engineer';
 export const meta = {
   id: '13.9',
   name: 'Analytics Engineer',

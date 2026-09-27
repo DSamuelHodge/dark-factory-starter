@@ -1,5 +1,6 @@
 ---
 name: infrastructure-engineer
+description: Autonomous counterpart to the human "Infrastructure Engineer" role (DevOps & Infrastructure).
 role_id: 10.7
 area: DevOps & Infrastructure
 ---

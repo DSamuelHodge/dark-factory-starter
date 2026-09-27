@@ -1,5 +1,6 @@
 ---
 name: resource-manager
+description: Autonomous counterpart to the human "Resource Manager" role (Project Management).
 role_id: 15.5
 area: Project Management
 ---

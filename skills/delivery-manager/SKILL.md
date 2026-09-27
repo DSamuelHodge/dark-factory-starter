@@ -1,5 +1,6 @@
 ---
 name: delivery-manager
+description: Autonomous counterpart to the human "Delivery Manager" role (Project Management).
 role_id: 15.4
 area: Project Management
 ---

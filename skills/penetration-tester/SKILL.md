@@ -1,5 +1,6 @@
 ---
 name: penetration-tester
+description: Autonomous counterpart to the human "Penetration Tester" role (Security & Compliance).
 role_id: 12.4
 area: Security & Compliance
 ---

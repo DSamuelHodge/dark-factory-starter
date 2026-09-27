@@ -1,5 +1,6 @@
 ---
 name: release-train-engineer
+description: Autonomous counterpart to the human "Release Train Engineer" role (Agile & Scrum).
 role_id: 16.4
 area: Agile & Scrum
 ---

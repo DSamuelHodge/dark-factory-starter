@@ -3,10 +3,9 @@
 // Ensures system reliability and uptime
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { container } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import site_reliability_engineer_sre from '../../skills/site-reliability-engineer-sre/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import site_reliability_engineer_sre from '../../skills/site-reliability-engineer-sre/SKILL.md';
 
 /**
  * Site Reliability Engineer (SRE)
@@ -17,10 +16,10 @@ import site_reliability_engineer_sre from '../../skills/site-reliability-enginee
  */
 export function SiteReliabilityEngineerSREAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(container({ ephemeral: true }));
+  useSandbox(local());
   useSkill(site_reliability_engineer_sre);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
-  useTool(...defineMcpTools('cloudflare', 'https://bindings.mcp.cloudflare.com/mcp'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
+  useMcpConnection({ name: 'cloudflare', url: 'https://bindings.mcp.cloudflare.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Site Reliability Engineer (SRE)" role.
 Ensures system reliability and uptime.
@@ -30,7 +29,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(SiteReliabilityEngineerSREAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+SiteReliabilityEngineerSREAgent.agentName = 'site-reliability-engineer-sre';
 export const meta = {
   id: '10.3',
   name: 'Site Reliability Engineer (SRE)',

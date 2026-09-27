@@ -3,10 +3,9 @@
 // Builds cross-platform apps with React Native
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { container } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import react_native_developer from '../../skills/react-native-developer/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import react_native_developer from '../../skills/react-native-developer/SKILL.md';
 
 /**
  * React Native Developer
@@ -17,9 +16,9 @@ import react_native_developer from '../../skills/react-native-developer/SKILL.md
  */
 export function ReactNativeDeveloperAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(container({ ephemeral: true }));
+  useSandbox(local());
   useSkill(react_native_developer);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "React Native Developer" role.
 Builds cross-platform apps with React Native.
@@ -29,7 +28,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(ReactNativeDeveloperAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+ReactNativeDeveloperAgent.agentName = 'react-native-developer';
 export const meta = {
   id: '9.4',
   name: 'React Native Developer',

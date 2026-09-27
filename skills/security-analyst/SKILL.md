@@ -1,5 +1,6 @@
 ---
 name: security-analyst
+description: Autonomous counterpart to the human "Security Analyst" role (Security & Compliance).
 role_id: 12.5
 area: Security & Compliance
 ---

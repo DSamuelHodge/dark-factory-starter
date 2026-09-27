@@ -1,5 +1,6 @@
 ---
 name: security-architect
+description: Autonomous counterpart to the human "Security Architect" role (Software Architecture).
 role_id: 5.7
 area: Software Architecture
 ---

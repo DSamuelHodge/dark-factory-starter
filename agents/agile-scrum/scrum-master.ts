@@ -3,10 +3,8 @@
 // Facilitates scrum ceremonies and removes blockers
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import scrum_master from '../../skills/scrum-master/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import scrum_master from '../../skills/scrum-master/SKILL.md';
 
 /**
  * Scrum Master
@@ -17,10 +15,9 @@ import scrum_master from '../../skills/scrum-master/SKILL.md' with { type: 'skil
  */
 export function ScrumMasterAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
   useSkill(scrum_master);
-  useTool(...defineMcpTools('jira', 'https://mcp.atlassian.com/jira/mcp'));
-  useTool(...defineMcpTools('slack', 'https://mcp.slack.com/mcp'));
+  useMcpConnection({ name: 'jira', url: 'https://mcp.atlassian.com/jira/mcp', optional: true });
+  useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Scrum Master" role.
 Facilitates scrum ceremonies and removes blockers.
@@ -30,7 +27,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(ScrumMasterAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+ScrumMasterAgent.agentName = 'scrum-master';
 export const meta = {
   id: '16.2',
   name: 'Scrum Master',

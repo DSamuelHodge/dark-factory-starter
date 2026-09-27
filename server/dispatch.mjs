@@ -9,15 +9,15 @@
 //   Linear label (e.g. "role/frontend-developer") -> role-label-map.json -> role id
 //
 // This process is PLAIN Node — it never imports registry.ts or any agent
-// .ts file directly, because registry.ts uses explicit .ts import
-// extensions and a `with { type: 'skill' }` import attribute for SKILL.md
-// that plain node cannot resolve. The actual agent run happens in a
-// subprocess (scripts/run-agent.mjs) executed via `npx tsx`, which keeps
-// that unverified TS/loader surface from ever crashing this HTTP server.
+// .ts file directly (those need the Flue build to resolve SKILL.md and
+// @flue/runtime subpaths). The actual agent run happens in a subprocess
+// (scripts/run-agent.mjs, also plain Node), which resolves roleId -> agent
+// file via registry.json and shells out to the real `flue run` CLI. A bad
+// agent module or a wrong runtime call crashes that subprocess with a
+// clear JSON error, not this HTTP server.
 //
 // Run:
-//   npm install @flue/runtime           # the actual agent runtime this calls
-//   npm install -D tsx                  # runs run-agent.mjs's real TS imports
+//   pnpm install                        # @flue/runtime + @flue/cli (real deps)
 //   node server/dispatch.mjs            # listens on DISPATCH_PORT (default 4001)
 //
 // Port note: default is 4001, not 4000 — 4000 is the example dashboard port
@@ -43,9 +43,8 @@ const AGENT_RUN_TIMEOUT_MS = Number(process.env.DISPATCH_AGENT_TIMEOUT_MS || 120
 // turns allow 600s. Container-tier roles (dev/QA/security) routinely exceed
 // 120s — raise DISPATCH_AGENT_TIMEOUT_MS (e.g. 600000) for those, or the
 // bridge returns agent_subprocess_failed while the agent is still running.
-// Windows note: spawn needs npx.cmd on win32; plain "npx" only works on
-// macOS/Linux.
-const NPX = process.platform === "win32" ? "npx.cmd" : "npx";
+// run-agent.mjs is plain Node, so spawn it with this process's own Node
+// binary — no tsx/npx needed at bridge runtime.
 
 let labelMap;
 
@@ -85,13 +84,13 @@ function resolveRoleId(labels, map) {
 }
 
 /**
- * Run scripts/run-agent.mjs under `npx tsx` as a subprocess, feed it
- * { roleId, prompt } on stdin, and parse its single-line JSON stdout.
- * Isolates the entire unverified @flue/runtime call chain from this process.
+ * Run scripts/run-agent.mjs as a subprocess, feed it
+ * { roleId, prompt, conversationId } on stdin, and parse its single-line
+ * JSON stdout. Isolates the whole `flue run` execution from this process.
  */
-function runAgentSubprocess(roleId, prompt) {
+function runAgentSubprocess(roleId, prompt, conversationId) {
   return new Promise((resolve, reject) => {
-    const child = spawn(NPX, ["tsx", path.join(ROOT, "scripts", "run-agent.mjs")], {
+    const child = spawn(process.execPath, [path.join(ROOT, "scripts", "run-agent.mjs")], {
       cwd: ROOT,
       stdio: ["pipe", "pipe", "pipe"],
     });
@@ -107,7 +106,7 @@ function runAgentSubprocess(roleId, prompt) {
     child.stderr.on("data", (d) => (stderr += d));
     child.on("error", (err) => {
       clearTimeout(timer);
-      reject(new Error(`Failed to spawn \`npx tsx\`: ${err.message}. Is tsx installed (npm install -D tsx)?`));
+      reject(new Error(`Failed to spawn run-agent.mjs: ${err.message}`));
     });
     child.on("close", () => {
       clearTimeout(timer);
@@ -122,7 +121,7 @@ function runAgentSubprocess(roleId, prompt) {
       }
     });
 
-    child.stdin.write(JSON.stringify({ roleId, prompt }));
+    child.stdin.write(JSON.stringify({ roleId, prompt, conversationId }));
     child.stdin.end();
   });
 }
@@ -164,7 +163,9 @@ async function handleDispatch(req, res) {
 
   let agentResult;
   try {
-    agentResult = await runAgentSubprocess(resolution.roleId, taskPrompt);
+    // The Linear issue identifier becomes the Flue conversation id, so a
+    // second dispatch for the same issue continues the same agent thread.
+    agentResult = await runAgentSubprocess(resolution.roleId, taskPrompt, issue.identifier);
   } catch (err) {
     return sendJson(res, 500, {
       error: "agent_subprocess_failed",

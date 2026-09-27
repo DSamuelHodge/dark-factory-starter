@@ -1,5 +1,6 @@
 ---
 name: sales-operations-analyst
+description: Autonomous counterpart to the human "Sales Operations Analyst" role (Sales).
 role_id: 18.8
 area: Sales
 ---

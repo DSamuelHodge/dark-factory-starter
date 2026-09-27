@@ -1,5 +1,6 @@
 ---
 name: backend-performance-engineer
+description: Autonomous counterpart to the human "Backend Performance Engineer" role (Backend Development).
 role_id: 7.6
 area: Backend Development
 ---

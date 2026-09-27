@@ -1,5 +1,6 @@
 ---
 name: training-specialist
+description: Autonomous counterpart to the human "Training Specialist" role (Customer Support).
 role_id: 19.9
 area: Customer Support
 ---
@@ -42,6 +43,6 @@ judgment, terminology, or output format specific to this role.
 
 ## Notes
 - Runs at **Tier 0 — Workspace (SQLite + R2, no code execution)**.
-- Default model: `workers-ai/@cf/meta/llama-3.3-70b-instruct` (swap via `useModel()` — Flue is
+- Default model: `cloudflare/@cf/meta/llama-3.3-70b-instruct` (swap via `useModel()` — Flue is
   model-agnostic; route through AI Gateway for caching/fallback/cost
   tracking).

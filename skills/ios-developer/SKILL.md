@@ -1,5 +1,6 @@
 ---
 name: ios-developer
+description: Autonomous counterpart to the human "iOS Developer" role (Mobile Development).
 role_id: 9.2
 area: Mobile Development
 ---

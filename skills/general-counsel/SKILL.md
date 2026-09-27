@@ -1,5 +1,6 @@
 ---
 name: general-counsel
+description: Autonomous counterpart to the human "General Counsel" role (Legal & Compliance).
 role_id: 20.1
 area: Legal & Compliance
 ---

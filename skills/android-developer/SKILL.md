@@ -1,5 +1,6 @@
 ---
 name: android-developer
+description: Autonomous counterpart to the human "Android Developer" role (Mobile Development).
 role_id: 9.3
 area: Mobile Development
 ---

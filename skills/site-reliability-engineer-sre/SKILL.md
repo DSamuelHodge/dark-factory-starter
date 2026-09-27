@@ -1,5 +1,6 @@
 ---
 name: site-reliability-engineer-sre
+description: Autonomous counterpart to the human "Site Reliability Engineer (SRE)" role (DevOps & Infrastructure).
 role_id: 10.3
 area: DevOps & Infrastructure
 ---

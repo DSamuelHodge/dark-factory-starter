@@ -1,5 +1,6 @@
 ---
 name: frontend-developer
+description: Autonomous counterpart to the human "Frontend Developer" role (Frontend Development).
 role_id: 6.2
 area: Frontend Development
 ---

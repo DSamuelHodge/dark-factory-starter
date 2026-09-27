@@ -3,10 +3,8 @@
 // Closes deals and manages sales cycle
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import account_executive from '../../skills/account-executive/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import account_executive from '../../skills/account-executive/SKILL.md';
 
 /**
  * Account Executive
@@ -17,10 +15,9 @@ import account_executive from '../../skills/account-executive/SKILL.md' with { t
  */
 export function AccountExecutiveAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
   useSkill(account_executive);
-  useTool(...defineMcpTools('slack', 'https://mcp.slack.com/mcp'));
-  useTool(...defineMcpTools('gdrive', 'https://drivemcp.googleapis.com/mcp/v1'));
+  useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
+  useMcpConnection({ name: 'gdrive', url: 'https://drivemcp.googleapis.com/mcp/v1', optional: true });
 
   return `You are the autonomous agent standing in for the human "Account Executive" role.
 Closes deals and manages sales cycle.
@@ -30,7 +27,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(AccountExecutiveAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+AccountExecutiveAgent.agentName = 'account-executive';
 export const meta = {
   id: '18.3',
   name: 'Account Executive',

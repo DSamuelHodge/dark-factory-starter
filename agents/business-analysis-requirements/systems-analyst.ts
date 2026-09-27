@@ -3,10 +3,8 @@
 // Analyzes technical systems and integration needs
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import systems_analyst from '../../skills/systems-analyst/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import systems_analyst from '../../skills/systems-analyst/SKILL.md';
 
 /**
  * Systems Analyst
@@ -17,10 +15,9 @@ import systems_analyst from '../../skills/systems-analyst/SKILL.md' with { type:
  */
 export function SystemsAnalystAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
   useSkill(systems_analyst);
-  useTool(...defineMcpTools('jira', 'https://mcp.atlassian.com/jira/mcp'));
-  useTool(...defineMcpTools('gdrive', 'https://drivemcp.googleapis.com/mcp/v1'));
+  useMcpConnection({ name: 'jira', url: 'https://mcp.atlassian.com/jira/mcp', optional: true });
+  useMcpConnection({ name: 'gdrive', url: 'https://drivemcp.googleapis.com/mcp/v1', optional: true });
 
   return `You are the autonomous agent standing in for the human "Systems Analyst" role.
 Analyzes technical systems and integration needs.
@@ -30,7 +27,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(SystemsAnalystAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+SystemsAnalystAgent.agentName = 'systems-analyst';
 export const meta = {
   id: '2.3',
   name: 'Systems Analyst',

@@ -3,10 +3,9 @@
 // Specializes in JS frameworks (React, Vue, Angular)
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { container } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import javascript_typescript_developer from '../../skills/javascript-typescript-developer/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import javascript_typescript_developer from '../../skills/javascript-typescript-developer/SKILL.md';
 
 /**
  * JavaScript/TypeScript Developer
@@ -17,10 +16,10 @@ import javascript_typescript_developer from '../../skills/javascript-typescript-
  */
 export function JavaScriptTypeScriptDeveloperAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(container({ ephemeral: true }));
+  useSandbox(local());
   useSkill(javascript_typescript_developer);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
-  useTool(...defineMcpTools('figma', 'https://mcp.figma.com/mcp'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
+  useMcpConnection({ name: 'figma', url: 'https://mcp.figma.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "JavaScript/TypeScript Developer" role.
 Specializes in JS frameworks (React, Vue, Angular).
@@ -30,7 +29,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(JavaScriptTypeScriptDeveloperAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+JavaScriptTypeScriptDeveloperAgent.agentName = 'javascript-typescript-developer';
 export const meta = {
   id: '6.3',
   name: 'JavaScript/TypeScript Developer',

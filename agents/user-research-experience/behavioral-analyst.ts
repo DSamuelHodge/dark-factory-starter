@@ -3,10 +3,8 @@
 // Studies user behavior patterns and psychology
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import behavioral_analyst from '../../skills/behavioral-analyst/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import behavioral_analyst from '../../skills/behavioral-analyst/SKILL.md';
 
 /**
  * Behavioral Analyst
@@ -17,10 +15,9 @@ import behavioral_analyst from '../../skills/behavioral-analyst/SKILL.md' with {
  */
 export function BehavioralAnalystAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
   useSkill(behavioral_analyst);
-  useTool(...defineMcpTools('figma', 'https://mcp.figma.com/mcp'));
-  useTool(...defineMcpTools('slack', 'https://mcp.slack.com/mcp'));
+  useMcpConnection({ name: 'figma', url: 'https://mcp.figma.com/mcp', optional: true });
+  useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Behavioral Analyst" role.
 Studies user behavior patterns and psychology.
@@ -30,7 +27,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(BehavioralAnalystAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+BehavioralAnalystAgent.agentName = 'behavioral-analyst';
 export const meta = {
   id: '3.3',
   name: 'Behavioral Analyst',

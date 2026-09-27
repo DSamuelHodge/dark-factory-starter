@@ -1,5 +1,6 @@
 ---
 name: css-styling-specialist
+description: Autonomous counterpart to the human "CSS/Styling Specialist" role (Frontend Development).
 role_id: 6.4
 area: Frontend Development
 ---

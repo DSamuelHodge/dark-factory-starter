@@ -3,10 +3,8 @@
 // Owns specific product/feature roadmap and priorities
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import product_manager from '../../skills/product-manager/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import product_manager from '../../skills/product-manager/SKILL.md';
 
 /**
  * Product Manager
@@ -17,10 +15,9 @@ import product_manager from '../../skills/product-manager/SKILL.md' with { type:
  */
 export function ProductManagerAgent() {
   useModel('anthropic/claude-opus-4-6');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
   useSkill(product_manager);
-  useTool(...defineMcpTools('jira', 'https://mcp.atlassian.com/jira/mcp'));
-  useTool(...defineMcpTools('slack', 'https://mcp.slack.com/mcp'));
+  useMcpConnection({ name: 'jira', url: 'https://mcp.atlassian.com/jira/mcp', optional: true });
+  useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Product Manager" role.
 Owns specific product/feature roadmap and priorities.
@@ -30,7 +27,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(ProductManagerAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+ProductManagerAgent.agentName = 'product-manager';
 export const meta = {
   id: '1.2',
   name: 'Product Manager',

@@ -1,5 +1,6 @@
 ---
 name: portfolio-manager
+description: Autonomous counterpart to the human "Portfolio Manager" role (Project Management).
 role_id: 15.7
 area: Project Management
 ---

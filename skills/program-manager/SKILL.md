@@ -1,5 +1,6 @@
 ---
 name: program-manager
+description: Autonomous counterpart to the human "Program Manager" role (Project Management).
 role_id: 15.1
 area: Project Management
 ---

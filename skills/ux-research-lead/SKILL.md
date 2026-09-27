@@ -1,5 +1,6 @@
 ---
 name: ux-research-lead
+description: Autonomous counterpart to the human "UX Research Lead" role (User Research & Experience).
 role_id: 3.1
 area: User Research & Experience
 ---

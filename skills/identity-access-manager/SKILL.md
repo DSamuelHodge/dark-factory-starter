@@ -1,5 +1,6 @@
 ---
 name: identity-access-manager
+description: Autonomous counterpart to the human "Identity & Access Manager" role (Security & Compliance).
 role_id: 12.7
 area: Security & Compliance
 ---

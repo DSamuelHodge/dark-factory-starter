@@ -1,5 +1,6 @@
 ---
 name: behavioral-analyst
+description: Autonomous counterpart to the human "Behavioral Analyst" role (User Research & Experience).
 role_id: 3.3
 area: User Research & Experience
 ---

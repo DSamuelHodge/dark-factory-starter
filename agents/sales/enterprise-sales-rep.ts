@@ -3,10 +3,8 @@
 // Sells to large enterprise customers
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import enterprise_sales_rep from '../../skills/enterprise-sales-rep/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import enterprise_sales_rep from '../../skills/enterprise-sales-rep/SKILL.md';
 
 /**
  * Enterprise Sales Rep
@@ -17,10 +15,9 @@ import enterprise_sales_rep from '../../skills/enterprise-sales-rep/SKILL.md' wi
  */
 export function EnterpriseSalesRepAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
   useSkill(enterprise_sales_rep);
-  useTool(...defineMcpTools('slack', 'https://mcp.slack.com/mcp'));
-  useTool(...defineMcpTools('gdrive', 'https://drivemcp.googleapis.com/mcp/v1'));
+  useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
+  useMcpConnection({ name: 'gdrive', url: 'https://drivemcp.googleapis.com/mcp/v1', optional: true });
 
   return `You are the autonomous agent standing in for the human "Enterprise Sales Rep" role.
 Sells to large enterprise customers.
@@ -30,7 +27,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(EnterpriseSalesRepAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+EnterpriseSalesRepAgent.agentName = 'enterprise-sales-rep';
 export const meta = {
   id: '18.4',
   name: 'Enterprise Sales Rep',

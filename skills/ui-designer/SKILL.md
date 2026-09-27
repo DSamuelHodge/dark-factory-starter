@@ -1,5 +1,6 @@
 ---
 name: ui-designer
+description: Autonomous counterpart to the human "UI Designer" role (Design).
 role_id: 4.3
 area: Design
 ---

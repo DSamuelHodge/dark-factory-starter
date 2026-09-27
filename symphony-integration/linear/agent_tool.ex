@@ -64,8 +64,7 @@ defmodule SymphonyElixir.Linear.AgentTool do
     "properties" => %{
       "note" => %{
         "type" => ["string", "null"],
-        "description" =>
-          "Optional extra context to append to the issue description before delegating."
+        "description" => "Optional extra context to append to the issue description before delegating."
       }
     }
   }
@@ -179,8 +178,7 @@ defmodule SymphonyElixir.Linear.AgentTool do
   defp dispatch_error_payload(:missing_issue_context) do
     %{
       "error" => %{
-        "message" =>
-          "delegate_to_flue_agent has no issue in scope for this turn (internal binding error)."
+        "message" => "delegate_to_flue_agent has no issue in scope for this turn (internal binding error)."
       }
     }
   end
@@ -208,8 +206,7 @@ defmodule SymphonyElixir.Linear.AgentTool do
   defp dispatch_error_payload({:dispatch_request_failed, reason}) do
     %{
       "error" => %{
-        "message" =>
-          "Could not reach the flue-agent-org dispatch bridge. Is `node server/dispatch.mjs` running?",
+        "message" => "Could not reach the flue-agent-org dispatch bridge. Is `node server/dispatch.mjs` running?",
         "reason" => inspect(reason)
       }
     }
@@ -320,8 +317,7 @@ defmodule SymphonyElixir.Linear.AgentTool do
   defp tool_error_payload(:invalid_arguments) do
     %{
       "error" => %{
-        "message" =>
-          "`linear_graphql` expects either a GraphQL query string or an object with `query` and optional `variables`."
+        "message" => "`linear_graphql` expects either a GraphQL query string or an object with `query` and optional `variables`."
       }
     }
   end
@@ -337,8 +333,7 @@ defmodule SymphonyElixir.Linear.AgentTool do
   defp tool_error_payload(:missing_linear_api_token) do
     %{
       "error" => %{
-        "message" =>
-          "Symphony is missing Linear auth. Set `tracker.provider.api_key` in `WORKFLOW.md` or export `LINEAR_API_KEY`."
+        "message" => "Symphony is missing Linear auth. Set `tracker.provider.api_key` in `WORKFLOW.md` or export `LINEAR_API_KEY`."
       }
     }
   end

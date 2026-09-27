@@ -3,10 +3,8 @@
 // Designs interactions and microanimations
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import interaction_designer from '../../skills/interaction-designer/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import interaction_designer from '../../skills/interaction-designer/SKILL.md';
 
 /**
  * Interaction Designer
@@ -17,9 +15,8 @@ import interaction_designer from '../../skills/interaction-designer/SKILL.md' wi
  */
 export function InteractionDesignerAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
   useSkill(interaction_designer);
-  useTool(...defineMcpTools('figma', 'https://mcp.figma.com/mcp'));
+  useMcpConnection({ name: 'figma', url: 'https://mcp.figma.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Interaction Designer" role.
 Designs interactions and microanimations.
@@ -29,7 +26,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(InteractionDesignerAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+InteractionDesignerAgent.agentName = 'interaction-designer';
 export const meta = {
   id: '4.4',
   name: 'Interaction Designer',

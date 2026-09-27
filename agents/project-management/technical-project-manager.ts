@@ -3,10 +3,8 @@
 // PM with deep technical expertise
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import technical_project_manager from '../../skills/technical-project-manager/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import technical_project_manager from '../../skills/technical-project-manager/SKILL.md';
 
 /**
  * Technical Project Manager
@@ -17,10 +15,9 @@ import technical_project_manager from '../../skills/technical-project-manager/SK
  */
 export function TechnicalProjectManagerAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
   useSkill(technical_project_manager);
-  useTool(...defineMcpTools('jira', 'https://mcp.atlassian.com/jira/mcp'));
-  useTool(...defineMcpTools('slack', 'https://mcp.slack.com/mcp'));
+  useMcpConnection({ name: 'jira', url: 'https://mcp.atlassian.com/jira/mcp', optional: true });
+  useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Technical Project Manager" role.
 PM with deep technical expertise.
@@ -30,7 +27,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(TechnicalProjectManagerAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+TechnicalProjectManagerAgent.agentName = 'technical-project-manager';
 export const meta = {
   id: '15.3',
   name: 'Technical Project Manager',

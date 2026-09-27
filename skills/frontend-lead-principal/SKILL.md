@@ -1,5 +1,6 @@
 ---
 name: frontend-lead-principal
+description: Autonomous counterpart to the human "Frontend Lead/Principal" role (Frontend Development).
 role_id: 6.1
 area: Frontend Development
 ---

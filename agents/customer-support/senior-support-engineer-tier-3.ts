@@ -3,10 +3,8 @@
 // Handles escalations and critical issues
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import senior_support_engineer_tier_3 from '../../skills/senior-support-engineer-tier-3/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import senior_support_engineer_tier_3 from '../../skills/senior-support-engineer-tier-3/SKILL.md';
 
 /**
  * Senior Support Engineer (Tier 3)
@@ -16,11 +14,10 @@ import senior_support_engineer_tier_3 from '../../skills/senior-support-engineer
  *             → Workflow sleeps and routes to the human owner of this function.
  */
 export function SeniorSupportEngineerTier3Agent() {
-  useModel('workers-ai/@cf/meta/llama-3.3-70b-instruct');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
+  useModel('cloudflare/@cf/meta/llama-3.3-70b-instruct');
   useSkill(senior_support_engineer_tier_3);
-  useTool(...defineMcpTools('slack', 'https://mcp.slack.com/mcp'));
-  useTool(...defineMcpTools('discord', 'https://mcp.discord.com/mcp'));
+  useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
+  useMcpConnection({ name: 'discord', url: 'https://mcp.discord.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Senior Support Engineer (Tier 3)" role.
 Handles escalations and critical issues.
@@ -30,7 +27,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(SeniorSupportEngineerTier3Agent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+SeniorSupportEngineerTier3Agent.agentName = 'senior-support-engineer-tier-3';
 export const meta = {
   id: '19.4',
   name: 'Senior Support Engineer (Tier 3)',

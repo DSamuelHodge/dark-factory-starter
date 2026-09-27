@@ -3,10 +3,8 @@
 // Creates technical specifications and diagrams
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import information_developer from '../../skills/information-developer/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import information_developer from '../../skills/information-developer/SKILL.md';
 
 /**
  * Information Developer
@@ -16,11 +14,10 @@ import information_developer from '../../skills/information-developer/SKILL.md' 
  *             → Workflow sleeps and routes to the human owner of this function.
  */
 export function InformationDeveloperAgent() {
-  useModel('workers-ai/@cf/meta/llama-3.3-70b-instruct');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
+  useModel('cloudflare/@cf/meta/llama-3.3-70b-instruct');
   useSkill(information_developer);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
-  useTool(...defineMcpTools('gdrive', 'https://drivemcp.googleapis.com/mcp/v1'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
+  useMcpConnection({ name: 'gdrive', url: 'https://drivemcp.googleapis.com/mcp/v1', optional: true });
 
   return `You are the autonomous agent standing in for the human "Information Developer" role.
 Creates technical specifications and diagrams.
@@ -30,7 +27,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(InformationDeveloperAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+InformationDeveloperAgent.agentName = 'information-developer';
 export const meta = {
   id: '14.6',
   name: 'Information Developer',

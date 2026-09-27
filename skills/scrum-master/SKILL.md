@@ -1,5 +1,6 @@
 ---
 name: scrum-master
+description: Autonomous counterpart to the human "Scrum Master" role (Agile & Scrum).
 role_id: 16.2
 area: Agile & Scrum
 ---

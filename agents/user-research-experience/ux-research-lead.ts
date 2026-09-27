@@ -3,10 +3,8 @@
 // Directs research strategy and methodologies
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import ux_research_lead from '../../skills/ux-research-lead/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import ux_research_lead from '../../skills/ux-research-lead/SKILL.md';
 
 /**
  * UX Research Lead
@@ -17,10 +15,9 @@ import ux_research_lead from '../../skills/ux-research-lead/SKILL.md' with { typ
  */
 export function UXResearchLeadAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
   useSkill(ux_research_lead);
-  useTool(...defineMcpTools('figma', 'https://mcp.figma.com/mcp'));
-  useTool(...defineMcpTools('slack', 'https://mcp.slack.com/mcp'));
+  useMcpConnection({ name: 'figma', url: 'https://mcp.figma.com/mcp', optional: true });
+  useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "UX Research Lead" role.
 Directs research strategy and methodologies.
@@ -30,7 +27,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(UXResearchLeadAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+UXResearchLeadAgent.agentName = 'ux-research-lead';
 export const meta = {
   id: '3.1',
   name: 'UX Research Lead',

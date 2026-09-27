@@ -3,10 +3,9 @@
 // Facilitates user acceptance testing
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { container } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import uat_coordinator from '../../skills/uat-coordinator/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import uat_coordinator from '../../skills/uat-coordinator/SKILL.md';
 
 /**
  * UAT Coordinator
@@ -16,10 +15,10 @@ import uat_coordinator from '../../skills/uat-coordinator/SKILL.md' with { type:
  *             → Workflow sleeps and routes to the human owner of this function.
  */
 export function UATCoordinatorAgent() {
-  useModel('workers-ai/@cf/meta/llama-3.3-70b-instruct');
-  useSandbox(container({ ephemeral: true }));
+  useModel('cloudflare/@cf/meta/llama-3.3-70b-instruct');
+  useSandbox(local());
   useSkill(uat_coordinator);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "UAT Coordinator" role.
 Facilitates user acceptance testing.
@@ -29,7 +28,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(UATCoordinatorAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+UATCoordinatorAgent.agentName = 'uat-coordinator';
 export const meta = {
   id: '11.10',
   name: 'UAT Coordinator',

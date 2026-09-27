@@ -3,10 +3,9 @@
 // Builds cross-platform apps with Flutter
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { container } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import flutter_developer from '../../skills/flutter-developer/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import flutter_developer from '../../skills/flutter-developer/SKILL.md';
 
 /**
  * Flutter Developer
@@ -17,9 +16,9 @@ import flutter_developer from '../../skills/flutter-developer/SKILL.md' with { t
  */
 export function FlutterDeveloperAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(container({ ephemeral: true }));
+  useSandbox(local());
   useSkill(flutter_developer);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Flutter Developer" role.
 Builds cross-platform apps with Flutter.
@@ -29,7 +28,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(FlutterDeveloperAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+FlutterDeveloperAgent.agentName = 'flutter-developer';
 export const meta = {
   id: '9.5',
   name: 'Flutter Developer',

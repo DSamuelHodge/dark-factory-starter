@@ -1,5 +1,6 @@
 ---
 name: interaction-designer
+description: Autonomous counterpart to the human "Interaction Designer" role (Design).
 role_id: 4.4
 area: Design
 ---

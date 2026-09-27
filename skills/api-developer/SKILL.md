@@ -1,5 +1,6 @@
 ---
 name: api-developer
+description: Autonomous counterpart to the human "API Developer" role (Backend Development).
 role_id: 7.3
 area: Backend Development
 ---

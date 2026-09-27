@@ -1,5 +1,6 @@
 ---
 name: kanban-lead
+description: Autonomous counterpart to the human "Kanban Lead" role (Agile & Scrum).
 role_id: 16.3
 area: Agile & Scrum
 ---

@@ -3,10 +3,9 @@
 // Manages infrastructure as code and configs
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { container } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import configuration_manager from '../../skills/configuration-manager/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import configuration_manager from '../../skills/configuration-manager/SKILL.md';
 
 /**
  * Configuration Manager
@@ -17,10 +16,10 @@ import configuration_manager from '../../skills/configuration-manager/SKILL.md' 
  */
 export function ConfigurationManagerAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(container({ ephemeral: true }));
+  useSandbox(local());
   useSkill(configuration_manager);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
-  useTool(...defineMcpTools('cloudflare', 'https://bindings.mcp.cloudflare.com/mcp'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
+  useMcpConnection({ name: 'cloudflare', url: 'https://bindings.mcp.cloudflare.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Configuration Manager" role.
 Manages infrastructure as code and configs.
@@ -30,7 +29,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(ConfigurationManagerAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+ConfigurationManagerAgent.agentName = 'configuration-manager';
 export const meta = {
   id: '10.9',
   name: 'Configuration Manager',

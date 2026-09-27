@@ -1,5 +1,6 @@
 ---
 name: platform-engineer
+description: Autonomous counterpart to the human "Platform Engineer" role (DevOps & Infrastructure).
 role_id: 10.5
 area: DevOps & Infrastructure
 ---

@@ -1,5 +1,6 @@
 ---
 name: product-analyst
+description: Autonomous counterpart to the human "Product Analyst" role (Product Management & Strategy).
 role_id: 1.5
 area: Product Management & Strategy
 ---

@@ -1,5 +1,6 @@
 ---
 name: technical-project-manager
+description: Autonomous counterpart to the human "Technical Project Manager" role (Project Management).
 role_id: 15.3
 area: Project Management
 ---

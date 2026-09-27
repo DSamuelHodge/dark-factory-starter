@@ -1,5 +1,6 @@
 ---
 name: compliance-officer
+description: Autonomous counterpart to the human "Compliance Officer" role (Security & Compliance).
 role_id: 12.6
 area: Security & Compliance
 ---

@@ -1,5 +1,6 @@
 ---
 name: integration-developer
+description: Autonomous counterpart to the human "Integration Developer" role (Backend Development).
 role_id: 7.7
 area: Backend Development
 ---

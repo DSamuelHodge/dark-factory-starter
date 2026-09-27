@@ -3,10 +3,9 @@
 // Leads backend team and architecture
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { container } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import backend_lead_principal from '../../skills/backend-lead-principal/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import backend_lead_principal from '../../skills/backend-lead-principal/SKILL.md';
 
 /**
  * Backend Lead/Principal
@@ -17,9 +16,9 @@ import backend_lead_principal from '../../skills/backend-lead-principal/SKILL.md
  */
 export function BackendLeadPrincipalAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(container({ ephemeral: true }));
+  useSandbox(local());
   useSkill(backend_lead_principal);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Backend Lead/Principal" role.
 Leads backend team and architecture.
@@ -29,7 +28,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(BackendLeadPrincipalAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+BackendLeadPrincipalAgent.agentName = 'backend-lead-principal';
 export const meta = {
   id: '7.1',
   name: 'Backend Lead/Principal',

@@ -1,5 +1,6 @@
 ---
 name: cloud-engineer
+description: Autonomous counterpart to the human "Cloud Engineer" role (DevOps & Infrastructure).
 role_id: 10.4
 area: DevOps & Infrastructure
 ---

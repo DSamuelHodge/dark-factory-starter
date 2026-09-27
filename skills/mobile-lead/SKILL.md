@@ -1,5 +1,6 @@
 ---
 name: mobile-lead
+description: Autonomous counterpart to the human "Mobile Lead" role (Mobile Development).
 role_id: 9.1
 area: Mobile Development
 ---

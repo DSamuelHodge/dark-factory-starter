@@ -3,10 +3,9 @@
 // Tests load, stress, and scalability
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { container } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import performance_tester from '../../skills/performance-tester/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import performance_tester from '../../skills/performance-tester/SKILL.md';
 
 /**
  * Performance Tester
@@ -16,10 +15,10 @@ import performance_tester from '../../skills/performance-tester/SKILL.md' with {
  *             → Workflow sleeps and routes to the human owner of this function.
  */
 export function PerformanceTesterAgent() {
-  useModel('workers-ai/@cf/meta/llama-3.3-70b-instruct');
-  useSandbox(container({ ephemeral: true }));
+  useModel('cloudflare/@cf/meta/llama-3.3-70b-instruct');
+  useSandbox(local());
   useSkill(performance_tester);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Performance Tester" role.
 Tests load, stress, and scalability.
@@ -29,7 +28,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(PerformanceTesterAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+PerformanceTesterAgent.agentName = 'performance-tester';
 export const meta = {
   id: '11.5',
   name: 'Performance Tester',

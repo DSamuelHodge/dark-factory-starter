@@ -1,5 +1,6 @@
 ---
 name: revenue-operations-manager
+description: Autonomous counterpart to the human "Revenue Operations Manager" role (Sales).
 role_id: 18.9
 area: Sales
 ---

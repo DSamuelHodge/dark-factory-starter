@@ -1,5 +1,6 @@
 ---
 name: flutter-developer
+description: Autonomous counterpart to the human "Flutter Developer" role (Mobile Development).
 role_id: 9.5
 area: Mobile Development
 ---

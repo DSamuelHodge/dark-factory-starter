@@ -1,5 +1,6 @@
 ---
 name: mean-mern-stack-developer
+description: Autonomous counterpart to the human "MEAN/MERN Stack Developer" role (Full Stack Development).
 role_id: 8.3
 area: Full Stack Development
 ---
