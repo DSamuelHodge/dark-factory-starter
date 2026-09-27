@@ -1,0 +1,752 @@
+{
+  "role/chief-product-officer": {
+    "roleId": "1.1",
+    "name": "Chief Product Officer",
+    "area": "Product Management & Strategy"
+  },
+  "role/product-manager": {
+    "roleId": "1.2",
+    "name": "Product Manager",
+    "area": "Product Management & Strategy"
+  },
+  "role/associate-product-manager": {
+    "roleId": "1.3",
+    "name": "Associate Product Manager",
+    "area": "Product Management & Strategy"
+  },
+  "role/product-owner": {
+    "roleId": "1.4",
+    "name": "Product Owner",
+    "area": "Product Management & Strategy"
+  },
+  "role/product-analyst": {
+    "roleId": "1.5",
+    "name": "Product Analyst",
+    "area": "Product Management & Strategy"
+  },
+  "role/competitive-analyst": {
+    "roleId": "1.6",
+    "name": "Competitive Analyst",
+    "area": "Product Management & Strategy"
+  },
+  "role/product-operations": {
+    "roleId": "1.7",
+    "name": "Product Operations",
+    "area": "Product Management & Strategy"
+  },
+  "role/lead-business-analyst": {
+    "roleId": "2.1",
+    "name": "Lead Business Analyst",
+    "area": "Business Analysis & Requirements"
+  },
+  "role/business-analyst": {
+    "roleId": "2.2",
+    "name": "Business Analyst",
+    "area": "Business Analysis & Requirements"
+  },
+  "role/systems-analyst": {
+    "roleId": "2.3",
+    "name": "Systems Analyst",
+    "area": "Business Analysis & Requirements"
+  },
+  "role/process-analyst": {
+    "roleId": "2.4",
+    "name": "Process Analyst",
+    "area": "Business Analysis & Requirements"
+  },
+  "role/domain-expert-sme": {
+    "roleId": "2.5",
+    "name": "Domain Expert/SME",
+    "area": "Business Analysis & Requirements"
+  },
+  "role/requirements-engineer": {
+    "roleId": "2.6",
+    "name": "Requirements Engineer",
+    "area": "Business Analysis & Requirements"
+  },
+  "role/ux-research-lead": {
+    "roleId": "3.1",
+    "name": "UX Research Lead",
+    "area": "User Research & Experience"
+  },
+  "role/user-researcher": {
+    "roleId": "3.2",
+    "name": "User Researcher",
+    "area": "User Research & Experience"
+  },
+  "role/behavioral-analyst": {
+    "roleId": "3.3",
+    "name": "Behavioral Analyst",
+    "area": "User Research & Experience"
+  },
+  "role/accessibility-specialist": {
+    "roleId": "3.4",
+    "name": "Accessibility Specialist",
+    "area": "User Research & Experience"
+  },
+  "role/information-architect": {
+    "roleId": "3.5",
+    "name": "Information Architect",
+    "area": "User Research & Experience"
+  },
+  "role/usability-tester": {
+    "roleId": "3.6",
+    "name": "Usability Tester",
+    "area": "User Research & Experience"
+  },
+  "role/design-director": {
+    "roleId": "4.1",
+    "name": "Design Director",
+    "area": "Design"
+  },
+  "role/ux-designer": {
+    "roleId": "4.2",
+    "name": "UX Designer",
+    "area": "Design"
+  },
+  "role/ui-designer": {
+    "roleId": "4.3",
+    "name": "UI Designer",
+    "area": "Design"
+  },
+  "role/interaction-designer": {
+    "roleId": "4.4",
+    "name": "Interaction Designer",
+    "area": "Design"
+  },
+  "role/visual-designer": {
+    "roleId": "4.5",
+    "name": "Visual Designer",
+    "area": "Design"
+  },
+  "role/motion-designer": {
+    "roleId": "4.6",
+    "name": "Motion Designer",
+    "area": "Design"
+  },
+  "role/design-system-manager": {
+    "roleId": "4.7",
+    "name": "Design System Manager",
+    "area": "Design"
+  },
+  "role/prototyper": {
+    "roleId": "4.8",
+    "name": "Prototyper",
+    "area": "Design"
+  },
+  "role/chief-architect": {
+    "roleId": "5.1",
+    "name": "Chief Architect",
+    "area": "Software Architecture"
+  },
+  "role/solutions-architect": {
+    "roleId": "5.2",
+    "name": "Solutions Architect",
+    "area": "Software Architecture"
+  },
+  "role/application-architect": {
+    "roleId": "5.3",
+    "name": "Application Architect",
+    "area": "Software Architecture"
+  },
+  "role/data-architect": {
+    "roleId": "5.4",
+    "name": "Data Architect",
+    "area": "Software Architecture"
+  },
+  "role/cloud-architect": {
+    "roleId": "5.5",
+    "name": "Cloud Architect",
+    "area": "Software Architecture"
+  },
+  "role/integration-architect": {
+    "roleId": "5.6",
+    "name": "Integration Architect",
+    "area": "Software Architecture"
+  },
+  "role/security-architect": {
+    "roleId": "5.7",
+    "name": "Security Architect",
+    "area": "Software Architecture"
+  },
+  "role/frontend-lead-principal": {
+    "roleId": "6.1",
+    "name": "Frontend Lead/Principal",
+    "area": "Frontend Development"
+  },
+  "role/frontend-developer": {
+    "roleId": "6.2",
+    "name": "Frontend Developer",
+    "area": "Frontend Development"
+  },
+  "role/javascript-typescript-developer": {
+    "roleId": "6.3",
+    "name": "JavaScript/TypeScript Developer",
+    "area": "Frontend Development"
+  },
+  "role/css-styling-specialist": {
+    "roleId": "6.4",
+    "name": "CSS/Styling Specialist",
+    "area": "Frontend Development"
+  },
+  "role/frontend-performance-engineer": {
+    "roleId": "6.5",
+    "name": "Frontend Performance Engineer",
+    "area": "Frontend Development"
+  },
+  "role/web-accessibility-developer": {
+    "roleId": "6.6",
+    "name": "Web Accessibility Developer",
+    "area": "Frontend Development"
+  },
+  "role/frontend-build-engineer": {
+    "roleId": "6.7",
+    "name": "Frontend Build Engineer",
+    "area": "Frontend Development"
+  },
+  "role/backend-lead-principal": {
+    "roleId": "7.1",
+    "name": "Backend Lead/Principal",
+    "area": "Backend Development"
+  },
+  "role/backend-developer": {
+    "roleId": "7.2",
+    "name": "Backend Developer",
+    "area": "Backend Development"
+  },
+  "role/api-developer": {
+    "roleId": "7.3",
+    "name": "API Developer",
+    "area": "Backend Development"
+  },
+  "role/database-developer": {
+    "roleId": "7.4",
+    "name": "Database Developer",
+    "area": "Backend Development"
+  },
+  "role/microservices-developer": {
+    "roleId": "7.5",
+    "name": "Microservices Developer",
+    "area": "Backend Development"
+  },
+  "role/backend-performance-engineer": {
+    "roleId": "7.6",
+    "name": "Backend Performance Engineer",
+    "area": "Backend Development"
+  },
+  "role/integration-developer": {
+    "roleId": "7.7",
+    "name": "Integration Developer",
+    "area": "Backend Development"
+  },
+  "role/full-stack-lead": {
+    "roleId": "8.1",
+    "name": "Full Stack Lead",
+    "area": "Full Stack Development"
+  },
+  "role/full-stack-developer": {
+    "roleId": "8.2",
+    "name": "Full Stack Developer",
+    "area": "Full Stack Development"
+  },
+  "role/mean-mern-stack-developer": {
+    "roleId": "8.3",
+    "name": "MEAN/MERN Stack Developer",
+    "area": "Full Stack Development"
+  },
+  "role/rapid-prototyper": {
+    "roleId": "8.4",
+    "name": "Rapid Prototyper",
+    "area": "Full Stack Development"
+  },
+  "role/mobile-lead": {
+    "roleId": "9.1",
+    "name": "Mobile Lead",
+    "area": "Mobile Development"
+  },
+  "role/ios-developer": {
+    "roleId": "9.2",
+    "name": "iOS Developer",
+    "area": "Mobile Development"
+  },
+  "role/android-developer": {
+    "roleId": "9.3",
+    "name": "Android Developer",
+    "area": "Mobile Development"
+  },
+  "role/react-native-developer": {
+    "roleId": "9.4",
+    "name": "React Native Developer",
+    "area": "Mobile Development"
+  },
+  "role/flutter-developer": {
+    "roleId": "9.5",
+    "name": "Flutter Developer",
+    "area": "Mobile Development"
+  },
+  "role/mobile-ui-ux-developer": {
+    "roleId": "9.6",
+    "name": "Mobile UI/UX Developer",
+    "area": "Mobile Development"
+  },
+  "role/mobile-devops-engineer": {
+    "roleId": "9.7",
+    "name": "Mobile DevOps Engineer",
+    "area": "Mobile Development"
+  },
+  "role/devops-manager": {
+    "roleId": "10.1",
+    "name": "DevOps Manager",
+    "area": "DevOps & Infrastructure"
+  },
+  "role/devops-engineer": {
+    "roleId": "10.2",
+    "name": "DevOps Engineer",
+    "area": "DevOps & Infrastructure"
+  },
+  "role/site-reliability-engineer-sre": {
+    "roleId": "10.3",
+    "name": "Site Reliability Engineer (SRE)",
+    "area": "DevOps & Infrastructure"
+  },
+  "role/cloud-engineer": {
+    "roleId": "10.4",
+    "name": "Cloud Engineer",
+    "area": "DevOps & Infrastructure"
+  },
+  "role/platform-engineer": {
+    "roleId": "10.5",
+    "name": "Platform Engineer",
+    "area": "DevOps & Infrastructure"
+  },
+  "role/release-manager": {
+    "roleId": "10.6",
+    "name": "Release Manager",
+    "area": "DevOps & Infrastructure"
+  },
+  "role/infrastructure-engineer": {
+    "roleId": "10.7",
+    "name": "Infrastructure Engineer",
+    "area": "DevOps & Infrastructure"
+  },
+  "role/ci-cd-engineer": {
+    "roleId": "10.8",
+    "name": "CI/CD Engineer",
+    "area": "DevOps & Infrastructure"
+  },
+  "role/configuration-manager": {
+    "roleId": "10.9",
+    "name": "Configuration Manager",
+    "area": "DevOps & Infrastructure"
+  },
+  "role/monitoring-observability-engineer": {
+    "roleId": "10.10",
+    "name": "Monitoring/Observability Engineer",
+    "area": "DevOps & Infrastructure"
+  },
+  "role/qa-manager": {
+    "roleId": "11.1",
+    "name": "QA Manager",
+    "area": "Quality Assurance & Testing"
+  },
+  "role/qa-engineer": {
+    "roleId": "11.2",
+    "name": "QA Engineer",
+    "area": "Quality Assurance & Testing"
+  },
+  "role/manual-tester": {
+    "roleId": "11.3",
+    "name": "Manual Tester",
+    "area": "Quality Assurance & Testing"
+  },
+  "role/test-automation-engineer": {
+    "roleId": "11.4",
+    "name": "Test Automation Engineer",
+    "area": "Quality Assurance & Testing"
+  },
+  "role/performance-tester": {
+    "roleId": "11.5",
+    "name": "Performance Tester",
+    "area": "Quality Assurance & Testing"
+  },
+  "role/security-tester": {
+    "roleId": "11.6",
+    "name": "Security Tester",
+    "area": "Quality Assurance & Testing"
+  },
+  "role/mobile-qa-specialist": {
+    "roleId": "11.7",
+    "name": "Mobile QA Specialist",
+    "area": "Quality Assurance & Testing"
+  },
+  "role/api-integration-tester": {
+    "roleId": "11.8",
+    "name": "API/Integration Tester",
+    "area": "Quality Assurance & Testing"
+  },
+  "role/regression-tester": {
+    "roleId": "11.9",
+    "name": "Regression Tester",
+    "area": "Quality Assurance & Testing"
+  },
+  "role/uat-coordinator": {
+    "roleId": "11.10",
+    "name": "UAT Coordinator",
+    "area": "Quality Assurance & Testing"
+  },
+  "role/chief-information-security-officer": {
+    "roleId": "12.1",
+    "name": "Chief Information Security Officer",
+    "area": "Security & Compliance"
+  },
+  "role/security-engineer": {
+    "roleId": "12.2",
+    "name": "Security Engineer",
+    "area": "Security & Compliance"
+  },
+  "role/application-security-engineer": {
+    "roleId": "12.3",
+    "name": "Application Security Engineer",
+    "area": "Security & Compliance"
+  },
+  "role/penetration-tester": {
+    "roleId": "12.4",
+    "name": "Penetration Tester",
+    "area": "Security & Compliance"
+  },
+  "role/security-analyst": {
+    "roleId": "12.5",
+    "name": "Security Analyst",
+    "area": "Security & Compliance"
+  },
+  "role/compliance-officer": {
+    "roleId": "12.6",
+    "name": "Compliance Officer",
+    "area": "Security & Compliance"
+  },
+  "role/identity-access-manager": {
+    "roleId": "12.7",
+    "name": "Identity & Access Manager",
+    "area": "Security & Compliance"
+  },
+  "role/security-operations-analyst": {
+    "roleId": "12.8",
+    "name": "Security Operations Analyst",
+    "area": "Security & Compliance"
+  },
+  "role/data-engineering-manager": {
+    "roleId": "13.1",
+    "name": "Data Engineering Manager",
+    "area": "Data Engineering & Analytics"
+  },
+  "role/data-engineer": {
+    "roleId": "13.2",
+    "name": "Data Engineer",
+    "area": "Data Engineering & Analytics"
+  },
+  "role/data-warehouse-engineer": {
+    "roleId": "13.3",
+    "name": "Data Warehouse Engineer",
+    "area": "Data Engineering & Analytics"
+  },
+  "role/etl-developer": {
+    "roleId": "13.4",
+    "name": "ETL Developer",
+    "area": "Data Engineering & Analytics"
+  },
+  "role/data-analyst": {
+    "roleId": "13.5",
+    "name": "Data Analyst",
+    "area": "Data Engineering & Analytics"
+  },
+  "role/business-intelligence-developer": {
+    "roleId": "13.6",
+    "name": "Business Intelligence Developer",
+    "area": "Data Engineering & Analytics"
+  },
+  "role/data-scientist": {
+    "roleId": "13.7",
+    "name": "Data Scientist",
+    "area": "Data Engineering & Analytics"
+  },
+  "role/ml-engineer": {
+    "roleId": "13.8",
+    "name": "ML Engineer",
+    "area": "Data Engineering & Analytics"
+  },
+  "role/analytics-engineer": {
+    "roleId": "13.9",
+    "name": "Analytics Engineer",
+    "area": "Data Engineering & Analytics"
+  },
+  "role/documentation-manager": {
+    "roleId": "14.1",
+    "name": "Documentation Manager",
+    "area": "Documentation & Technical Writing"
+  },
+  "role/technical-writer": {
+    "roleId": "14.2",
+    "name": "Technical Writer",
+    "area": "Documentation & Technical Writing"
+  },
+  "role/api-documentation-specialist": {
+    "roleId": "14.3",
+    "name": "API Documentation Specialist",
+    "area": "Documentation & Technical Writing"
+  },
+  "role/knowledge-base-manager": {
+    "roleId": "14.4",
+    "name": "Knowledge Base Manager",
+    "area": "Documentation & Technical Writing"
+  },
+  "role/video-tutorial-creator": {
+    "roleId": "14.5",
+    "name": "Video Tutorial Creator",
+    "area": "Documentation & Technical Writing"
+  },
+  "role/information-developer": {
+    "roleId": "14.6",
+    "name": "Information Developer",
+    "area": "Documentation & Technical Writing"
+  },
+  "role/content-strategist": {
+    "roleId": "14.7",
+    "name": "Content Strategist",
+    "area": "Documentation & Technical Writing"
+  },
+  "role/program-manager": {
+    "roleId": "15.1",
+    "name": "Program Manager",
+    "area": "Project Management"
+  },
+  "role/project-manager": {
+    "roleId": "15.2",
+    "name": "Project Manager",
+    "area": "Project Management"
+  },
+  "role/technical-project-manager": {
+    "roleId": "15.3",
+    "name": "Technical Project Manager",
+    "area": "Project Management"
+  },
+  "role/delivery-manager": {
+    "roleId": "15.4",
+    "name": "Delivery Manager",
+    "area": "Project Management"
+  },
+  "role/resource-manager": {
+    "roleId": "15.5",
+    "name": "Resource Manager",
+    "area": "Project Management"
+  },
+  "role/pmo-analyst": {
+    "roleId": "15.6",
+    "name": "PMO Analyst",
+    "area": "Project Management"
+  },
+  "role/portfolio-manager": {
+    "roleId": "15.7",
+    "name": "Portfolio Manager",
+    "area": "Project Management"
+  },
+  "role/agile-coach": {
+    "roleId": "16.1",
+    "name": "Agile Coach",
+    "area": "Agile & Scrum"
+  },
+  "role/scrum-master": {
+    "roleId": "16.2",
+    "name": "Scrum Master",
+    "area": "Agile & Scrum"
+  },
+  "role/kanban-lead": {
+    "roleId": "16.3",
+    "name": "Kanban Lead",
+    "area": "Agile & Scrum"
+  },
+  "role/release-train-engineer": {
+    "roleId": "16.4",
+    "name": "Release Train Engineer",
+    "area": "Agile & Scrum"
+  },
+  "role/agile-transformation-lead": {
+    "roleId": "16.5",
+    "name": "Agile Transformation Lead",
+    "area": "Agile & Scrum"
+  },
+  "role/chief-marketing-officer": {
+    "roleId": "17.1",
+    "name": "Chief Marketing Officer",
+    "area": "Marketing"
+  },
+  "role/product-marketing-manager": {
+    "roleId": "17.2",
+    "name": "Product Marketing Manager",
+    "area": "Marketing"
+  },
+  "role/content-marketing-manager": {
+    "roleId": "17.3",
+    "name": "Content Marketing Manager",
+    "area": "Marketing"
+  },
+  "role/digital-marketing-specialist": {
+    "roleId": "17.4",
+    "name": "Digital Marketing Specialist",
+    "area": "Marketing"
+  },
+  "role/growth-marketer": {
+    "roleId": "17.5",
+    "name": "Growth Marketer",
+    "area": "Marketing"
+  },
+  "role/email-marketing-specialist": {
+    "roleId": "17.6",
+    "name": "Email Marketing Specialist",
+    "area": "Marketing"
+  },
+  "role/marketing-analyst": {
+    "roleId": "17.7",
+    "name": "Marketing Analyst",
+    "area": "Marketing"
+  },
+  "role/brand-manager": {
+    "roleId": "17.8",
+    "name": "Brand Manager",
+    "area": "Marketing"
+  },
+  "role/event-marketing-manager": {
+    "roleId": "17.9",
+    "name": "Event Marketing Manager",
+    "area": "Marketing"
+  },
+  "role/partner-marketing-manager": {
+    "roleId": "17.10",
+    "name": "Partner Marketing Manager",
+    "area": "Marketing"
+  },
+  "role/vp-of-sales": {
+    "roleId": "18.1",
+    "name": "VP of Sales",
+    "area": "Sales"
+  },
+  "role/sales-development-rep-sdr": {
+    "roleId": "18.2",
+    "name": "Sales Development Rep (SDR)",
+    "area": "Sales"
+  },
+  "role/account-executive": {
+    "roleId": "18.3",
+    "name": "Account Executive",
+    "area": "Sales"
+  },
+  "role/enterprise-sales-rep": {
+    "roleId": "18.4",
+    "name": "Enterprise Sales Rep",
+    "area": "Sales"
+  },
+  "role/solutions-engineer-sales-engineer": {
+    "roleId": "18.5",
+    "name": "Solutions Engineer/Sales Engineer",
+    "area": "Sales"
+  },
+  "role/customer-success-manager": {
+    "roleId": "18.6",
+    "name": "Customer Success Manager",
+    "area": "Sales"
+  },
+  "role/account-manager": {
+    "roleId": "18.7",
+    "name": "Account Manager",
+    "area": "Sales"
+  },
+  "role/sales-operations-analyst": {
+    "roleId": "18.8",
+    "name": "Sales Operations Analyst",
+    "area": "Sales"
+  },
+  "role/revenue-operations-manager": {
+    "roleId": "18.9",
+    "name": "Revenue Operations Manager",
+    "area": "Sales"
+  },
+  "role/head-of-support": {
+    "roleId": "19.1",
+    "name": "Head of Support",
+    "area": "Customer Support"
+  },
+  "role/customer-support-rep-tier-1": {
+    "roleId": "19.2",
+    "name": "Customer Support Rep (Tier 1)",
+    "area": "Customer Support"
+  },
+  "role/technical-support-engineer-tier-2": {
+    "roleId": "19.3",
+    "name": "Technical Support Engineer (Tier 2)",
+    "area": "Customer Support"
+  },
+  "role/senior-support-engineer-tier-3": {
+    "roleId": "19.4",
+    "name": "Senior Support Engineer (Tier 3)",
+    "area": "Customer Support"
+  },
+  "role/support-operations-manager": {
+    "roleId": "19.5",
+    "name": "Support Operations Manager",
+    "area": "Customer Support"
+  },
+  "role/community-manager": {
+    "roleId": "19.6",
+    "name": "Community Manager",
+    "area": "Customer Support"
+  },
+  "role/customer-advocate": {
+    "roleId": "19.7",
+    "name": "Customer Advocate",
+    "area": "Customer Support"
+  },
+  "role/onboarding-specialist": {
+    "roleId": "19.8",
+    "name": "Onboarding Specialist",
+    "area": "Customer Support"
+  },
+  "role/training-specialist": {
+    "roleId": "19.9",
+    "name": "Training Specialist",
+    "area": "Customer Support"
+  },
+  "role/general-counsel": {
+    "roleId": "20.1",
+    "name": "General Counsel",
+    "area": "Legal & Compliance"
+  },
+  "role/corporate-lawyer": {
+    "roleId": "20.2",
+    "name": "Corporate Lawyer",
+    "area": "Legal & Compliance"
+  },
+  "role/privacy-officer": {
+    "roleId": "20.3",
+    "name": "Privacy Officer",
+    "area": "Legal & Compliance"
+  },
+  "role/intellectual-property-attorney": {
+    "roleId": "20.4",
+    "name": "Intellectual Property Attorney",
+    "area": "Legal & Compliance"
+  },
+  "role/compliance-manager": {
+    "roleId": "20.5",
+    "name": "Compliance Manager",
+    "area": "Legal & Compliance"
+  },
+  "role/contract-manager": {
+    "roleId": "20.6",
+    "name": "Contract Manager",
+    "area": "Legal & Compliance"
+  },
+  "role/paralegal": {
+    "roleId": "20.7",
+    "name": "Paralegal",
+    "area": "Legal & Compliance"
+  }
+}

@@ -19,8 +19,8 @@ case "${1:-generate}" in
     node scripts/generate-agents.mjs
     ;;
   clean)
-    echo "== Removing generated agents/skills/registry/wrangler config =="
-    rm -rf agents skills registry.ts wrangler.toml
+    echo "== Removing generated agents/skills/registry/wrangler/role-label-map =="
+    rm -rf agents skills registry.ts wrangler.toml role-label-map.json
     ;;
   count)
     node -e "const r = require('./roles.json'); \
