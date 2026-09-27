@@ -1,0 +1,902 @@
+[
+  {
+    "id": "1.1",
+    "area": "Product Management & Strategy",
+    "name": "Chief Product Officer",
+    "desc": "Sets overall product vision and portfolio strategy"
+  },
+  {
+    "id": "1.2",
+    "area": "Product Management & Strategy",
+    "name": "Product Manager",
+    "desc": "Owns specific product/feature roadmap and priorities"
+  },
+  {
+    "id": "1.3",
+    "area": "Product Management & Strategy",
+    "name": "Associate Product Manager",
+    "desc": "Supports PM with research, analysis, and documentation"
+  },
+  {
+    "id": "1.4",
+    "area": "Product Management & Strategy",
+    "name": "Product Owner",
+    "desc": "Manages backlog and sprint priorities in agile teams"
+  },
+  {
+    "id": "1.5",
+    "area": "Product Management & Strategy",
+    "name": "Product Analyst",
+    "desc": "Analyzes metrics, user data, and product performance"
+  },
+  {
+    "id": "1.6",
+    "area": "Product Management & Strategy",
+    "name": "Competitive Analyst",
+    "desc": "Monitors competitors and market trends"
+  },
+  {
+    "id": "1.7",
+    "area": "Product Management & Strategy",
+    "name": "Product Operations",
+    "desc": "Optimizes product processes and tools"
+  },
+  {
+    "id": "2.1",
+    "area": "Business Analysis & Requirements",
+    "name": "Lead Business Analyst",
+    "desc": "Oversees BA team and complex requirement gathering"
+  },
+  {
+    "id": "2.2",
+    "area": "Business Analysis & Requirements",
+    "name": "Business Analyst",
+    "desc": "Documents requirements and user stories"
+  },
+  {
+    "id": "2.3",
+    "area": "Business Analysis & Requirements",
+    "name": "Systems Analyst",
+    "desc": "Analyzes technical systems and integration needs"
+  },
+  {
+    "id": "2.4",
+    "area": "Business Analysis & Requirements",
+    "name": "Process Analyst",
+    "desc": "Maps and optimizes business workflows"
+  },
+  {
+    "id": "2.5",
+    "area": "Business Analysis & Requirements",
+    "name": "Domain Expert/SME",
+    "desc": "Provides specialized industry knowledge"
+  },
+  {
+    "id": "2.6",
+    "area": "Business Analysis & Requirements",
+    "name": "Requirements Engineer",
+    "desc": "Formalizes and validates technical requirements"
+  },
+  {
+    "id": "3.1",
+    "area": "User Research & Experience",
+    "name": "UX Research Lead",
+    "desc": "Directs research strategy and methodologies"
+  },
+  {
+    "id": "3.2",
+    "area": "User Research & Experience",
+    "name": "User Researcher",
+    "desc": "Conducts interviews, surveys, and usability tests"
+  },
+  {
+    "id": "3.3",
+    "area": "User Research & Experience",
+    "name": "Behavioral Analyst",
+    "desc": "Studies user behavior patterns and psychology"
+  },
+  {
+    "id": "3.4",
+    "area": "User Research & Experience",
+    "name": "Accessibility Specialist",
+    "desc": "Ensures product accessibility (WCAG compliance)"
+  },
+  {
+    "id": "3.5",
+    "area": "User Research & Experience",
+    "name": "Information Architect",
+    "desc": "Organizes content structure and navigation"
+  },
+  {
+    "id": "3.6",
+    "area": "User Research & Experience",
+    "name": "Usability Tester",
+    "desc": "Facilitates and analyzes usability testing sessions"
+  },
+  {
+    "id": "4.1",
+    "area": "Design",
+    "name": "Design Director",
+    "desc": "Sets design vision and standards"
+  },
+  {
+    "id": "4.2",
+    "area": "Design",
+    "name": "UX Designer",
+    "desc": "Designs user flows and wireframes"
+  },
+  {
+    "id": "4.3",
+    "area": "Design",
+    "name": "UI Designer",
+    "desc": "Creates visual designs and style guides"
+  },
+  {
+    "id": "4.4",
+    "area": "Design",
+    "name": "Interaction Designer",
+    "desc": "Designs interactions and microanimations"
+  },
+  {
+    "id": "4.5",
+    "area": "Design",
+    "name": "Visual Designer",
+    "desc": "Creates graphics, icons, and brand elements"
+  },
+  {
+    "id": "4.6",
+    "area": "Design",
+    "name": "Motion Designer",
+    "desc": "Creates animations and transitions"
+  },
+  {
+    "id": "4.7",
+    "area": "Design",
+    "name": "Design System Manager",
+    "desc": "Maintains component libraries and design tokens"
+  },
+  {
+    "id": "4.8",
+    "area": "Design",
+    "name": "Prototyper",
+    "desc": "Builds interactive prototypes for testing"
+  },
+  {
+    "id": "5.1",
+    "area": "Software Architecture",
+    "name": "Chief Architect",
+    "desc": "Defines enterprise architecture standards"
+  },
+  {
+    "id": "5.2",
+    "area": "Software Architecture",
+    "name": "Solutions Architect",
+    "desc": "Designs end-to-end solution architecture"
+  },
+  {
+    "id": "5.3",
+    "area": "Software Architecture",
+    "name": "Application Architect",
+    "desc": "Designs application structure and patterns"
+  },
+  {
+    "id": "5.4",
+    "area": "Software Architecture",
+    "name": "Data Architect",
+    "desc": "Designs data models and database architecture"
+  },
+  {
+    "id": "5.5",
+    "area": "Software Architecture",
+    "name": "Cloud Architect",
+    "desc": "Designs cloud infrastructure and services"
+  },
+  {
+    "id": "5.6",
+    "area": "Software Architecture",
+    "name": "Integration Architect",
+    "desc": "Designs API and system integration strategies"
+  },
+  {
+    "id": "5.7",
+    "area": "Software Architecture",
+    "name": "Security Architect",
+    "desc": "Designs security frameworks and protocols"
+  },
+  {
+    "id": "6.1",
+    "area": "Frontend Development",
+    "name": "Frontend Lead/Principal",
+    "desc": "Leads frontend team and technical decisions"
+  },
+  {
+    "id": "6.2",
+    "area": "Frontend Development",
+    "name": "Frontend Developer",
+    "desc": "Builds UI components and client logic"
+  },
+  {
+    "id": "6.3",
+    "area": "Frontend Development",
+    "name": "JavaScript/TypeScript Developer",
+    "desc": "Specializes in JS frameworks (React, Vue, Angular)"
+  },
+  {
+    "id": "6.4",
+    "area": "Frontend Development",
+    "name": "CSS/Styling Specialist",
+    "desc": "Expert in styling, animations, and responsive design"
+  },
+  {
+    "id": "6.5",
+    "area": "Frontend Development",
+    "name": "Frontend Performance Engineer",
+    "desc": "Optimizes load times and runtime performance"
+  },
+  {
+    "id": "6.6",
+    "area": "Frontend Development",
+    "name": "Web Accessibility Developer",
+    "desc": "Implements ARIA and accessibility features"
+  },
+  {
+    "id": "6.7",
+    "area": "Frontend Development",
+    "name": "Frontend Build Engineer",
+    "desc": "Manages build tools, bundlers, and workflows"
+  },
+  {
+    "id": "7.1",
+    "area": "Backend Development",
+    "name": "Backend Lead/Principal",
+    "desc": "Leads backend team and architecture"
+  },
+  {
+    "id": "7.2",
+    "area": "Backend Development",
+    "name": "Backend Developer",
+    "desc": "Builds APIs, business logic, and services"
+  },
+  {
+    "id": "7.3",
+    "area": "Backend Development",
+    "name": "API Developer",
+    "desc": "Designs and implements REST/GraphQL APIs"
+  },
+  {
+    "id": "7.4",
+    "area": "Backend Development",
+    "name": "Database Developer",
+    "desc": "Writes queries, stored procedures, optimizes DB"
+  },
+  {
+    "id": "7.5",
+    "area": "Backend Development",
+    "name": "Microservices Developer",
+    "desc": "Builds distributed service architectures"
+  },
+  {
+    "id": "7.6",
+    "area": "Backend Development",
+    "name": "Backend Performance Engineer",
+    "desc": "Optimizes server performance and scalability"
+  },
+  {
+    "id": "7.7",
+    "area": "Backend Development",
+    "name": "Integration Developer",
+    "desc": "Builds connections to external systems"
+  },
+  {
+    "id": "8.1",
+    "area": "Full Stack Development",
+    "name": "Full Stack Lead",
+    "desc": "Manages cross-stack development efforts"
+  },
+  {
+    "id": "8.2",
+    "area": "Full Stack Development",
+    "name": "Full Stack Developer",
+    "desc": "Works across frontend and backend"
+  },
+  {
+    "id": "8.3",
+    "area": "Full Stack Development",
+    "name": "MEAN/MERN Stack Developer",
+    "desc": "Specializes in JavaScript full stack"
+  },
+  {
+    "id": "8.4",
+    "area": "Full Stack Development",
+    "name": "Rapid Prototyper",
+    "desc": "Quickly builds MVPs and proofs of concept"
+  },
+  {
+    "id": "9.1",
+    "area": "Mobile Development",
+    "name": "Mobile Lead",
+    "desc": "Directs mobile development strategy"
+  },
+  {
+    "id": "9.2",
+    "area": "Mobile Development",
+    "name": "iOS Developer",
+    "desc": "Develops native iOS applications (Swift)"
+  },
+  {
+    "id": "9.3",
+    "area": "Mobile Development",
+    "name": "Android Developer",
+    "desc": "Develops native Android apps (Kotlin/Java)"
+  },
+  {
+    "id": "9.4",
+    "area": "Mobile Development",
+    "name": "React Native Developer",
+    "desc": "Builds cross-platform apps with React Native"
+  },
+  {
+    "id": "9.5",
+    "area": "Mobile Development",
+    "name": "Flutter Developer",
+    "desc": "Builds cross-platform apps with Flutter"
+  },
+  {
+    "id": "9.6",
+    "area": "Mobile Development",
+    "name": "Mobile UI/UX Developer",
+    "desc": "Specializes in mobile interface development"
+  },
+  {
+    "id": "9.7",
+    "area": "Mobile Development",
+    "name": "Mobile DevOps Engineer",
+    "desc": "Manages mobile CI/CD and app store releases"
+  },
+  {
+    "id": "10.1",
+    "area": "DevOps & Infrastructure",
+    "name": "DevOps Manager",
+    "desc": "Leads DevOps team and strategy"
+  },
+  {
+    "id": "10.2",
+    "area": "DevOps & Infrastructure",
+    "name": "DevOps Engineer",
+    "desc": "Automates deployment and infrastructure"
+  },
+  {
+    "id": "10.3",
+    "area": "DevOps & Infrastructure",
+    "name": "Site Reliability Engineer (SRE)",
+    "desc": "Ensures system reliability and uptime"
+  },
+  {
+    "id": "10.4",
+    "area": "DevOps & Infrastructure",
+    "name": "Cloud Engineer",
+    "desc": "Manages cloud infrastructure (AWS/Azure/GCP)"
+  },
+  {
+    "id": "10.5",
+    "area": "DevOps & Infrastructure",
+    "name": "Platform Engineer",
+    "desc": "Builds internal developer platforms"
+  },
+  {
+    "id": "10.6",
+    "area": "DevOps & Infrastructure",
+    "name": "Release Manager",
+    "desc": "Coordinates software releases and versioning"
+  },
+  {
+    "id": "10.7",
+    "area": "DevOps & Infrastructure",
+    "name": "Infrastructure Engineer",
+    "desc": "Manages servers, networks, and hardware"
+  },
+  {
+    "id": "10.8",
+    "area": "DevOps & Infrastructure",
+    "name": "CI/CD Engineer",
+    "desc": "Builds and maintains continuous integration pipelines"
+  },
+  {
+    "id": "10.9",
+    "area": "DevOps & Infrastructure",
+    "name": "Configuration Manager",
+    "desc": "Manages infrastructure as code and configs"
+  },
+  {
+    "id": "10.10",
+    "area": "DevOps & Infrastructure",
+    "name": "Monitoring/Observability Engineer",
+    "desc": "Sets up logging, metrics, and alerting"
+  },
+  {
+    "id": "11.1",
+    "area": "Quality Assurance & Testing",
+    "name": "QA Manager",
+    "desc": "Leads QA team and test strategy"
+  },
+  {
+    "id": "11.2",
+    "area": "Quality Assurance & Testing",
+    "name": "QA Engineer",
+    "desc": "Designs and executes test plans"
+  },
+  {
+    "id": "11.3",
+    "area": "Quality Assurance & Testing",
+    "name": "Manual Tester",
+    "desc": "Performs exploratory and manual testing"
+  },
+  {
+    "id": "11.4",
+    "area": "Quality Assurance & Testing",
+    "name": "Test Automation Engineer",
+    "desc": "Builds automated test frameworks"
+  },
+  {
+    "id": "11.5",
+    "area": "Quality Assurance & Testing",
+    "name": "Performance Tester",
+    "desc": "Tests load, stress, and scalability"
+  },
+  {
+    "id": "11.6",
+    "area": "Quality Assurance & Testing",
+    "name": "Security Tester",
+    "desc": "Performs penetration and vulnerability testing"
+  },
+  {
+    "id": "11.7",
+    "area": "Quality Assurance & Testing",
+    "name": "Mobile QA Specialist",
+    "desc": "Tests mobile apps across devices"
+  },
+  {
+    "id": "11.8",
+    "area": "Quality Assurance & Testing",
+    "name": "API/Integration Tester",
+    "desc": "Tests APIs and system integrations"
+  },
+  {
+    "id": "11.9",
+    "area": "Quality Assurance & Testing",
+    "name": "Regression Tester",
+    "desc": "Ensures existing features still work"
+  },
+  {
+    "id": "11.10",
+    "area": "Quality Assurance & Testing",
+    "name": "UAT Coordinator",
+    "desc": "Facilitates user acceptance testing"
+  },
+  {
+    "id": "12.1",
+    "area": "Security & Compliance",
+    "name": "Chief Information Security Officer",
+    "desc": "Sets security strategy and policies"
+  },
+  {
+    "id": "12.2",
+    "area": "Security & Compliance",
+    "name": "Security Engineer",
+    "desc": "Implements security controls and features"
+  },
+  {
+    "id": "12.3",
+    "area": "Security & Compliance",
+    "name": "Application Security Engineer",
+    "desc": "Secures application code and dependencies"
+  },
+  {
+    "id": "12.4",
+    "area": "Security & Compliance",
+    "name": "Penetration Tester",
+    "desc": "Simulates attacks to find vulnerabilities"
+  },
+  {
+    "id": "12.5",
+    "area": "Security & Compliance",
+    "name": "Security Analyst",
+    "desc": "Monitors threats and security incidents"
+  },
+  {
+    "id": "12.6",
+    "area": "Security & Compliance",
+    "name": "Compliance Officer",
+    "desc": "Ensures regulatory compliance (GDPR, HIPAA)"
+  },
+  {
+    "id": "12.7",
+    "area": "Security & Compliance",
+    "name": "Identity & Access Manager",
+    "desc": "Manages authentication and authorization"
+  },
+  {
+    "id": "12.8",
+    "area": "Security & Compliance",
+    "name": "Security Operations Analyst",
+    "desc": "Responds to security events and incidents"
+  },
+  {
+    "id": "13.1",
+    "area": "Data Engineering & Analytics",
+    "name": "Data Engineering Manager",
+    "desc": "Leads data infrastructure team"
+  },
+  {
+    "id": "13.2",
+    "area": "Data Engineering & Analytics",
+    "name": "Data Engineer",
+    "desc": "Builds ETL pipelines and data infrastructure"
+  },
+  {
+    "id": "13.3",
+    "area": "Data Engineering & Analytics",
+    "name": "Data Warehouse Engineer",
+    "desc": "Designs and maintains data warehouses"
+  },
+  {
+    "id": "13.4",
+    "area": "Data Engineering & Analytics",
+    "name": "ETL Developer",
+    "desc": "Creates extract, transform, load processes"
+  },
+  {
+    "id": "13.5",
+    "area": "Data Engineering & Analytics",
+    "name": "Data Analyst",
+    "desc": "Analyzes data and creates reports"
+  },
+  {
+    "id": "13.6",
+    "area": "Data Engineering & Analytics",
+    "name": "Business Intelligence Developer",
+    "desc": "Builds dashboards and BI tools"
+  },
+  {
+    "id": "13.7",
+    "area": "Data Engineering & Analytics",
+    "name": "Data Scientist",
+    "desc": "Develops predictive models and ML algorithms"
+  },
+  {
+    "id": "13.8",
+    "area": "Data Engineering & Analytics",
+    "name": "ML Engineer",
+    "desc": "Deploys and maintains machine learning models"
+  },
+  {
+    "id": "13.9",
+    "area": "Data Engineering & Analytics",
+    "name": "Analytics Engineer",
+    "desc": "Transforms raw data into analytics-ready datasets"
+  },
+  {
+    "id": "14.1",
+    "area": "Documentation & Technical Writing",
+    "name": "Documentation Manager",
+    "desc": "Oversees documentation strategy"
+  },
+  {
+    "id": "14.2",
+    "area": "Documentation & Technical Writing",
+    "name": "Technical Writer",
+    "desc": "Creates user guides and documentation"
+  },
+  {
+    "id": "14.3",
+    "area": "Documentation & Technical Writing",
+    "name": "API Documentation Specialist",
+    "desc": "Documents APIs and developer resources"
+  },
+  {
+    "id": "14.4",
+    "area": "Documentation & Technical Writing",
+    "name": "Knowledge Base Manager",
+    "desc": "Maintains help centers and FAQs"
+  },
+  {
+    "id": "14.5",
+    "area": "Documentation & Technical Writing",
+    "name": "Video Tutorial Creator",
+    "desc": "Produces educational video content"
+  },
+  {
+    "id": "14.6",
+    "area": "Documentation & Technical Writing",
+    "name": "Information Developer",
+    "desc": "Creates technical specifications and diagrams"
+  },
+  {
+    "id": "14.7",
+    "area": "Documentation & Technical Writing",
+    "name": "Content Strategist",
+    "desc": "Plans documentation structure and governance"
+  },
+  {
+    "id": "15.1",
+    "area": "Project Management",
+    "name": "Program Manager",
+    "desc": "Manages multiple related projects"
+  },
+  {
+    "id": "15.2",
+    "area": "Project Management",
+    "name": "Project Manager",
+    "desc": "Coordinates single project delivery"
+  },
+  {
+    "id": "15.3",
+    "area": "Project Management",
+    "name": "Technical Project Manager",
+    "desc": "PM with deep technical expertise"
+  },
+  {
+    "id": "15.4",
+    "area": "Project Management",
+    "name": "Delivery Manager",
+    "desc": "Ensures timely delivery of commitments"
+  },
+  {
+    "id": "15.5",
+    "area": "Project Management",
+    "name": "Resource Manager",
+    "desc": "Allocates team members across projects"
+  },
+  {
+    "id": "15.6",
+    "area": "Project Management",
+    "name": "PMO Analyst",
+    "desc": "Supports project management office"
+  },
+  {
+    "id": "15.7",
+    "area": "Project Management",
+    "name": "Portfolio Manager",
+    "desc": "Manages project portfolio and priorities"
+  },
+  {
+    "id": "16.1",
+    "area": "Agile & Scrum",
+    "name": "Agile Coach",
+    "desc": "Trains teams in agile methodologies"
+  },
+  {
+    "id": "16.2",
+    "area": "Agile & Scrum",
+    "name": "Scrum Master",
+    "desc": "Facilitates scrum ceremonies and removes blockers"
+  },
+  {
+    "id": "16.3",
+    "area": "Agile & Scrum",
+    "name": "Kanban Lead",
+    "desc": "Manages kanban workflow and optimization"
+  },
+  {
+    "id": "16.4",
+    "area": "Agile & Scrum",
+    "name": "Release Train Engineer",
+    "desc": "Coordinates agile release trains (SAFe)"
+  },
+  {
+    "id": "16.5",
+    "area": "Agile & Scrum",
+    "name": "Agile Transformation Lead",
+    "desc": "Drives organizational agile adoption"
+  },
+  {
+    "id": "17.1",
+    "area": "Marketing",
+    "name": "Chief Marketing Officer",
+    "desc": "Sets overall marketing strategy"
+  },
+  {
+    "id": "17.2",
+    "area": "Marketing",
+    "name": "Product Marketing Manager",
+    "desc": "Positions product and creates messaging"
+  },
+  {
+    "id": "17.3",
+    "area": "Marketing",
+    "name": "Content Marketing Manager",
+    "desc": "Creates blogs, whitepapers, case studies"
+  },
+  {
+    "id": "17.4",
+    "area": "Marketing",
+    "name": "Digital Marketing Specialist",
+    "desc": "Manages online campaigns (SEO, SEM, social)"
+  },
+  {
+    "id": "17.5",
+    "area": "Marketing",
+    "name": "Growth Marketer",
+    "desc": "Focuses on user acquisition and growth hacks"
+  },
+  {
+    "id": "17.6",
+    "area": "Marketing",
+    "name": "Email Marketing Specialist",
+    "desc": "Creates email campaigns and automation"
+  },
+  {
+    "id": "17.7",
+    "area": "Marketing",
+    "name": "Marketing Analyst",
+    "desc": "Measures campaign performance and ROI"
+  },
+  {
+    "id": "17.8",
+    "area": "Marketing",
+    "name": "Brand Manager",
+    "desc": "Maintains brand consistency and identity"
+  },
+  {
+    "id": "17.9",
+    "area": "Marketing",
+    "name": "Event Marketing Manager",
+    "desc": "Coordinates conferences and events"
+  },
+  {
+    "id": "17.10",
+    "area": "Marketing",
+    "name": "Partner Marketing Manager",
+    "desc": "Manages co-marketing initiatives"
+  },
+  {
+    "id": "18.1",
+    "area": "Sales",
+    "name": "VP of Sales",
+    "desc": "Leads sales organization and strategy"
+  },
+  {
+    "id": "18.2",
+    "area": "Sales",
+    "name": "Sales Development Rep (SDR)",
+    "desc": "Qualifies leads and books meetings"
+  },
+  {
+    "id": "18.3",
+    "area": "Sales",
+    "name": "Account Executive",
+    "desc": "Closes deals and manages sales cycle"
+  },
+  {
+    "id": "18.4",
+    "area": "Sales",
+    "name": "Enterprise Sales Rep",
+    "desc": "Sells to large enterprise customers"
+  },
+  {
+    "id": "18.5",
+    "area": "Sales",
+    "name": "Solutions Engineer/Sales Engineer",
+    "desc": "Provides technical expertise in sales"
+  },
+  {
+    "id": "18.6",
+    "area": "Sales",
+    "name": "Customer Success Manager",
+    "desc": "Ensures customer satisfaction and retention"
+  },
+  {
+    "id": "18.7",
+    "area": "Sales",
+    "name": "Account Manager",
+    "desc": "Manages existing customer relationships"
+  },
+  {
+    "id": "18.8",
+    "area": "Sales",
+    "name": "Sales Operations Analyst",
+    "desc": "Optimizes sales processes and tools"
+  },
+  {
+    "id": "18.9",
+    "area": "Sales",
+    "name": "Revenue Operations Manager",
+    "desc": "Aligns sales, marketing, and customer success"
+  },
+  {
+    "id": "19.1",
+    "area": "Customer Support",
+    "name": "Head of Support",
+    "desc": "Leads customer support organization"
+  },
+  {
+    "id": "19.2",
+    "area": "Customer Support",
+    "name": "Customer Support Rep (Tier 1)",
+    "desc": "Handles basic customer inquiries"
+  },
+  {
+    "id": "19.3",
+    "area": "Customer Support",
+    "name": "Technical Support Engineer (Tier 2)",
+    "desc": "Resolves complex technical issues"
+  },
+  {
+    "id": "19.4",
+    "area": "Customer Support",
+    "name": "Senior Support Engineer (Tier 3)",
+    "desc": "Handles escalations and critical issues"
+  },
+  {
+    "id": "19.5",
+    "area": "Customer Support",
+    "name": "Support Operations Manager",
+    "desc": "Optimizes support workflows and metrics"
+  },
+  {
+    "id": "19.6",
+    "area": "Customer Support",
+    "name": "Community Manager",
+    "desc": "Manages user forums and communities"
+  },
+  {
+    "id": "19.7",
+    "area": "Customer Support",
+    "name": "Customer Advocate",
+    "desc": "Represents customer needs internally"
+  },
+  {
+    "id": "19.8",
+    "area": "Customer Support",
+    "name": "Onboarding Specialist",
+    "desc": "Helps new customers get started"
+  },
+  {
+    "id": "19.9",
+    "area": "Customer Support",
+    "name": "Training Specialist",
+    "desc": "Educates customers on product features"
+  },
+  {
+    "id": "20.1",
+    "area": "Legal & Compliance",
+    "name": "General Counsel",
+    "desc": "Oversees all legal matters"
+  },
+  {
+    "id": "20.2",
+    "area": "Legal & Compliance",
+    "name": "Corporate Lawyer",
+    "desc": "Handles contracts and business agreements"
+  },
+  {
+    "id": "20.3",
+    "area": "Legal & Compliance",
+    "name": "Privacy Officer",
+    "desc": "Ensures data privacy compliance"
+  },
+  {
+    "id": "20.4",
+    "area": "Legal & Compliance",
+    "name": "Intellectual Property Attorney",
+    "desc": "Protects patents, trademarks, copyrights"
+  },
+  {
+    "id": "20.5",
+    "area": "Legal & Compliance",
+    "name": "Compliance Manager",
+    "desc": "Maintains regulatory compliance"
+  },
+  {
+    "id": "20.6",
+    "area": "Legal & Compliance",
+    "name": "Contract Manager",
+    "desc": "Manages contract lifecycle and negotiations"
+  },
+  {
+    "id": "20.7",
+    "area": "Legal & Compliance",
+    "name": "Paralegal",
+    "desc": "Supports legal team with documentation"
+  }
+]
