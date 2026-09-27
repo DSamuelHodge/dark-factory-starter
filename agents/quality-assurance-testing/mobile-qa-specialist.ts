@@ -3,10 +3,9 @@
 // Tests mobile apps across devices
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { container } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import mobile_qa_specialist from '../../skills/mobile-qa-specialist/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import mobile_qa_specialist from '../../skills/mobile-qa-specialist/SKILL.md';
 
 /**
  * Mobile QA Specialist
@@ -16,10 +15,10 @@ import mobile_qa_specialist from '../../skills/mobile-qa-specialist/SKILL.md' wi
  *             → Workflow sleeps and routes to the human owner of this function.
  */
 export function MobileQASpecialistAgent() {
-  useModel('workers-ai/@cf/meta/llama-3.3-70b-instruct');
-  useSandbox(container({ ephemeral: true }));
+  useModel('cloudflare/@cf/meta/llama-3.3-70b-instruct');
+  useSandbox(local());
   useSkill(mobile_qa_specialist);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Mobile QA Specialist" role.
 Tests mobile apps across devices.
@@ -29,7 +28,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(MobileQASpecialistAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+MobileQASpecialistAgent.agentName = 'mobile-qa-specialist';
 export const meta = {
   id: '11.7',
   name: 'Mobile QA Specialist',

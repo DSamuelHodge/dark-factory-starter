@@ -3,10 +3,8 @@
 // Optimizes sales processes and tools
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import sales_operations_analyst from '../../skills/sales-operations-analyst/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import sales_operations_analyst from '../../skills/sales-operations-analyst/SKILL.md';
 
 /**
  * Sales Operations Analyst
@@ -17,10 +15,9 @@ import sales_operations_analyst from '../../skills/sales-operations-analyst/SKIL
  */
 export function SalesOperationsAnalystAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
   useSkill(sales_operations_analyst);
-  useTool(...defineMcpTools('slack', 'https://mcp.slack.com/mcp'));
-  useTool(...defineMcpTools('gdrive', 'https://drivemcp.googleapis.com/mcp/v1'));
+  useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
+  useMcpConnection({ name: 'gdrive', url: 'https://drivemcp.googleapis.com/mcp/v1', optional: true });
 
   return `You are the autonomous agent standing in for the human "Sales Operations Analyst" role.
 Optimizes sales processes and tools.
@@ -30,7 +27,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(SalesOperationsAnalystAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+SalesOperationsAnalystAgent.agentName = 'sales-operations-analyst';
 export const meta = {
   id: '18.8',
   name: 'Sales Operations Analyst',

@@ -3,10 +3,8 @@
 // Manages user forums and communities
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import community_manager from '../../skills/community-manager/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import community_manager from '../../skills/community-manager/SKILL.md';
 
 /**
  * Community Manager
@@ -16,11 +14,10 @@ import community_manager from '../../skills/community-manager/SKILL.md' with { t
  *             → Workflow sleeps and routes to the human owner of this function.
  */
 export function CommunityManagerAgent() {
-  useModel('workers-ai/@cf/meta/llama-3.3-70b-instruct');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
+  useModel('cloudflare/@cf/meta/llama-3.3-70b-instruct');
   useSkill(community_manager);
-  useTool(...defineMcpTools('slack', 'https://mcp.slack.com/mcp'));
-  useTool(...defineMcpTools('discord', 'https://mcp.discord.com/mcp'));
+  useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
+  useMcpConnection({ name: 'discord', url: 'https://mcp.discord.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Community Manager" role.
 Manages user forums and communities.
@@ -30,7 +27,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(CommunityManagerAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+CommunityManagerAgent.agentName = 'community-manager';
 export const meta = {
   id: '19.6',
   name: 'Community Manager',

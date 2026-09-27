@@ -3,10 +3,9 @@
 // Implements ARIA and accessibility features
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { container } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import web_accessibility_developer from '../../skills/web-accessibility-developer/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import web_accessibility_developer from '../../skills/web-accessibility-developer/SKILL.md';
 
 /**
  * Web Accessibility Developer
@@ -17,10 +16,10 @@ import web_accessibility_developer from '../../skills/web-accessibility-develope
  */
 export function WebAccessibilityDeveloperAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(container({ ephemeral: true }));
+  useSandbox(local());
   useSkill(web_accessibility_developer);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
-  useTool(...defineMcpTools('figma', 'https://mcp.figma.com/mcp'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
+  useMcpConnection({ name: 'figma', url: 'https://mcp.figma.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Web Accessibility Developer" role.
 Implements ARIA and accessibility features.
@@ -30,7 +29,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(WebAccessibilityDeveloperAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+WebAccessibilityDeveloperAgent.agentName = 'web-accessibility-developer';
 export const meta = {
   id: '6.6',
   name: 'Web Accessibility Developer',

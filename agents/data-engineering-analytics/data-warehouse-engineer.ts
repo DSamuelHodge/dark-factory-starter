@@ -3,10 +3,9 @@
 // Designs and maintains data warehouses
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { container } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import data_warehouse_engineer from '../../skills/data-warehouse-engineer/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import data_warehouse_engineer from '../../skills/data-warehouse-engineer/SKILL.md';
 
 /**
  * Data Warehouse Engineer
@@ -17,10 +16,10 @@ import data_warehouse_engineer from '../../skills/data-warehouse-engineer/SKILL.
  */
 export function DataWarehouseEngineerAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(container({ ephemeral: true }));
+  useSandbox(local());
   useSkill(data_warehouse_engineer);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
-  useTool(...defineMcpTools('gdrive', 'https://drivemcp.googleapis.com/mcp/v1'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
+  useMcpConnection({ name: 'gdrive', url: 'https://drivemcp.googleapis.com/mcp/v1', optional: true });
 
   return `You are the autonomous agent standing in for the human "Data Warehouse Engineer" role.
 Designs and maintains data warehouses.
@@ -30,7 +29,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(DataWarehouseEngineerAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+DataWarehouseEngineerAgent.agentName = 'data-warehouse-engineer';
 export const meta = {
   id: '13.3',
   name: 'Data Warehouse Engineer',

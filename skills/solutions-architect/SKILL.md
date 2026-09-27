@@ -1,5 +1,6 @@
 ---
 name: solutions-architect
+description: Autonomous counterpart to the human "Solutions Architect" role (Software Architecture).
 role_id: 5.2
 area: Software Architecture
 ---

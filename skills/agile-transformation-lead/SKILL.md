@@ -1,5 +1,6 @@
 ---
 name: agile-transformation-lead
+description: Autonomous counterpart to the human "Agile Transformation Lead" role (Agile & Scrum).
 role_id: 16.5
 area: Agile & Scrum
 ---

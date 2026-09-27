@@ -1,5 +1,6 @@
 ---
 name: vp-of-sales
+description: Autonomous counterpart to the human "VP of Sales" role (Sales).
 role_id: 18.1
 area: Sales
 ---

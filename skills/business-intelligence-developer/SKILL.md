@@ -1,5 +1,6 @@
 ---
 name: business-intelligence-developer
+description: Autonomous counterpart to the human "Business Intelligence Developer" role (Data Engineering & Analytics).
 role_id: 13.6
 area: Data Engineering & Analytics
 ---

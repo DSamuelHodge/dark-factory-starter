@@ -1,5 +1,6 @@
 ---
 name: contract-manager
+description: Autonomous counterpart to the human "Contract Manager" role (Legal & Compliance).
 role_id: 20.6
 area: Legal & Compliance
 ---

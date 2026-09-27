@@ -1,0 +1,20 @@
+{
+  "name": "flue-agent-org",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@flue/cli": "^2.1.1",
+    "@flue/runtime": "^2.1.1"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-ai": "^0.87.1",
+    "tsx": "^4.23.15"
+  }
+}

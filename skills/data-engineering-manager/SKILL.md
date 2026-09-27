@@ -1,5 +1,6 @@
 ---
 name: data-engineering-manager
+description: Autonomous counterpart to the human "Data Engineering Manager" role (Data Engineering & Analytics).
 role_id: 13.1
 area: Data Engineering & Analytics
 ---

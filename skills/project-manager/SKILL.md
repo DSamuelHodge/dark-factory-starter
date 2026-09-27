@@ -1,5 +1,6 @@
 ---
 name: project-manager
+description: Autonomous counterpart to the human "Project Manager" role (Project Management).
 role_id: 15.2
 area: Project Management
 ---

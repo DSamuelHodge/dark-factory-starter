@@ -1,5 +1,6 @@
 ---
 name: information-architect
+description: Autonomous counterpart to the human "Information Architect" role (User Research & Experience).
 role_id: 3.5
 area: User Research & Experience
 ---

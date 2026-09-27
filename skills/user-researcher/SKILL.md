@@ -1,5 +1,6 @@
 ---
 name: user-researcher
+description: Autonomous counterpart to the human "User Researcher" role (User Research & Experience).
 role_id: 3.2
 area: User Research & Experience
 ---

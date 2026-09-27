@@ -1,0 +1,1502 @@
+{
+  "1.1": {
+    "file": "agents/product-management-strategy/chief-product-officer.ts",
+    "exportName": "ChiefProductOfficerAgent",
+    "meta": {
+      "id": "1.1",
+      "name": "Chief Product Officer",
+      "area": "Product Management & Strategy",
+      "tier": "tier0"
+    }
+  },
+  "1.2": {
+    "file": "agents/product-management-strategy/product-manager.ts",
+    "exportName": "ProductManagerAgent",
+    "meta": {
+      "id": "1.2",
+      "name": "Product Manager",
+      "area": "Product Management & Strategy",
+      "tier": "tier0"
+    }
+  },
+  "1.3": {
+    "file": "agents/product-management-strategy/associate-product-manager.ts",
+    "exportName": "AssociateProductManagerAgent",
+    "meta": {
+      "id": "1.3",
+      "name": "Associate Product Manager",
+      "area": "Product Management & Strategy",
+      "tier": "tier0"
+    }
+  },
+  "1.4": {
+    "file": "agents/product-management-strategy/product-owner.ts",
+    "exportName": "ProductOwnerAgent",
+    "meta": {
+      "id": "1.4",
+      "name": "Product Owner",
+      "area": "Product Management & Strategy",
+      "tier": "tier0"
+    }
+  },
+  "1.5": {
+    "file": "agents/product-management-strategy/product-analyst.ts",
+    "exportName": "ProductAnalystAgent",
+    "meta": {
+      "id": "1.5",
+      "name": "Product Analyst",
+      "area": "Product Management & Strategy",
+      "tier": "tier0"
+    }
+  },
+  "1.6": {
+    "file": "agents/product-management-strategy/competitive-analyst.ts",
+    "exportName": "CompetitiveAnalystAgent",
+    "meta": {
+      "id": "1.6",
+      "name": "Competitive Analyst",
+      "area": "Product Management & Strategy",
+      "tier": "tier0"
+    }
+  },
+  "1.7": {
+    "file": "agents/product-management-strategy/product-operations.ts",
+    "exportName": "ProductOperationsAgent",
+    "meta": {
+      "id": "1.7",
+      "name": "Product Operations",
+      "area": "Product Management & Strategy",
+      "tier": "tier0"
+    }
+  },
+  "2.1": {
+    "file": "agents/business-analysis-requirements/lead-business-analyst.ts",
+    "exportName": "LeadBusinessAnalystAgent",
+    "meta": {
+      "id": "2.1",
+      "name": "Lead Business Analyst",
+      "area": "Business Analysis & Requirements",
+      "tier": "tier0"
+    }
+  },
+  "2.2": {
+    "file": "agents/business-analysis-requirements/business-analyst.ts",
+    "exportName": "BusinessAnalystAgent",
+    "meta": {
+      "id": "2.2",
+      "name": "Business Analyst",
+      "area": "Business Analysis & Requirements",
+      "tier": "tier0"
+    }
+  },
+  "2.3": {
+    "file": "agents/business-analysis-requirements/systems-analyst.ts",
+    "exportName": "SystemsAnalystAgent",
+    "meta": {
+      "id": "2.3",
+      "name": "Systems Analyst",
+      "area": "Business Analysis & Requirements",
+      "tier": "tier0"
+    }
+  },
+  "2.4": {
+    "file": "agents/business-analysis-requirements/process-analyst.ts",
+    "exportName": "ProcessAnalystAgent",
+    "meta": {
+      "id": "2.4",
+      "name": "Process Analyst",
+      "area": "Business Analysis & Requirements",
+      "tier": "tier0"
+    }
+  },
+  "2.5": {
+    "file": "agents/business-analysis-requirements/domain-expert-sme.ts",
+    "exportName": "DomainExpertSMEAgent",
+    "meta": {
+      "id": "2.5",
+      "name": "Domain Expert/SME",
+      "area": "Business Analysis & Requirements",
+      "tier": "tier0"
+    }
+  },
+  "2.6": {
+    "file": "agents/business-analysis-requirements/requirements-engineer.ts",
+    "exportName": "RequirementsEngineerAgent",
+    "meta": {
+      "id": "2.6",
+      "name": "Requirements Engineer",
+      "area": "Business Analysis & Requirements",
+      "tier": "tier0"
+    }
+  },
+  "3.1": {
+    "file": "agents/user-research-experience/ux-research-lead.ts",
+    "exportName": "UXResearchLeadAgent",
+    "meta": {
+      "id": "3.1",
+      "name": "UX Research Lead",
+      "area": "User Research & Experience",
+      "tier": "tier0"
+    }
+  },
+  "3.2": {
+    "file": "agents/user-research-experience/user-researcher.ts",
+    "exportName": "UserResearcherAgent",
+    "meta": {
+      "id": "3.2",
+      "name": "User Researcher",
+      "area": "User Research & Experience",
+      "tier": "tier0"
+    }
+  },
+  "3.3": {
+    "file": "agents/user-research-experience/behavioral-analyst.ts",
+    "exportName": "BehavioralAnalystAgent",
+    "meta": {
+      "id": "3.3",
+      "name": "Behavioral Analyst",
+      "area": "User Research & Experience",
+      "tier": "tier0"
+    }
+  },
+  "3.4": {
+    "file": "agents/user-research-experience/accessibility-specialist.ts",
+    "exportName": "AccessibilitySpecialistAgent",
+    "meta": {
+      "id": "3.4",
+      "name": "Accessibility Specialist",
+      "area": "User Research & Experience",
+      "tier": "tier0"
+    }
+  },
+  "3.5": {
+    "file": "agents/user-research-experience/information-architect.ts",
+    "exportName": "InformationArchitectAgent",
+    "meta": {
+      "id": "3.5",
+      "name": "Information Architect",
+      "area": "User Research & Experience",
+      "tier": "tier0"
+    }
+  },
+  "3.6": {
+    "file": "agents/user-research-experience/usability-tester.ts",
+    "exportName": "UsabilityTesterAgent",
+    "meta": {
+      "id": "3.6",
+      "name": "Usability Tester",
+      "area": "User Research & Experience",
+      "tier": "tier0"
+    }
+  },
+  "4.1": {
+    "file": "agents/design/design-director.ts",
+    "exportName": "DesignDirectorAgent",
+    "meta": {
+      "id": "4.1",
+      "name": "Design Director",
+      "area": "Design",
+      "tier": "tier0"
+    }
+  },
+  "4.2": {
+    "file": "agents/design/ux-designer.ts",
+    "exportName": "UXDesignerAgent",
+    "meta": {
+      "id": "4.2",
+      "name": "UX Designer",
+      "area": "Design",
+      "tier": "tier0"
+    }
+  },
+  "4.3": {
+    "file": "agents/design/ui-designer.ts",
+    "exportName": "UIDesignerAgent",
+    "meta": {
+      "id": "4.3",
+      "name": "UI Designer",
+      "area": "Design",
+      "tier": "tier0"
+    }
+  },
+  "4.4": {
+    "file": "agents/design/interaction-designer.ts",
+    "exportName": "InteractionDesignerAgent",
+    "meta": {
+      "id": "4.4",
+      "name": "Interaction Designer",
+      "area": "Design",
+      "tier": "tier0"
+    }
+  },
+  "4.5": {
+    "file": "agents/design/visual-designer.ts",
+    "exportName": "VisualDesignerAgent",
+    "meta": {
+      "id": "4.5",
+      "name": "Visual Designer",
+      "area": "Design",
+      "tier": "tier0"
+    }
+  },
+  "4.6": {
+    "file": "agents/design/motion-designer.ts",
+    "exportName": "MotionDesignerAgent",
+    "meta": {
+      "id": "4.6",
+      "name": "Motion Designer",
+      "area": "Design",
+      "tier": "tier0"
+    }
+  },
+  "4.7": {
+    "file": "agents/design/design-system-manager.ts",
+    "exportName": "DesignSystemManagerAgent",
+    "meta": {
+      "id": "4.7",
+      "name": "Design System Manager",
+      "area": "Design",
+      "tier": "tier0"
+    }
+  },
+  "4.8": {
+    "file": "agents/design/prototyper.ts",
+    "exportName": "PrototyperAgent",
+    "meta": {
+      "id": "4.8",
+      "name": "Prototyper",
+      "area": "Design",
+      "tier": "tier0"
+    }
+  },
+  "5.1": {
+    "file": "agents/software-architecture/chief-architect.ts",
+    "exportName": "ChiefArchitectAgent",
+    "meta": {
+      "id": "5.1",
+      "name": "Chief Architect",
+      "area": "Software Architecture",
+      "tier": "tier1"
+    }
+  },
+  "5.2": {
+    "file": "agents/software-architecture/solutions-architect.ts",
+    "exportName": "SolutionsArchitectAgent",
+    "meta": {
+      "id": "5.2",
+      "name": "Solutions Architect",
+      "area": "Software Architecture",
+      "tier": "tier1"
+    }
+  },
+  "5.3": {
+    "file": "agents/software-architecture/application-architect.ts",
+    "exportName": "ApplicationArchitectAgent",
+    "meta": {
+      "id": "5.3",
+      "name": "Application Architect",
+      "area": "Software Architecture",
+      "tier": "tier1"
+    }
+  },
+  "5.4": {
+    "file": "agents/software-architecture/data-architect.ts",
+    "exportName": "DataArchitectAgent",
+    "meta": {
+      "id": "5.4",
+      "name": "Data Architect",
+      "area": "Software Architecture",
+      "tier": "tier1"
+    }
+  },
+  "5.5": {
+    "file": "agents/software-architecture/cloud-architect.ts",
+    "exportName": "CloudArchitectAgent",
+    "meta": {
+      "id": "5.5",
+      "name": "Cloud Architect",
+      "area": "Software Architecture",
+      "tier": "tier1"
+    }
+  },
+  "5.6": {
+    "file": "agents/software-architecture/integration-architect.ts",
+    "exportName": "IntegrationArchitectAgent",
+    "meta": {
+      "id": "5.6",
+      "name": "Integration Architect",
+      "area": "Software Architecture",
+      "tier": "tier1"
+    }
+  },
+  "5.7": {
+    "file": "agents/software-architecture/security-architect.ts",
+    "exportName": "SecurityArchitectAgent",
+    "meta": {
+      "id": "5.7",
+      "name": "Security Architect",
+      "area": "Software Architecture",
+      "tier": "tier1"
+    }
+  },
+  "6.1": {
+    "file": "agents/frontend-development/frontend-lead-principal.ts",
+    "exportName": "FrontendLeadPrincipalAgent",
+    "meta": {
+      "id": "6.1",
+      "name": "Frontend Lead/Principal",
+      "area": "Frontend Development",
+      "tier": "container"
+    }
+  },
+  "6.2": {
+    "file": "agents/frontend-development/frontend-developer.ts",
+    "exportName": "FrontendDeveloperAgent",
+    "meta": {
+      "id": "6.2",
+      "name": "Frontend Developer",
+      "area": "Frontend Development",
+      "tier": "container"
+    }
+  },
+  "6.3": {
+    "file": "agents/frontend-development/javascript-typescript-developer.ts",
+    "exportName": "JavaScriptTypeScriptDeveloperAgent",
+    "meta": {
+      "id": "6.3",
+      "name": "JavaScript/TypeScript Developer",
+      "area": "Frontend Development",
+      "tier": "container"
+    }
+  },
+  "6.4": {
+    "file": "agents/frontend-development/css-styling-specialist.ts",
+    "exportName": "CSSStylingSpecialistAgent",
+    "meta": {
+      "id": "6.4",
+      "name": "CSS/Styling Specialist",
+      "area": "Frontend Development",
+      "tier": "container"
+    }
+  },
+  "6.5": {
+    "file": "agents/frontend-development/frontend-performance-engineer.ts",
+    "exportName": "FrontendPerformanceEngineerAgent",
+    "meta": {
+      "id": "6.5",
+      "name": "Frontend Performance Engineer",
+      "area": "Frontend Development",
+      "tier": "container"
+    }
+  },
+  "6.6": {
+    "file": "agents/frontend-development/web-accessibility-developer.ts",
+    "exportName": "WebAccessibilityDeveloperAgent",
+    "meta": {
+      "id": "6.6",
+      "name": "Web Accessibility Developer",
+      "area": "Frontend Development",
+      "tier": "container"
+    }
+  },
+  "6.7": {
+    "file": "agents/frontend-development/frontend-build-engineer.ts",
+    "exportName": "FrontendBuildEngineerAgent",
+    "meta": {
+      "id": "6.7",
+      "name": "Frontend Build Engineer",
+      "area": "Frontend Development",
+      "tier": "container"
+    }
+  },
+  "7.1": {
+    "file": "agents/backend-development/backend-lead-principal.ts",
+    "exportName": "BackendLeadPrincipalAgent",
+    "meta": {
+      "id": "7.1",
+      "name": "Backend Lead/Principal",
+      "area": "Backend Development",
+      "tier": "container"
+    }
+  },
+  "7.2": {
+    "file": "agents/backend-development/backend-developer.ts",
+    "exportName": "BackendDeveloperAgent",
+    "meta": {
+      "id": "7.2",
+      "name": "Backend Developer",
+      "area": "Backend Development",
+      "tier": "container"
+    }
+  },
+  "7.3": {
+    "file": "agents/backend-development/api-developer.ts",
+    "exportName": "APIDeveloperAgent",
+    "meta": {
+      "id": "7.3",
+      "name": "API Developer",
+      "area": "Backend Development",
+      "tier": "container"
+    }
+  },
+  "7.4": {
+    "file": "agents/backend-development/database-developer.ts",
+    "exportName": "DatabaseDeveloperAgent",
+    "meta": {
+      "id": "7.4",
+      "name": "Database Developer",
+      "area": "Backend Development",
+      "tier": "container"
+    }
+  },
+  "7.5": {
+    "file": "agents/backend-development/microservices-developer.ts",
+    "exportName": "MicroservicesDeveloperAgent",
+    "meta": {
+      "id": "7.5",
+      "name": "Microservices Developer",
+      "area": "Backend Development",
+      "tier": "container"
+    }
+  },
+  "7.6": {
+    "file": "agents/backend-development/backend-performance-engineer.ts",
+    "exportName": "BackendPerformanceEngineerAgent",
+    "meta": {
+      "id": "7.6",
+      "name": "Backend Performance Engineer",
+      "area": "Backend Development",
+      "tier": "container"
+    }
+  },
+  "7.7": {
+    "file": "agents/backend-development/integration-developer.ts",
+    "exportName": "IntegrationDeveloperAgent",
+    "meta": {
+      "id": "7.7",
+      "name": "Integration Developer",
+      "area": "Backend Development",
+      "tier": "container"
+    }
+  },
+  "8.1": {
+    "file": "agents/full-stack-development/full-stack-lead.ts",
+    "exportName": "FullStackLeadAgent",
+    "meta": {
+      "id": "8.1",
+      "name": "Full Stack Lead",
+      "area": "Full Stack Development",
+      "tier": "container"
+    }
+  },
+  "8.2": {
+    "file": "agents/full-stack-development/full-stack-developer.ts",
+    "exportName": "FullStackDeveloperAgent",
+    "meta": {
+      "id": "8.2",
+      "name": "Full Stack Developer",
+      "area": "Full Stack Development",
+      "tier": "container"
+    }
+  },
+  "8.3": {
+    "file": "agents/full-stack-development/mean-mern-stack-developer.ts",
+    "exportName": "MEANMERNStackDeveloperAgent",
+    "meta": {
+      "id": "8.3",
+      "name": "MEAN/MERN Stack Developer",
+      "area": "Full Stack Development",
+      "tier": "container"
+    }
+  },
+  "8.4": {
+    "file": "agents/full-stack-development/rapid-prototyper.ts",
+    "exportName": "RapidPrototyperAgent",
+    "meta": {
+      "id": "8.4",
+      "name": "Rapid Prototyper",
+      "area": "Full Stack Development",
+      "tier": "container"
+    }
+  },
+  "9.1": {
+    "file": "agents/mobile-development/mobile-lead.ts",
+    "exportName": "MobileLeadAgent",
+    "meta": {
+      "id": "9.1",
+      "name": "Mobile Lead",
+      "area": "Mobile Development",
+      "tier": "container"
+    }
+  },
+  "9.2": {
+    "file": "agents/mobile-development/ios-developer.ts",
+    "exportName": "IOSDeveloperAgent",
+    "meta": {
+      "id": "9.2",
+      "name": "iOS Developer",
+      "area": "Mobile Development",
+      "tier": "container"
+    }
+  },
+  "9.3": {
+    "file": "agents/mobile-development/android-developer.ts",
+    "exportName": "AndroidDeveloperAgent",
+    "meta": {
+      "id": "9.3",
+      "name": "Android Developer",
+      "area": "Mobile Development",
+      "tier": "container"
+    }
+  },
+  "9.4": {
+    "file": "agents/mobile-development/react-native-developer.ts",
+    "exportName": "ReactNativeDeveloperAgent",
+    "meta": {
+      "id": "9.4",
+      "name": "React Native Developer",
+      "area": "Mobile Development",
+      "tier": "container"
+    }
+  },
+  "9.5": {
+    "file": "agents/mobile-development/flutter-developer.ts",
+    "exportName": "FlutterDeveloperAgent",
+    "meta": {
+      "id": "9.5",
+      "name": "Flutter Developer",
+      "area": "Mobile Development",
+      "tier": "container"
+    }
+  },
+  "9.6": {
+    "file": "agents/mobile-development/mobile-ui-ux-developer.ts",
+    "exportName": "MobileUIUXDeveloperAgent",
+    "meta": {
+      "id": "9.6",
+      "name": "Mobile UI/UX Developer",
+      "area": "Mobile Development",
+      "tier": "container"
+    }
+  },
+  "9.7": {
+    "file": "agents/mobile-development/mobile-devops-engineer.ts",
+    "exportName": "MobileDevOpsEngineerAgent",
+    "meta": {
+      "id": "9.7",
+      "name": "Mobile DevOps Engineer",
+      "area": "Mobile Development",
+      "tier": "container"
+    }
+  },
+  "10.1": {
+    "file": "agents/devops-infrastructure/devops-manager.ts",
+    "exportName": "DevOpsManagerAgent",
+    "meta": {
+      "id": "10.1",
+      "name": "DevOps Manager",
+      "area": "DevOps & Infrastructure",
+      "tier": "container"
+    }
+  },
+  "10.2": {
+    "file": "agents/devops-infrastructure/devops-engineer.ts",
+    "exportName": "DevOpsEngineerAgent",
+    "meta": {
+      "id": "10.2",
+      "name": "DevOps Engineer",
+      "area": "DevOps & Infrastructure",
+      "tier": "container"
+    }
+  },
+  "10.3": {
+    "file": "agents/devops-infrastructure/site-reliability-engineer-sre.ts",
+    "exportName": "SiteReliabilityEngineerSREAgent",
+    "meta": {
+      "id": "10.3",
+      "name": "Site Reliability Engineer (SRE)",
+      "area": "DevOps & Infrastructure",
+      "tier": "container"
+    }
+  },
+  "10.4": {
+    "file": "agents/devops-infrastructure/cloud-engineer.ts",
+    "exportName": "CloudEngineerAgent",
+    "meta": {
+      "id": "10.4",
+      "name": "Cloud Engineer",
+      "area": "DevOps & Infrastructure",
+      "tier": "container"
+    }
+  },
+  "10.5": {
+    "file": "agents/devops-infrastructure/platform-engineer.ts",
+    "exportName": "PlatformEngineerAgent",
+    "meta": {
+      "id": "10.5",
+      "name": "Platform Engineer",
+      "area": "DevOps & Infrastructure",
+      "tier": "container"
+    }
+  },
+  "10.6": {
+    "file": "agents/devops-infrastructure/release-manager.ts",
+    "exportName": "ReleaseManagerAgent",
+    "meta": {
+      "id": "10.6",
+      "name": "Release Manager",
+      "area": "DevOps & Infrastructure",
+      "tier": "container"
+    }
+  },
+  "10.7": {
+    "file": "agents/devops-infrastructure/infrastructure-engineer.ts",
+    "exportName": "InfrastructureEngineerAgent",
+    "meta": {
+      "id": "10.7",
+      "name": "Infrastructure Engineer",
+      "area": "DevOps & Infrastructure",
+      "tier": "container"
+    }
+  },
+  "10.8": {
+    "file": "agents/devops-infrastructure/ci-cd-engineer.ts",
+    "exportName": "CICDEngineerAgent",
+    "meta": {
+      "id": "10.8",
+      "name": "CI/CD Engineer",
+      "area": "DevOps & Infrastructure",
+      "tier": "container"
+    }
+  },
+  "10.9": {
+    "file": "agents/devops-infrastructure/configuration-manager.ts",
+    "exportName": "ConfigurationManagerAgent",
+    "meta": {
+      "id": "10.9",
+      "name": "Configuration Manager",
+      "area": "DevOps & Infrastructure",
+      "tier": "container"
+    }
+  },
+  "10.10": {
+    "file": "agents/devops-infrastructure/monitoring-observability-engineer.ts",
+    "exportName": "MonitoringObservabilityEngineerAgent",
+    "meta": {
+      "id": "10.10",
+      "name": "Monitoring/Observability Engineer",
+      "area": "DevOps & Infrastructure",
+      "tier": "container"
+    }
+  },
+  "11.1": {
+    "file": "agents/quality-assurance-testing/qa-manager.ts",
+    "exportName": "QAManagerAgent",
+    "meta": {
+      "id": "11.1",
+      "name": "QA Manager",
+      "area": "Quality Assurance & Testing",
+      "tier": "container"
+    }
+  },
+  "11.2": {
+    "file": "agents/quality-assurance-testing/qa-engineer.ts",
+    "exportName": "QAEngineerAgent",
+    "meta": {
+      "id": "11.2",
+      "name": "QA Engineer",
+      "area": "Quality Assurance & Testing",
+      "tier": "container"
+    }
+  },
+  "11.3": {
+    "file": "agents/quality-assurance-testing/manual-tester.ts",
+    "exportName": "ManualTesterAgent",
+    "meta": {
+      "id": "11.3",
+      "name": "Manual Tester",
+      "area": "Quality Assurance & Testing",
+      "tier": "container"
+    }
+  },
+  "11.4": {
+    "file": "agents/quality-assurance-testing/test-automation-engineer.ts",
+    "exportName": "TestAutomationEngineerAgent",
+    "meta": {
+      "id": "11.4",
+      "name": "Test Automation Engineer",
+      "area": "Quality Assurance & Testing",
+      "tier": "container"
+    }
+  },
+  "11.5": {
+    "file": "agents/quality-assurance-testing/performance-tester.ts",
+    "exportName": "PerformanceTesterAgent",
+    "meta": {
+      "id": "11.5",
+      "name": "Performance Tester",
+      "area": "Quality Assurance & Testing",
+      "tier": "container"
+    }
+  },
+  "11.6": {
+    "file": "agents/quality-assurance-testing/security-tester.ts",
+    "exportName": "SecurityTesterAgent",
+    "meta": {
+      "id": "11.6",
+      "name": "Security Tester",
+      "area": "Quality Assurance & Testing",
+      "tier": "container"
+    }
+  },
+  "11.7": {
+    "file": "agents/quality-assurance-testing/mobile-qa-specialist.ts",
+    "exportName": "MobileQASpecialistAgent",
+    "meta": {
+      "id": "11.7",
+      "name": "Mobile QA Specialist",
+      "area": "Quality Assurance & Testing",
+      "tier": "container"
+    }
+  },
+  "11.8": {
+    "file": "agents/quality-assurance-testing/api-integration-tester.ts",
+    "exportName": "APIIntegrationTesterAgent",
+    "meta": {
+      "id": "11.8",
+      "name": "API/Integration Tester",
+      "area": "Quality Assurance & Testing",
+      "tier": "container"
+    }
+  },
+  "11.9": {
+    "file": "agents/quality-assurance-testing/regression-tester.ts",
+    "exportName": "RegressionTesterAgent",
+    "meta": {
+      "id": "11.9",
+      "name": "Regression Tester",
+      "area": "Quality Assurance & Testing",
+      "tier": "container"
+    }
+  },
+  "11.10": {
+    "file": "agents/quality-assurance-testing/uat-coordinator.ts",
+    "exportName": "UATCoordinatorAgent",
+    "meta": {
+      "id": "11.10",
+      "name": "UAT Coordinator",
+      "area": "Quality Assurance & Testing",
+      "tier": "container"
+    }
+  },
+  "12.1": {
+    "file": "agents/security-compliance/chief-information-security-officer.ts",
+    "exportName": "ChiefInformationSecurityOfficerAgent",
+    "meta": {
+      "id": "12.1",
+      "name": "Chief Information Security Officer",
+      "area": "Security & Compliance",
+      "tier": "container"
+    }
+  },
+  "12.2": {
+    "file": "agents/security-compliance/security-engineer.ts",
+    "exportName": "SecurityEngineerAgent",
+    "meta": {
+      "id": "12.2",
+      "name": "Security Engineer",
+      "area": "Security & Compliance",
+      "tier": "container"
+    }
+  },
+  "12.3": {
+    "file": "agents/security-compliance/application-security-engineer.ts",
+    "exportName": "ApplicationSecurityEngineerAgent",
+    "meta": {
+      "id": "12.3",
+      "name": "Application Security Engineer",
+      "area": "Security & Compliance",
+      "tier": "container"
+    }
+  },
+  "12.4": {
+    "file": "agents/security-compliance/penetration-tester.ts",
+    "exportName": "PenetrationTesterAgent",
+    "meta": {
+      "id": "12.4",
+      "name": "Penetration Tester",
+      "area": "Security & Compliance",
+      "tier": "container"
+    }
+  },
+  "12.5": {
+    "file": "agents/security-compliance/security-analyst.ts",
+    "exportName": "SecurityAnalystAgent",
+    "meta": {
+      "id": "12.5",
+      "name": "Security Analyst",
+      "area": "Security & Compliance",
+      "tier": "container"
+    }
+  },
+  "12.6": {
+    "file": "agents/security-compliance/compliance-officer.ts",
+    "exportName": "ComplianceOfficerAgent",
+    "meta": {
+      "id": "12.6",
+      "name": "Compliance Officer",
+      "area": "Security & Compliance",
+      "tier": "container"
+    }
+  },
+  "12.7": {
+    "file": "agents/security-compliance/identity-access-manager.ts",
+    "exportName": "IdentityAccessManagerAgent",
+    "meta": {
+      "id": "12.7",
+      "name": "Identity & Access Manager",
+      "area": "Security & Compliance",
+      "tier": "container"
+    }
+  },
+  "12.8": {
+    "file": "agents/security-compliance/security-operations-analyst.ts",
+    "exportName": "SecurityOperationsAnalystAgent",
+    "meta": {
+      "id": "12.8",
+      "name": "Security Operations Analyst",
+      "area": "Security & Compliance",
+      "tier": "container"
+    }
+  },
+  "13.1": {
+    "file": "agents/data-engineering-analytics/data-engineering-manager.ts",
+    "exportName": "DataEngineeringManagerAgent",
+    "meta": {
+      "id": "13.1",
+      "name": "Data Engineering Manager",
+      "area": "Data Engineering & Analytics",
+      "tier": "container"
+    }
+  },
+  "13.2": {
+    "file": "agents/data-engineering-analytics/data-engineer.ts",
+    "exportName": "DataEngineerAgent",
+    "meta": {
+      "id": "13.2",
+      "name": "Data Engineer",
+      "area": "Data Engineering & Analytics",
+      "tier": "container"
+    }
+  },
+  "13.3": {
+    "file": "agents/data-engineering-analytics/data-warehouse-engineer.ts",
+    "exportName": "DataWarehouseEngineerAgent",
+    "meta": {
+      "id": "13.3",
+      "name": "Data Warehouse Engineer",
+      "area": "Data Engineering & Analytics",
+      "tier": "container"
+    }
+  },
+  "13.4": {
+    "file": "agents/data-engineering-analytics/etl-developer.ts",
+    "exportName": "ETLDeveloperAgent",
+    "meta": {
+      "id": "13.4",
+      "name": "ETL Developer",
+      "area": "Data Engineering & Analytics",
+      "tier": "container"
+    }
+  },
+  "13.5": {
+    "file": "agents/data-engineering-analytics/data-analyst.ts",
+    "exportName": "DataAnalystAgent",
+    "meta": {
+      "id": "13.5",
+      "name": "Data Analyst",
+      "area": "Data Engineering & Analytics",
+      "tier": "container"
+    }
+  },
+  "13.6": {
+    "file": "agents/data-engineering-analytics/business-intelligence-developer.ts",
+    "exportName": "BusinessIntelligenceDeveloperAgent",
+    "meta": {
+      "id": "13.6",
+      "name": "Business Intelligence Developer",
+      "area": "Data Engineering & Analytics",
+      "tier": "container"
+    }
+  },
+  "13.7": {
+    "file": "agents/data-engineering-analytics/data-scientist.ts",
+    "exportName": "DataScientistAgent",
+    "meta": {
+      "id": "13.7",
+      "name": "Data Scientist",
+      "area": "Data Engineering & Analytics",
+      "tier": "container"
+    }
+  },
+  "13.8": {
+    "file": "agents/data-engineering-analytics/ml-engineer.ts",
+    "exportName": "MLEngineerAgent",
+    "meta": {
+      "id": "13.8",
+      "name": "ML Engineer",
+      "area": "Data Engineering & Analytics",
+      "tier": "container"
+    }
+  },
+  "13.9": {
+    "file": "agents/data-engineering-analytics/analytics-engineer.ts",
+    "exportName": "AnalyticsEngineerAgent",
+    "meta": {
+      "id": "13.9",
+      "name": "Analytics Engineer",
+      "area": "Data Engineering & Analytics",
+      "tier": "container"
+    }
+  },
+  "14.1": {
+    "file": "agents/documentation-technical-writing/documentation-manager.ts",
+    "exportName": "DocumentationManagerAgent",
+    "meta": {
+      "id": "14.1",
+      "name": "Documentation Manager",
+      "area": "Documentation & Technical Writing",
+      "tier": "tier0"
+    }
+  },
+  "14.2": {
+    "file": "agents/documentation-technical-writing/technical-writer.ts",
+    "exportName": "TechnicalWriterAgent",
+    "meta": {
+      "id": "14.2",
+      "name": "Technical Writer",
+      "area": "Documentation & Technical Writing",
+      "tier": "tier0"
+    }
+  },
+  "14.3": {
+    "file": "agents/documentation-technical-writing/api-documentation-specialist.ts",
+    "exportName": "APIDocumentationSpecialistAgent",
+    "meta": {
+      "id": "14.3",
+      "name": "API Documentation Specialist",
+      "area": "Documentation & Technical Writing",
+      "tier": "tier0"
+    }
+  },
+  "14.4": {
+    "file": "agents/documentation-technical-writing/knowledge-base-manager.ts",
+    "exportName": "KnowledgeBaseManagerAgent",
+    "meta": {
+      "id": "14.4",
+      "name": "Knowledge Base Manager",
+      "area": "Documentation & Technical Writing",
+      "tier": "tier0"
+    }
+  },
+  "14.5": {
+    "file": "agents/documentation-technical-writing/video-tutorial-creator.ts",
+    "exportName": "VideoTutorialCreatorAgent",
+    "meta": {
+      "id": "14.5",
+      "name": "Video Tutorial Creator",
+      "area": "Documentation & Technical Writing",
+      "tier": "tier0"
+    }
+  },
+  "14.6": {
+    "file": "agents/documentation-technical-writing/information-developer.ts",
+    "exportName": "InformationDeveloperAgent",
+    "meta": {
+      "id": "14.6",
+      "name": "Information Developer",
+      "area": "Documentation & Technical Writing",
+      "tier": "tier0"
+    }
+  },
+  "14.7": {
+    "file": "agents/documentation-technical-writing/content-strategist.ts",
+    "exportName": "ContentStrategistAgent",
+    "meta": {
+      "id": "14.7",
+      "name": "Content Strategist",
+      "area": "Documentation & Technical Writing",
+      "tier": "tier0"
+    }
+  },
+  "15.1": {
+    "file": "agents/project-management/program-manager.ts",
+    "exportName": "ProgramManagerAgent",
+    "meta": {
+      "id": "15.1",
+      "name": "Program Manager",
+      "area": "Project Management",
+      "tier": "tier0"
+    }
+  },
+  "15.2": {
+    "file": "agents/project-management/project-manager.ts",
+    "exportName": "ProjectManagerAgent",
+    "meta": {
+      "id": "15.2",
+      "name": "Project Manager",
+      "area": "Project Management",
+      "tier": "tier0"
+    }
+  },
+  "15.3": {
+    "file": "agents/project-management/technical-project-manager.ts",
+    "exportName": "TechnicalProjectManagerAgent",
+    "meta": {
+      "id": "15.3",
+      "name": "Technical Project Manager",
+      "area": "Project Management",
+      "tier": "tier0"
+    }
+  },
+  "15.4": {
+    "file": "agents/project-management/delivery-manager.ts",
+    "exportName": "DeliveryManagerAgent",
+    "meta": {
+      "id": "15.4",
+      "name": "Delivery Manager",
+      "area": "Project Management",
+      "tier": "tier0"
+    }
+  },
+  "15.5": {
+    "file": "agents/project-management/resource-manager.ts",
+    "exportName": "ResourceManagerAgent",
+    "meta": {
+      "id": "15.5",
+      "name": "Resource Manager",
+      "area": "Project Management",
+      "tier": "tier0"
+    }
+  },
+  "15.6": {
+    "file": "agents/project-management/pmo-analyst.ts",
+    "exportName": "PMOAnalystAgent",
+    "meta": {
+      "id": "15.6",
+      "name": "PMO Analyst",
+      "area": "Project Management",
+      "tier": "tier0"
+    }
+  },
+  "15.7": {
+    "file": "agents/project-management/portfolio-manager.ts",
+    "exportName": "PortfolioManagerAgent",
+    "meta": {
+      "id": "15.7",
+      "name": "Portfolio Manager",
+      "area": "Project Management",
+      "tier": "tier0"
+    }
+  },
+  "16.1": {
+    "file": "agents/agile-scrum/agile-coach.ts",
+    "exportName": "AgileCoachAgent",
+    "meta": {
+      "id": "16.1",
+      "name": "Agile Coach",
+      "area": "Agile & Scrum",
+      "tier": "tier0"
+    }
+  },
+  "16.2": {
+    "file": "agents/agile-scrum/scrum-master.ts",
+    "exportName": "ScrumMasterAgent",
+    "meta": {
+      "id": "16.2",
+      "name": "Scrum Master",
+      "area": "Agile & Scrum",
+      "tier": "tier0"
+    }
+  },
+  "16.3": {
+    "file": "agents/agile-scrum/kanban-lead.ts",
+    "exportName": "KanbanLeadAgent",
+    "meta": {
+      "id": "16.3",
+      "name": "Kanban Lead",
+      "area": "Agile & Scrum",
+      "tier": "tier0"
+    }
+  },
+  "16.4": {
+    "file": "agents/agile-scrum/release-train-engineer.ts",
+    "exportName": "ReleaseTrainEngineerAgent",
+    "meta": {
+      "id": "16.4",
+      "name": "Release Train Engineer",
+      "area": "Agile & Scrum",
+      "tier": "tier0"
+    }
+  },
+  "16.5": {
+    "file": "agents/agile-scrum/agile-transformation-lead.ts",
+    "exportName": "AgileTransformationLeadAgent",
+    "meta": {
+      "id": "16.5",
+      "name": "Agile Transformation Lead",
+      "area": "Agile & Scrum",
+      "tier": "tier0"
+    }
+  },
+  "17.1": {
+    "file": "agents/marketing/chief-marketing-officer.ts",
+    "exportName": "ChiefMarketingOfficerAgent",
+    "meta": {
+      "id": "17.1",
+      "name": "Chief Marketing Officer",
+      "area": "Marketing",
+      "tier": "tier0"
+    }
+  },
+  "17.2": {
+    "file": "agents/marketing/product-marketing-manager.ts",
+    "exportName": "ProductMarketingManagerAgent",
+    "meta": {
+      "id": "17.2",
+      "name": "Product Marketing Manager",
+      "area": "Marketing",
+      "tier": "tier0"
+    }
+  },
+  "17.3": {
+    "file": "agents/marketing/content-marketing-manager.ts",
+    "exportName": "ContentMarketingManagerAgent",
+    "meta": {
+      "id": "17.3",
+      "name": "Content Marketing Manager",
+      "area": "Marketing",
+      "tier": "tier0"
+    }
+  },
+  "17.4": {
+    "file": "agents/marketing/digital-marketing-specialist.ts",
+    "exportName": "DigitalMarketingSpecialistAgent",
+    "meta": {
+      "id": "17.4",
+      "name": "Digital Marketing Specialist",
+      "area": "Marketing",
+      "tier": "tier0"
+    }
+  },
+  "17.5": {
+    "file": "agents/marketing/growth-marketer.ts",
+    "exportName": "GrowthMarketerAgent",
+    "meta": {
+      "id": "17.5",
+      "name": "Growth Marketer",
+      "area": "Marketing",
+      "tier": "tier0"
+    }
+  },
+  "17.6": {
+    "file": "agents/marketing/email-marketing-specialist.ts",
+    "exportName": "EmailMarketingSpecialistAgent",
+    "meta": {
+      "id": "17.6",
+      "name": "Email Marketing Specialist",
+      "area": "Marketing",
+      "tier": "tier0"
+    }
+  },
+  "17.7": {
+    "file": "agents/marketing/marketing-analyst.ts",
+    "exportName": "MarketingAnalystAgent",
+    "meta": {
+      "id": "17.7",
+      "name": "Marketing Analyst",
+      "area": "Marketing",
+      "tier": "tier0"
+    }
+  },
+  "17.8": {
+    "file": "agents/marketing/brand-manager.ts",
+    "exportName": "BrandManagerAgent",
+    "meta": {
+      "id": "17.8",
+      "name": "Brand Manager",
+      "area": "Marketing",
+      "tier": "tier0"
+    }
+  },
+  "17.9": {
+    "file": "agents/marketing/event-marketing-manager.ts",
+    "exportName": "EventMarketingManagerAgent",
+    "meta": {
+      "id": "17.9",
+      "name": "Event Marketing Manager",
+      "area": "Marketing",
+      "tier": "tier0"
+    }
+  },
+  "17.10": {
+    "file": "agents/marketing/partner-marketing-manager.ts",
+    "exportName": "PartnerMarketingManagerAgent",
+    "meta": {
+      "id": "17.10",
+      "name": "Partner Marketing Manager",
+      "area": "Marketing",
+      "tier": "tier0"
+    }
+  },
+  "18.1": {
+    "file": "agents/sales/vp-of-sales.ts",
+    "exportName": "VPOfSalesAgent",
+    "meta": {
+      "id": "18.1",
+      "name": "VP of Sales",
+      "area": "Sales",
+      "tier": "tier0"
+    }
+  },
+  "18.2": {
+    "file": "agents/sales/sales-development-rep-sdr.ts",
+    "exportName": "SalesDevelopmentRepSDRAgent",
+    "meta": {
+      "id": "18.2",
+      "name": "Sales Development Rep (SDR)",
+      "area": "Sales",
+      "tier": "tier0"
+    }
+  },
+  "18.3": {
+    "file": "agents/sales/account-executive.ts",
+    "exportName": "AccountExecutiveAgent",
+    "meta": {
+      "id": "18.3",
+      "name": "Account Executive",
+      "area": "Sales",
+      "tier": "tier0"
+    }
+  },
+  "18.4": {
+    "file": "agents/sales/enterprise-sales-rep.ts",
+    "exportName": "EnterpriseSalesRepAgent",
+    "meta": {
+      "id": "18.4",
+      "name": "Enterprise Sales Rep",
+      "area": "Sales",
+      "tier": "tier0"
+    }
+  },
+  "18.5": {
+    "file": "agents/sales/solutions-engineer-sales-engineer.ts",
+    "exportName": "SolutionsEngineerSalesEngineerAgent",
+    "meta": {
+      "id": "18.5",
+      "name": "Solutions Engineer/Sales Engineer",
+      "area": "Sales",
+      "tier": "tier0"
+    }
+  },
+  "18.6": {
+    "file": "agents/sales/customer-success-manager.ts",
+    "exportName": "CustomerSuccessManagerAgent",
+    "meta": {
+      "id": "18.6",
+      "name": "Customer Success Manager",
+      "area": "Sales",
+      "tier": "tier0"
+    }
+  },
+  "18.7": {
+    "file": "agents/sales/account-manager.ts",
+    "exportName": "AccountManagerAgent",
+    "meta": {
+      "id": "18.7",
+      "name": "Account Manager",
+      "area": "Sales",
+      "tier": "tier0"
+    }
+  },
+  "18.8": {
+    "file": "agents/sales/sales-operations-analyst.ts",
+    "exportName": "SalesOperationsAnalystAgent",
+    "meta": {
+      "id": "18.8",
+      "name": "Sales Operations Analyst",
+      "area": "Sales",
+      "tier": "tier0"
+    }
+  },
+  "18.9": {
+    "file": "agents/sales/revenue-operations-manager.ts",
+    "exportName": "RevenueOperationsManagerAgent",
+    "meta": {
+      "id": "18.9",
+      "name": "Revenue Operations Manager",
+      "area": "Sales",
+      "tier": "tier0"
+    }
+  },
+  "19.1": {
+    "file": "agents/customer-support/head-of-support.ts",
+    "exportName": "HeadOfSupportAgent",
+    "meta": {
+      "id": "19.1",
+      "name": "Head of Support",
+      "area": "Customer Support",
+      "tier": "tier0"
+    }
+  },
+  "19.2": {
+    "file": "agents/customer-support/customer-support-rep-tier-1.ts",
+    "exportName": "CustomerSupportRepTier1Agent",
+    "meta": {
+      "id": "19.2",
+      "name": "Customer Support Rep (Tier 1)",
+      "area": "Customer Support",
+      "tier": "tier0"
+    }
+  },
+  "19.3": {
+    "file": "agents/customer-support/technical-support-engineer-tier-2.ts",
+    "exportName": "TechnicalSupportEngineerTier2Agent",
+    "meta": {
+      "id": "19.3",
+      "name": "Technical Support Engineer (Tier 2)",
+      "area": "Customer Support",
+      "tier": "tier0"
+    }
+  },
+  "19.4": {
+    "file": "agents/customer-support/senior-support-engineer-tier-3.ts",
+    "exportName": "SeniorSupportEngineerTier3Agent",
+    "meta": {
+      "id": "19.4",
+      "name": "Senior Support Engineer (Tier 3)",
+      "area": "Customer Support",
+      "tier": "tier0"
+    }
+  },
+  "19.5": {
+    "file": "agents/customer-support/support-operations-manager.ts",
+    "exportName": "SupportOperationsManagerAgent",
+    "meta": {
+      "id": "19.5",
+      "name": "Support Operations Manager",
+      "area": "Customer Support",
+      "tier": "tier0"
+    }
+  },
+  "19.6": {
+    "file": "agents/customer-support/community-manager.ts",
+    "exportName": "CommunityManagerAgent",
+    "meta": {
+      "id": "19.6",
+      "name": "Community Manager",
+      "area": "Customer Support",
+      "tier": "tier0"
+    }
+  },
+  "19.7": {
+    "file": "agents/customer-support/customer-advocate.ts",
+    "exportName": "CustomerAdvocateAgent",
+    "meta": {
+      "id": "19.7",
+      "name": "Customer Advocate",
+      "area": "Customer Support",
+      "tier": "tier0"
+    }
+  },
+  "19.8": {
+    "file": "agents/customer-support/onboarding-specialist.ts",
+    "exportName": "OnboardingSpecialistAgent",
+    "meta": {
+      "id": "19.8",
+      "name": "Onboarding Specialist",
+      "area": "Customer Support",
+      "tier": "tier0"
+    }
+  },
+  "19.9": {
+    "file": "agents/customer-support/training-specialist.ts",
+    "exportName": "TrainingSpecialistAgent",
+    "meta": {
+      "id": "19.9",
+      "name": "Training Specialist",
+      "area": "Customer Support",
+      "tier": "tier0"
+    }
+  },
+  "20.1": {
+    "file": "agents/legal-compliance/general-counsel.ts",
+    "exportName": "GeneralCounselAgent",
+    "meta": {
+      "id": "20.1",
+      "name": "General Counsel",
+      "area": "Legal & Compliance",
+      "tier": "tier0"
+    }
+  },
+  "20.2": {
+    "file": "agents/legal-compliance/corporate-lawyer.ts",
+    "exportName": "CorporateLawyerAgent",
+    "meta": {
+      "id": "20.2",
+      "name": "Corporate Lawyer",
+      "area": "Legal & Compliance",
+      "tier": "tier0"
+    }
+  },
+  "20.3": {
+    "file": "agents/legal-compliance/privacy-officer.ts",
+    "exportName": "PrivacyOfficerAgent",
+    "meta": {
+      "id": "20.3",
+      "name": "Privacy Officer",
+      "area": "Legal & Compliance",
+      "tier": "tier0"
+    }
+  },
+  "20.4": {
+    "file": "agents/legal-compliance/intellectual-property-attorney.ts",
+    "exportName": "IntellectualPropertyAttorneyAgent",
+    "meta": {
+      "id": "20.4",
+      "name": "Intellectual Property Attorney",
+      "area": "Legal & Compliance",
+      "tier": "tier0"
+    }
+  },
+  "20.5": {
+    "file": "agents/legal-compliance/compliance-manager.ts",
+    "exportName": "ComplianceManagerAgent",
+    "meta": {
+      "id": "20.5",
+      "name": "Compliance Manager",
+      "area": "Legal & Compliance",
+      "tier": "tier0"
+    }
+  },
+  "20.6": {
+    "file": "agents/legal-compliance/contract-manager.ts",
+    "exportName": "ContractManagerAgent",
+    "meta": {
+      "id": "20.6",
+      "name": "Contract Manager",
+      "area": "Legal & Compliance",
+      "tier": "tier0"
+    }
+  },
+  "20.7": {
+    "file": "agents/legal-compliance/paralegal.ts",
+    "exportName": "ParalegalAgent",
+    "meta": {
+      "id": "20.7",
+      "name": "Paralegal",
+      "area": "Legal & Compliance",
+      "tier": "tier0"
+    }
+  }
+}

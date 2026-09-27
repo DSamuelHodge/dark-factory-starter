@@ -3,10 +3,9 @@
 // Defines enterprise architecture standards
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { isolate } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import chief_architect from '../../skills/chief-architect/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import chief_architect from '../../skills/chief-architect/SKILL.md';
 
 /**
  * Chief Architect
@@ -17,10 +16,10 @@ import chief_architect from '../../skills/chief-architect/SKILL.md' with { type:
  */
 export function ChiefArchitectAgent() {
   useModel('anthropic/claude-opus-4-6');
-  useSandbox(isolate());
+  useSandbox(local());
   useSkill(chief_architect);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
-  useTool(...defineMcpTools('gdrive', 'https://drivemcp.googleapis.com/mcp/v1'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
+  useMcpConnection({ name: 'gdrive', url: 'https://drivemcp.googleapis.com/mcp/v1', optional: true });
 
   return `You are the autonomous agent standing in for the human "Chief Architect" role.
 Defines enterprise architecture standards.
@@ -30,7 +29,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(ChiefArchitectAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+ChiefArchitectAgent.agentName = 'chief-architect';
 export const meta = {
   id: '5.1',
   name: 'Chief Architect',

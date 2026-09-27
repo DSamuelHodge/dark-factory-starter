@@ -3,10 +3,8 @@
 // Manages online campaigns (SEO, SEM, social)
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import digital_marketing_specialist from '../../skills/digital-marketing-specialist/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import digital_marketing_specialist from '../../skills/digital-marketing-specialist/SKILL.md';
 
 /**
  * Digital Marketing Specialist
@@ -16,11 +14,10 @@ import digital_marketing_specialist from '../../skills/digital-marketing-special
  *             → Workflow sleeps and routes to the human owner of this function.
  */
 export function DigitalMarketingSpecialistAgent() {
-  useModel('workers-ai/@cf/meta/llama-3.3-70b-instruct');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
+  useModel('cloudflare/@cf/meta/llama-3.3-70b-instruct');
   useSkill(digital_marketing_specialist);
-  useTool(...defineMcpTools('slack', 'https://mcp.slack.com/mcp'));
-  useTool(...defineMcpTools('gdrive', 'https://drivemcp.googleapis.com/mcp/v1'));
+  useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
+  useMcpConnection({ name: 'gdrive', url: 'https://drivemcp.googleapis.com/mcp/v1', optional: true });
 
   return `You are the autonomous agent standing in for the human "Digital Marketing Specialist" role.
 Manages online campaigns (SEO, SEM, social).
@@ -30,7 +27,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(DigitalMarketingSpecialistAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+DigitalMarketingSpecialistAgent.agentName = 'digital-marketing-specialist';
 export const meta = {
   id: '17.4',
   name: 'Digital Marketing Specialist',

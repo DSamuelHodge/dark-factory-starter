@@ -3,10 +3,8 @@
 // Creates animations and transitions
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import motion_designer from '../../skills/motion-designer/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import motion_designer from '../../skills/motion-designer/SKILL.md';
 
 /**
  * Motion Designer
@@ -17,9 +15,8 @@ import motion_designer from '../../skills/motion-designer/SKILL.md' with { type:
  */
 export function MotionDesignerAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
   useSkill(motion_designer);
-  useTool(...defineMcpTools('figma', 'https://mcp.figma.com/mcp'));
+  useMcpConnection({ name: 'figma', url: 'https://mcp.figma.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Motion Designer" role.
 Creates animations and transitions.
@@ -29,7 +26,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(MotionDesignerAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+MotionDesignerAgent.agentName = 'motion-designer';
 export const meta = {
   id: '4.6',
   name: 'Motion Designer',

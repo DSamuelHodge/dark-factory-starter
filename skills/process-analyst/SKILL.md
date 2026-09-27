@@ -1,5 +1,6 @@
 ---
 name: process-analyst
+description: Autonomous counterpart to the human "Process Analyst" role (Business Analysis & Requirements).
 role_id: 2.4
 area: Business Analysis & Requirements
 ---

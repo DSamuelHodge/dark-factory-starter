@@ -1,5 +1,6 @@
 ---
 name: chief-architect
+description: Autonomous counterpart to the human "Chief Architect" role (Software Architecture).
 role_id: 5.1
 area: Software Architecture
 ---

@@ -1,5 +1,6 @@
 ---
 name: paralegal
+description: Autonomous counterpart to the human "Paralegal" role (Legal & Compliance).
 role_id: 20.7
 area: Legal & Compliance
 ---

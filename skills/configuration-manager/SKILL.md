@@ -1,5 +1,6 @@
 ---
 name: configuration-manager
+description: Autonomous counterpart to the human "Configuration Manager" role (DevOps & Infrastructure).
 role_id: 10.9
 area: DevOps & Infrastructure
 ---

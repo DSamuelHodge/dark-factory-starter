@@ -1,5 +1,6 @@
 ---
 name: design-director
+description: Autonomous counterpart to the human "Design Director" role (Design).
 role_id: 4.1
 area: Design
 ---

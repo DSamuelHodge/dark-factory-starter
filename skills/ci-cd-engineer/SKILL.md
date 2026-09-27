@@ -1,5 +1,6 @@
 ---
 name: ci-cd-engineer
+description: Autonomous counterpart to the human "CI/CD Engineer" role (DevOps & Infrastructure).
 role_id: 10.8
 area: DevOps & Infrastructure
 ---

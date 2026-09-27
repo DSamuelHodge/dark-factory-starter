@@ -1,5 +1,6 @@
 ---
 name: cloud-architect
+description: Autonomous counterpart to the human "Cloud Architect" role (Software Architecture).
 role_id: 5.5
 area: Software Architecture
 ---

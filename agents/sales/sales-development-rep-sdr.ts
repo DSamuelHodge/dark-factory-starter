@@ -3,10 +3,8 @@
 // Qualifies leads and books meetings
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import sales_development_rep_sdr from '../../skills/sales-development-rep-sdr/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import sales_development_rep_sdr from '../../skills/sales-development-rep-sdr/SKILL.md';
 
 /**
  * Sales Development Rep (SDR)
@@ -17,10 +15,9 @@ import sales_development_rep_sdr from '../../skills/sales-development-rep-sdr/SK
  */
 export function SalesDevelopmentRepSDRAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
   useSkill(sales_development_rep_sdr);
-  useTool(...defineMcpTools('slack', 'https://mcp.slack.com/mcp'));
-  useTool(...defineMcpTools('gdrive', 'https://drivemcp.googleapis.com/mcp/v1'));
+  useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
+  useMcpConnection({ name: 'gdrive', url: 'https://drivemcp.googleapis.com/mcp/v1', optional: true });
 
   return `You are the autonomous agent standing in for the human "Sales Development Rep (SDR)" role.
 Qualifies leads and books meetings.
@@ -30,7 +27,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(SalesDevelopmentRepSDRAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+SalesDevelopmentRepSDRAgent.agentName = 'sales-development-rep-sdr';
 export const meta = {
   id: '18.2',
   name: 'Sales Development Rep (SDR)',

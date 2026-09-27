@@ -4,8 +4,19 @@
 // area-config.json (tier/sandbox/model/MCP mapping) and emits, per role:
 //   agents/<area-slug>/<role-slug>.ts   — a Flue agent definition
 //   skills/<role-slug>/SKILL.md         — the Markdown skill it loads
-// plus registry.ts (id -> agent import map) and wrangler.toml
+// plus registry.ts (id -> agent import map, for bundler/app use),
+// registry.json (id -> agent file map, for plain-Node use by
+// scripts/run-agent.mjs, which cannot import .ts), and wrangler.toml
 // (Durable Object + Workflow bindings for the Cloudflare Agent Cloud layer).
+//
+// The emitted agent code targets the VERIFIED @flue/runtime 2.1.x API
+// (each shape below was run end-to-end through `flue run --json`):
+//   - plain agent function + 'use agent' directive (no createAgent wrapper)
+//   - plain SKILL.md specifier import + useSkill() (no `with` attribute)
+//   - useMcpConnection({ name, url }) inline (no defineMcpTools helper)
+//   - sandboxed tiers use useSandbox(local()) from '@flue/runtime/node';
+//     the deploy target re-maps these via the vite flue() plugin config
+//   - durable identity pinned with the agentName static (rename-safe DB keys)
 
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
@@ -30,6 +41,7 @@ const mcpUrlFor = (name) =>
   ({
     github: "https://mcp.github.com/mcp",
     figma: "https://mcp.figma.com/mcp",
+    linear: "https://mcp.linear.app/mcp", // per Flue's own MCP guide example
     jira: "https://mcp.atlassian.com/jira/mcp",
     slack: "https://mcp.slack.com/mcp",
     discord: "https://mcp.discord.com/mcp",
@@ -56,8 +68,11 @@ function tierComment(tier) {
 }
 
 function buildSkillMd(role, cfg) {
+  // Frontmatter `name` must match the directory name and `description` is
+  // required — both verified against @flue/runtime 2.1.x skill packaging.
   return `---
 name: ${slugify(role.name)}
+description: Autonomous counterpart to the human "${role.name}" role (${role.area}).
 role_id: ${role.id}
 area: ${role.area}
 ---
@@ -110,11 +125,20 @@ judgment, terminology, or output format specific to this role.
 
 function buildAgentTs(role, cfg, isLeadership) {
   const roleFnName = pascal(role.name) + "Agent";
-  const skillVar = slugify(role.name).replace(/-/g, "_");
-  const importsFromMcp = cfg.mcp
+  const roleSlug = slugify(role.name);
+  const skillVar = roleSlug.replace(/-/g, "_");
+  // Tier 0 (workspace, no code execution) gets NO useSandbox call — the
+  // agent runs model + skill + MCP tools only. Tier 1 / container roles run
+  // locally under useSandbox(local()); the Cloudflare deploy target re-maps
+  // these to isolates/containers via the vite flue() plugin config.
+  const sandboxed = cfg.tier === "tier1" || cfg.tier === "container";
+  const mcpLines = cfg.mcp
     .map(
       (m) =>
-        `useTool(...defineMcpTools('${m}', '${mcpUrlFor(m)}'));`
+        // optional: true degrades gracefully (tools reported unavailable)
+        // when a key or route for that server is missing, instead of
+        // failing the run and retrying on the next message.
+        `useMcpConnection({ name: '${m}', url: '${mcpUrlFor(m)}', optional: true });`
     )
     .join("\n  ");
 
@@ -125,16 +149,12 @@ function buildAgentTs(role, cfg, isLeadership) {
 // ${role.desc}
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { ${
-    cfg.tier === "container"
-      ? "container"
-      : cfg.tier === "tier1"
-      ? "isolate"
-      : "workspace"
-  } } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import ${skillVar} from '../../skills/${slugify(role.name)}/SKILL.md' with { type: 'skill' };
+import { useModel, ${
+    sandboxed ? "useSandbox, " : ""
+  }useSkill, useMcpConnection } from '@flue/runtime';${
+    sandboxed ? "\nimport { local } from '@flue/runtime/node';" : ""
+  }
+import ${skillVar} from '../../skills/${roleSlug}/SKILL.md';
 
 /**
  * ${role.name}
@@ -144,16 +164,11 @@ import ${skillVar} from '../../skills/${slugify(role.name)}/SKILL.md' with { typ
  *             → Workflow sleeps and routes to the human owner of this function.
  */
 export function ${roleFnName}() {
-  useModel('${cfg.model}');
-  useSandbox(${
-    cfg.tier === "container"
-      ? "container({ ephemeral: true })"
-      : cfg.tier === "tier1"
-      ? "isolate()"
-      : "workspace({ store: 'sqlite+r2' })"
-  });
+  useModel('${cfg.model}');${
+    sandboxed ? "\n  useSandbox(local());" : ""
+  }
   useSkill(${skillVar});
-  ${importsFromMcp || "// no MCP tools bound for this role"}
+  ${mcpLines || "// no MCP servers bound for this role"}
 
   return \`You are the autonomous agent standing in for the human "${role.name}" role.
 ${role.desc}.
@@ -163,7 +178,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.\`;
 }
 
-export const agent = createAgent(${roleFnName});
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+${roleFnName}.agentName = '${roleSlug}';
 export const meta = {
   id: '${role.id}',
   name: '${role.name}',
@@ -226,12 +245,15 @@ async function main() {
 
   // registry.ts — single lookup table the orchestrator/Workflow uses to
   // resolve a role id to its live agent, mirroring the HTML's
-  // "150+ agents across 20 functional areas" explorer.
+  // "150+ agents across 20 functional areas" explorer. Statically imports
+  // the agent functions (valid Flue: hooks only run at render, so importing
+  // is side-effect free); plain-Node consumers must use registry.json
+  // instead, because they cannot import .ts or SKILL.md.
   const registryTs = `// AUTO-GENERATED by scripts/generate-agents.mjs — do not hand-edit.
 ${registryEntries
   .map(
     (e, i) =>
-      `import { agent as agent_${i}, meta as meta_${i} } from '${e.importPath}';`
+      `import { ${e.exportName} as agent_${i}, meta as meta_${i} } from '${e.importPath}';`
   )
   .join("\n")}
 
@@ -248,6 +270,27 @@ export function getAgentByRoleId(id) {
 }
 `;
   await writeFile(path.join(ROOT, "registry.ts"), registryTs);
+
+  // registry.json — same map as plain JSON (file path + export name + meta)
+  // for scripts/run-agent.mjs, which runs under plain Node and spawns
+  // `flue run <file>` instead of importing the agent module itself.
+  const registryJson = {};
+  for (const e of registryEntries) {
+    registryJson[e.id] = {
+      file: e.importPath.replace(/^\.\//, ""),
+      exportName: e.exportName,
+      meta: {
+        id: e.id,
+        name: e.name,
+        area: e.area,
+        tier: e.tier,
+      },
+    };
+  }
+  await writeFile(
+    path.join(ROOT, "registry.json"),
+    JSON.stringify(registryJson, null, 2)
+  );
 
   // wrangler.toml — one Durable Object namespace per functional area
   // (150 agents, 20 areas => 20 DO classes, each instantiated per-session),
@@ -305,10 +348,13 @@ GOVERNANCE_BUDGET_CEILING_USD = "10000"
   // `./skills.sh generate`.
   const roleLabelMap = {};
   for (const role of roles) {
-    roleLabelMap[`role/${slugify(role.name)}`] = {
+    const areaSlug = slugify(role.area);
+    const roleSlug = slugify(role.name);
+    roleLabelMap[`role/${roleSlug}`] = {
       roleId: role.id,
       name: role.name,
       area: role.area,
+      file: `agents/${areaSlug}/${roleSlug}.ts`,
     };
   }
   await writeFile(
@@ -319,7 +365,7 @@ GOVERNANCE_BUDGET_CEILING_USD = "10000"
   console.log(`Generated ${registryEntries.length} agents across ${seenAreas.size} functional areas.`);
   console.log(`  agents/   — ${registryEntries.length} Flue agent .ts files`);
   console.log(`  skills/   — ${registryEntries.length} SKILL.md files`);
-  console.log(`  registry.ts, wrangler.toml, role-label-map.json written to project root.`);
+  console.log(`  registry.ts, registry.json, wrangler.toml, role-label-map.json written to project root.`);
 }
 
 main().catch((err) => {

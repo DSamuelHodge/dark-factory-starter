@@ -3,10 +3,9 @@
 // Designs application structure and patterns
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { isolate } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import application_architect from '../../skills/application-architect/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import application_architect from '../../skills/application-architect/SKILL.md';
 
 /**
  * Application Architect
@@ -17,10 +16,10 @@ import application_architect from '../../skills/application-architect/SKILL.md' 
  */
 export function ApplicationArchitectAgent() {
   useModel('anthropic/claude-opus-4-6');
-  useSandbox(isolate());
+  useSandbox(local());
   useSkill(application_architect);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
-  useTool(...defineMcpTools('gdrive', 'https://drivemcp.googleapis.com/mcp/v1'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
+  useMcpConnection({ name: 'gdrive', url: 'https://drivemcp.googleapis.com/mcp/v1', optional: true });
 
   return `You are the autonomous agent standing in for the human "Application Architect" role.
 Designs application structure and patterns.
@@ -30,7 +29,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(ApplicationArchitectAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+ApplicationArchitectAgent.agentName = 'application-architect';
 export const meta = {
   id: '5.3',
   name: 'Application Architect',

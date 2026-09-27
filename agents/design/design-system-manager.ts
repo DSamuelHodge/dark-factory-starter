@@ -3,10 +3,8 @@
 // Maintains component libraries and design tokens
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import design_system_manager from '../../skills/design-system-manager/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import design_system_manager from '../../skills/design-system-manager/SKILL.md';
 
 /**
  * Design System Manager
@@ -17,9 +15,8 @@ import design_system_manager from '../../skills/design-system-manager/SKILL.md' 
  */
 export function DesignSystemManagerAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
   useSkill(design_system_manager);
-  useTool(...defineMcpTools('figma', 'https://mcp.figma.com/mcp'));
+  useMcpConnection({ name: 'figma', url: 'https://mcp.figma.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Design System Manager" role.
 Maintains component libraries and design tokens.
@@ -29,7 +26,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(DesignSystemManagerAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+DesignSystemManagerAgent.agentName = 'design-system-manager';
 export const meta = {
   id: '4.7',
   name: 'Design System Manager',

@@ -1,5 +1,6 @@
 ---
 name: competitive-analyst
+description: Autonomous counterpart to the human "Competitive Analyst" role (Product Management & Strategy).
 role_id: 1.6
 area: Product Management & Strategy
 ---

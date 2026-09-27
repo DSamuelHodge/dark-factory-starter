@@ -1,5 +1,6 @@
 ---
 name: release-manager
+description: Autonomous counterpart to the human "Release Manager" role (DevOps & Infrastructure).
 role_id: 10.6
 area: DevOps & Infrastructure
 ---

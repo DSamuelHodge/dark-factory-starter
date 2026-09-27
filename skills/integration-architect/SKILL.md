@@ -1,5 +1,6 @@
 ---
 name: integration-architect
+description: Autonomous counterpart to the human "Integration Architect" role (Software Architecture).
 role_id: 5.6
 area: Software Architecture
 ---

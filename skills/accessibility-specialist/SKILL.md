@@ -1,5 +1,6 @@
 ---
 name: accessibility-specialist
+description: Autonomous counterpart to the human "Accessibility Specialist" role (User Research & Experience).
 role_id: 3.4
 area: User Research & Experience
 ---

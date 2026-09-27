@@ -1,5 +1,6 @@
 ---
 name: design-system-manager
+description: Autonomous counterpart to the human "Design System Manager" role (Design).
 role_id: 4.7
 area: Design
 ---

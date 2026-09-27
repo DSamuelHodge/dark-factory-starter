@@ -1,5 +1,6 @@
 ---
 name: business-analyst
+description: Autonomous counterpart to the human "Business Analyst" role (Business Analysis & Requirements).
 role_id: 2.2
 area: Business Analysis & Requirements
 ---

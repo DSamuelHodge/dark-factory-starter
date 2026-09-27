@@ -1,5 +1,6 @@
 ---
 name: account-manager
+description: Autonomous counterpart to the human "Account Manager" role (Sales).
 role_id: 18.7
 area: Sales
 ---

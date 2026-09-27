@@ -1,5 +1,6 @@
 ---
 name: mobile-ui-ux-developer
+description: Autonomous counterpart to the human "Mobile UI/UX Developer" role (Mobile Development).
 role_id: 9.6
 area: Mobile Development
 ---

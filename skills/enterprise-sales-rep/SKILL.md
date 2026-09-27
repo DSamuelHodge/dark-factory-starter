@@ -1,5 +1,6 @@
 ---
 name: enterprise-sales-rep
+description: Autonomous counterpart to the human "Enterprise Sales Rep" role (Sales).
 role_id: 18.4
 area: Sales
 ---

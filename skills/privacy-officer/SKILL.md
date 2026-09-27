@@ -1,5 +1,6 @@
 ---
 name: privacy-officer
+description: Autonomous counterpart to the human "Privacy Officer" role (Legal & Compliance).
 role_id: 20.3
 area: Legal & Compliance
 ---

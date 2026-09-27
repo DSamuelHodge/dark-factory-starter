@@ -1,5 +1,6 @@
 ---
 name: backend-lead-principal
+description: Autonomous counterpart to the human "Backend Lead/Principal" role (Backend Development).
 role_id: 7.1
 area: Backend Development
 ---

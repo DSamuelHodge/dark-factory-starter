@@ -1,5 +1,6 @@
 ---
 name: backend-developer
+description: Autonomous counterpart to the human "Backend Developer" role (Backend Development).
 role_id: 7.2
 area: Backend Development
 ---

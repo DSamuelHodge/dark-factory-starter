@@ -3,10 +3,8 @@
 // Sets overall marketing strategy
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import chief_marketing_officer from '../../skills/chief-marketing-officer/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import chief_marketing_officer from '../../skills/chief-marketing-officer/SKILL.md';
 
 /**
  * Chief Marketing Officer
@@ -16,11 +14,10 @@ import chief_marketing_officer from '../../skills/chief-marketing-officer/SKILL.
  *             → Workflow sleeps and routes to the human owner of this function.
  */
 export function ChiefMarketingOfficerAgent() {
-  useModel('workers-ai/@cf/meta/llama-3.3-70b-instruct');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
+  useModel('cloudflare/@cf/meta/llama-3.3-70b-instruct');
   useSkill(chief_marketing_officer);
-  useTool(...defineMcpTools('slack', 'https://mcp.slack.com/mcp'));
-  useTool(...defineMcpTools('gdrive', 'https://drivemcp.googleapis.com/mcp/v1'));
+  useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
+  useMcpConnection({ name: 'gdrive', url: 'https://drivemcp.googleapis.com/mcp/v1', optional: true });
 
   return `You are the autonomous agent standing in for the human "Chief Marketing Officer" role.
 Sets overall marketing strategy.
@@ -30,7 +27,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(ChiefMarketingOfficerAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+ChiefMarketingOfficerAgent.agentName = 'chief-marketing-officer';
 export const meta = {
   id: '17.1',
   name: 'Chief Marketing Officer',

@@ -1,5 +1,6 @@
 ---
 name: pmo-analyst
+description: Autonomous counterpart to the human "PMO Analyst" role (Project Management).
 role_id: 15.6
 area: Project Management
 ---

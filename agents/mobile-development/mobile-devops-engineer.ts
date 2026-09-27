@@ -3,10 +3,9 @@
 // Manages mobile CI/CD and app store releases
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { container } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import mobile_devops_engineer from '../../skills/mobile-devops-engineer/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import mobile_devops_engineer from '../../skills/mobile-devops-engineer/SKILL.md';
 
 /**
  * Mobile DevOps Engineer
@@ -17,9 +16,9 @@ import mobile_devops_engineer from '../../skills/mobile-devops-engineer/SKILL.md
  */
 export function MobileDevOpsEngineerAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(container({ ephemeral: true }));
+  useSandbox(local());
   useSkill(mobile_devops_engineer);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Mobile DevOps Engineer" role.
 Manages mobile CI/CD and app store releases.
@@ -29,7 +28,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(MobileDevOpsEngineerAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+MobileDevOpsEngineerAgent.agentName = 'mobile-devops-engineer';
 export const meta = {
   id: '9.7',
   name: 'Mobile DevOps Engineer',

@@ -3,10 +3,8 @@
 // Ensures customer satisfaction and retention
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import customer_success_manager from '../../skills/customer-success-manager/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import customer_success_manager from '../../skills/customer-success-manager/SKILL.md';
 
 /**
  * Customer Success Manager
@@ -17,10 +15,9 @@ import customer_success_manager from '../../skills/customer-success-manager/SKIL
  */
 export function CustomerSuccessManagerAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
   useSkill(customer_success_manager);
-  useTool(...defineMcpTools('slack', 'https://mcp.slack.com/mcp'));
-  useTool(...defineMcpTools('gdrive', 'https://drivemcp.googleapis.com/mcp/v1'));
+  useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
+  useMcpConnection({ name: 'gdrive', url: 'https://drivemcp.googleapis.com/mcp/v1', optional: true });
 
   return `You are the autonomous agent standing in for the human "Customer Success Manager" role.
 Ensures customer satisfaction and retention.
@@ -30,7 +27,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(CustomerSuccessManagerAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+CustomerSuccessManagerAgent.agentName = 'customer-success-manager';
 export const meta = {
   id: '18.6',
   name: 'Customer Success Manager',

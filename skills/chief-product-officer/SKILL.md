@@ -1,5 +1,6 @@
 ---
 name: chief-product-officer
+description: Autonomous counterpart to the human "Chief Product Officer" role (Product Management & Strategy).
 role_id: 1.1
 area: Product Management & Strategy
 ---

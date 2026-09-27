@@ -3,10 +3,9 @@
 // Builds and maintains continuous integration pipelines
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { container } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import ci_cd_engineer from '../../skills/ci-cd-engineer/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import ci_cd_engineer from '../../skills/ci-cd-engineer/SKILL.md';
 
 /**
  * CI/CD Engineer
@@ -17,10 +16,10 @@ import ci_cd_engineer from '../../skills/ci-cd-engineer/SKILL.md' with { type: '
  */
 export function CICDEngineerAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(container({ ephemeral: true }));
+  useSandbox(local());
   useSkill(ci_cd_engineer);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
-  useTool(...defineMcpTools('cloudflare', 'https://bindings.mcp.cloudflare.com/mcp'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
+  useMcpConnection({ name: 'cloudflare', url: 'https://bindings.mcp.cloudflare.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "CI/CD Engineer" role.
 Builds and maintains continuous integration pipelines.
@@ -30,7 +29,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(CICDEngineerAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+CICDEngineerAgent.agentName = 'ci-cd-engineer';
 export const meta = {
   id: '10.8',
   name: 'CI/CD Engineer',

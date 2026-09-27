@@ -1,5 +1,6 @@
 ---
 name: security-operations-analyst
+description: Autonomous counterpart to the human "Security Operations Analyst" role (Security & Compliance).
 role_id: 12.8
 area: Security & Compliance
 ---

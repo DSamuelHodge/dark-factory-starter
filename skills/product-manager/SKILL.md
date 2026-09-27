@@ -1,5 +1,6 @@
 ---
 name: product-manager
+description: Autonomous counterpart to the human "Product Manager" role (Product Management & Strategy).
 role_id: 1.2
 area: Product Management & Strategy
 ---

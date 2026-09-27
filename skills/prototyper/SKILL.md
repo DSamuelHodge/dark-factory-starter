@@ -1,5 +1,6 @@
 ---
 name: prototyper
+description: Autonomous counterpart to the human "Prototyper" role (Design).
 role_id: 4.8
 area: Design
 ---

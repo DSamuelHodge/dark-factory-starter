@@ -3,10 +3,9 @@
 // Monitors threats and security incidents
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { container } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import security_analyst from '../../skills/security-analyst/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import security_analyst from '../../skills/security-analyst/SKILL.md';
 
 /**
  * Security Analyst
@@ -17,10 +16,10 @@ import security_analyst from '../../skills/security-analyst/SKILL.md' with { typ
  */
 export function SecurityAnalystAgent() {
   useModel('anthropic/claude-opus-4-6');
-  useSandbox(container({ ephemeral: true }));
+  useSandbox(local());
   useSkill(security_analyst);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
-  useTool(...defineMcpTools('gdrive', 'https://drivemcp.googleapis.com/mcp/v1'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
+  useMcpConnection({ name: 'gdrive', url: 'https://drivemcp.googleapis.com/mcp/v1', optional: true });
 
   return `You are the autonomous agent standing in for the human "Security Analyst" role.
 Monitors threats and security incidents.
@@ -30,7 +29,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(SecurityAnalystAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+SecurityAnalystAgent.agentName = 'security-analyst';
 export const meta = {
   id: '12.5',
   name: 'Security Analyst',

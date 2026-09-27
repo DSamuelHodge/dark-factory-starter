@@ -1,5 +1,6 @@
 ---
 name: product-owner
+description: Autonomous counterpart to the human "Product Owner" role (Product Management & Strategy).
 role_id: 1.4
 area: Product Management & Strategy
 ---

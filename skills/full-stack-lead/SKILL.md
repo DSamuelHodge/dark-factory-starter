@@ -1,5 +1,6 @@
 ---
 name: full-stack-lead
+description: Autonomous counterpart to the human "Full Stack Lead" role (Full Stack Development).
 role_id: 8.1
 area: Full Stack Development
 ---

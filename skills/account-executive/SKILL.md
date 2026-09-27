@@ -1,5 +1,6 @@
 ---
 name: account-executive
+description: Autonomous counterpart to the human "Account Executive" role (Sales).
 role_id: 18.3
 area: Sales
 ---

@@ -1,5 +1,6 @@
 ---
 name: performance-tester
+description: Autonomous counterpart to the human "Performance Tester" role (Quality Assurance & Testing).
 role_id: 11.5
 area: Quality Assurance & Testing
 ---
@@ -42,6 +43,6 @@ judgment, terminology, or output format specific to this role.
 
 ## Notes
 - Runs at **Escalates Tier 1 → Cloudflare Container/Sandbox for full toolchain execution**.
-- Default model: `workers-ai/@cf/meta/llama-3.3-70b-instruct` (swap via `useModel()` — Flue is
+- Default model: `cloudflare/@cf/meta/llama-3.3-70b-instruct` (swap via `useModel()` — Flue is
   model-agnostic; route through AI Gateway for caching/fallback/cost
   tracking).

@@ -1,5 +1,6 @@
 ---
 name: systems-analyst
+description: Autonomous counterpart to the human "Systems Analyst" role (Business Analysis & Requirements).
 role_id: 2.3
 area: Business Analysis & Requirements
 ---

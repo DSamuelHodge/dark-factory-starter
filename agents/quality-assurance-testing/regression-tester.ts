@@ -3,10 +3,9 @@
 // Ensures existing features still work
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { container } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import regression_tester from '../../skills/regression-tester/SKILL.md' with { type: 'skill' };
+import { useModel, useSandbox, useSkill, useMcpConnection } from '@flue/runtime';
+import { local } from '@flue/runtime/node';
+import regression_tester from '../../skills/regression-tester/SKILL.md';
 
 /**
  * Regression Tester
@@ -16,10 +15,10 @@ import regression_tester from '../../skills/regression-tester/SKILL.md' with { t
  *             → Workflow sleeps and routes to the human owner of this function.
  */
 export function RegressionTesterAgent() {
-  useModel('workers-ai/@cf/meta/llama-3.3-70b-instruct');
-  useSandbox(container({ ephemeral: true }));
+  useModel('cloudflare/@cf/meta/llama-3.3-70b-instruct');
+  useSandbox(local());
   useSkill(regression_tester);
-  useTool(...defineMcpTools('github', 'https://mcp.github.com/mcp'));
+  useMcpConnection({ name: 'github', url: 'https://mcp.github.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Regression Tester" role.
 Ensures existing features still work.
@@ -29,7 +28,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(RegressionTesterAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+RegressionTesterAgent.agentName = 'regression-tester';
 export const meta = {
   id: '11.9',
   name: 'Regression Tester',

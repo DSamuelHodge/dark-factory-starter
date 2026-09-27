@@ -1,5 +1,6 @@
 ---
 name: agile-coach
+description: Autonomous counterpart to the human "Agile Coach" role (Agile & Scrum).
 role_id: 16.1
 area: Agile & Scrum
 ---

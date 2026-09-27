@@ -1,5 +1,6 @@
 ---
 name: web-accessibility-developer
+description: Autonomous counterpart to the human "Web Accessibility Developer" role (Frontend Development).
 role_id: 6.6
 area: Frontend Development
 ---

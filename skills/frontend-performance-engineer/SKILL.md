@@ -1,5 +1,6 @@
 ---
 name: frontend-performance-engineer
+description: Autonomous counterpart to the human "Frontend Performance Engineer" role (Frontend Development).
 role_id: 6.5
 area: Frontend Development
 ---

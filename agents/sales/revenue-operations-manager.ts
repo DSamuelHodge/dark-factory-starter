@@ -3,10 +3,8 @@
 // Aligns sales, marketing, and customer success
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import revenue_operations_manager from '../../skills/revenue-operations-manager/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import revenue_operations_manager from '../../skills/revenue-operations-manager/SKILL.md';
 
 /**
  * Revenue Operations Manager
@@ -17,10 +15,9 @@ import revenue_operations_manager from '../../skills/revenue-operations-manager/
  */
 export function RevenueOperationsManagerAgent() {
   useModel('anthropic/claude-sonnet-4-6');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
   useSkill(revenue_operations_manager);
-  useTool(...defineMcpTools('slack', 'https://mcp.slack.com/mcp'));
-  useTool(...defineMcpTools('gdrive', 'https://drivemcp.googleapis.com/mcp/v1'));
+  useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
+  useMcpConnection({ name: 'gdrive', url: 'https://drivemcp.googleapis.com/mcp/v1', optional: true });
 
   return `You are the autonomous agent standing in for the human "Revenue Operations Manager" role.
 Aligns sales, marketing, and customer success.
@@ -30,7 +27,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(RevenueOperationsManagerAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+RevenueOperationsManagerAgent.agentName = 'revenue-operations-manager';
 export const meta = {
   id: '18.9',
   name: 'Revenue Operations Manager',

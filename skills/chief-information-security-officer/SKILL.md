@@ -1,5 +1,6 @@
 ---
 name: chief-information-security-officer
+description: Autonomous counterpart to the human "Chief Information Security Officer" role (Security & Compliance).
 role_id: 12.1
 area: Security & Compliance
 ---

@@ -1,5 +1,6 @@
 ---
 name: ml-engineer
+description: Autonomous counterpart to the human "ML Engineer" role (Data Engineering & Analytics).
 role_id: 13.8
 area: Data Engineering & Analytics
 ---

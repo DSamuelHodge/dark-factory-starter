@@ -1,5 +1,6 @@
 ---
 name: visual-designer
+description: Autonomous counterpart to the human "Visual Designer" role (Design).
 role_id: 4.5
 area: Design
 ---

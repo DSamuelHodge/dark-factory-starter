@@ -1,5 +1,6 @@
 ---
 name: compliance-manager
+description: Autonomous counterpart to the human "Compliance Manager" role (Legal & Compliance).
 role_id: 20.5
 area: Legal & Compliance
 ---

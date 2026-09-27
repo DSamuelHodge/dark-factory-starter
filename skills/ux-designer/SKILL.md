@@ -1,5 +1,6 @@
 ---
 name: ux-designer
+description: Autonomous counterpart to the human "UX Designer" role (Design).
 role_id: 4.2
 area: Design
 ---

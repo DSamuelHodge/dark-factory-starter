@@ -1,5 +1,6 @@
 ---
 name: requirements-engineer
+description: Autonomous counterpart to the human "Requirements Engineer" role (Business Analysis & Requirements).
 role_id: 2.6
 area: Business Analysis & Requirements
 ---

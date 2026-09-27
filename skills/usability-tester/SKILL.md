@@ -1,5 +1,6 @@
 ---
 name: usability-tester
+description: Autonomous counterpart to the human "Usability Tester" role (User Research & Experience).
 role_id: 3.6
 area: User Research & Experience
 ---

@@ -1,5 +1,6 @@
 ---
 name: etl-developer
+description: Autonomous counterpart to the human "ETL Developer" role (Data Engineering & Analytics).
 role_id: 13.4
 area: Data Engineering & Analytics
 ---

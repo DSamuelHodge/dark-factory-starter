@@ -1,5 +1,6 @@
 ---
 name: javascript-typescript-developer
+description: Autonomous counterpart to the human "JavaScript/TypeScript Developer" role (Frontend Development).
 role_id: 6.3
 area: Frontend Development
 ---

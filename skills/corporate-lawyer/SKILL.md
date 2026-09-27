@@ -1,5 +1,6 @@
 ---
 name: corporate-lawyer
+description: Autonomous counterpart to the human "Corporate Lawyer" role (Legal & Compliance).
 role_id: 20.2
 area: Legal & Compliance
 ---

@@ -1,5 +1,6 @@
 ---
 name: domain-expert-sme
+description: Autonomous counterpart to the human "Domain Expert/SME" role (Business Analysis & Requirements).
 role_id: 2.5
 area: Business Analysis & Requirements
 ---

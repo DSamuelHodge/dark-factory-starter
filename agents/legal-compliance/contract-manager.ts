@@ -3,10 +3,8 @@
 // Manages contract lifecycle and negotiations
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import contract_manager from '../../skills/contract-manager/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import contract_manager from '../../skills/contract-manager/SKILL.md';
 
 /**
  * Contract Manager
@@ -17,9 +15,8 @@ import contract_manager from '../../skills/contract-manager/SKILL.md' with { typ
  */
 export function ContractManagerAgent() {
   useModel('anthropic/claude-opus-4-6');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
   useSkill(contract_manager);
-  useTool(...defineMcpTools('gdrive', 'https://drivemcp.googleapis.com/mcp/v1'));
+  useMcpConnection({ name: 'gdrive', url: 'https://drivemcp.googleapis.com/mcp/v1', optional: true });
 
   return `You are the autonomous agent standing in for the human "Contract Manager" role.
 Manages contract lifecycle and negotiations.
@@ -29,7 +26,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(ContractManagerAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+ContractManagerAgent.agentName = 'contract-manager';
 export const meta = {
   id: '20.6',
   name: 'Contract Manager',

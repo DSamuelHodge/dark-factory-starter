@@ -3,10 +3,8 @@
 // Manages backlog and sprint priorities in agile teams
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import product_owner from '../../skills/product-owner/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import product_owner from '../../skills/product-owner/SKILL.md';
 
 /**
  * Product Owner
@@ -17,10 +15,9 @@ import product_owner from '../../skills/product-owner/SKILL.md' with { type: 'sk
  */
 export function ProductOwnerAgent() {
   useModel('anthropic/claude-opus-4-6');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
   useSkill(product_owner);
-  useTool(...defineMcpTools('jira', 'https://mcp.atlassian.com/jira/mcp'));
-  useTool(...defineMcpTools('slack', 'https://mcp.slack.com/mcp'));
+  useMcpConnection({ name: 'jira', url: 'https://mcp.atlassian.com/jira/mcp', optional: true });
+  useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Product Owner" role.
 Manages backlog and sprint priorities in agile teams.
@@ -30,7 +27,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(ProductOwnerAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+ProductOwnerAgent.agentName = 'product-owner';
 export const meta = {
   id: '1.4',
   name: 'Product Owner',

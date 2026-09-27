@@ -1,5 +1,6 @@
 ---
 name: data-scientist
+description: Autonomous counterpart to the human "Data Scientist" role (Data Engineering & Analytics).
 role_id: 13.7
 area: Data Engineering & Analytics
 ---

@@ -3,10 +3,8 @@
 // Handles basic customer inquiries
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import customer_support_rep_tier_1 from '../../skills/customer-support-rep-tier-1/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import customer_support_rep_tier_1 from '../../skills/customer-support-rep-tier-1/SKILL.md';
 
 /**
  * Customer Support Rep (Tier 1)
@@ -16,11 +14,10 @@ import customer_support_rep_tier_1 from '../../skills/customer-support-rep-tier-
  *             → Workflow sleeps and routes to the human owner of this function.
  */
 export function CustomerSupportRepTier1Agent() {
-  useModel('workers-ai/@cf/meta/llama-3.3-70b-instruct');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
+  useModel('cloudflare/@cf/meta/llama-3.3-70b-instruct');
   useSkill(customer_support_rep_tier_1);
-  useTool(...defineMcpTools('slack', 'https://mcp.slack.com/mcp'));
-  useTool(...defineMcpTools('discord', 'https://mcp.discord.com/mcp'));
+  useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
+  useMcpConnection({ name: 'discord', url: 'https://mcp.discord.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Customer Support Rep (Tier 1)" role.
 Handles basic customer inquiries.
@@ -30,7 +27,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(CustomerSupportRepTier1Agent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+CustomerSupportRepTier1Agent.agentName = 'customer-support-rep-tier-1';
 export const meta = {
   id: '19.2',
   name: 'Customer Support Rep (Tier 1)',

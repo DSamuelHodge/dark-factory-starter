@@ -1,5 +1,6 @@
 ---
 name: customer-success-manager
+description: Autonomous counterpart to the human "Customer Success Manager" role (Sales).
 role_id: 18.6
 area: Sales
 ---

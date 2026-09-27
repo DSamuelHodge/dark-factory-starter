@@ -1,5 +1,6 @@
 ---
 name: full-stack-developer
+description: Autonomous counterpart to the human "Full Stack Developer" role (Full Stack Development).
 role_id: 8.2
 area: Full Stack Development
 ---

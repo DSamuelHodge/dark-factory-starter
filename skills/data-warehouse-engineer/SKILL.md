@@ -1,5 +1,6 @@
 ---
 name: data-warehouse-engineer
+description: Autonomous counterpart to the human "Data Warehouse Engineer" role (Data Engineering & Analytics).
 role_id: 13.3
 area: Data Engineering & Analytics
 ---

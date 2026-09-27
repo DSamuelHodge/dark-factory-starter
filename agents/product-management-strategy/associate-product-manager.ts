@@ -3,10 +3,8 @@
 // Supports PM with research, analysis, and documentation
 'use agent';
 
-import { useModel, useSandbox, useSkill, useTool, createAgent } from '@flue/runtime';
-import { workspace } from '@flue/runtime/cloudflare';
-import { defineMcpTools } from '@flue/runtime/mcp';
-import associate_product_manager from '../../skills/associate-product-manager/SKILL.md' with { type: 'skill' };
+import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
+import associate_product_manager from '../../skills/associate-product-manager/SKILL.md';
 
 /**
  * Associate Product Manager
@@ -17,10 +15,9 @@ import associate_product_manager from '../../skills/associate-product-manager/SK
  */
 export function AssociateProductManagerAgent() {
   useModel('anthropic/claude-opus-4-6');
-  useSandbox(workspace({ store: 'sqlite+r2' }));
   useSkill(associate_product_manager);
-  useTool(...defineMcpTools('jira', 'https://mcp.atlassian.com/jira/mcp'));
-  useTool(...defineMcpTools('slack', 'https://mcp.slack.com/mcp'));
+  useMcpConnection({ name: 'jira', url: 'https://mcp.atlassian.com/jira/mcp', optional: true });
+  useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
 
   return `You are the autonomous agent standing in for the human "Associate Product Manager" role.
 Supports PM with research, analysis, and documentation.
@@ -30,7 +27,11 @@ budget, production incident, customer-facing comms, major architecture
 change), pause and escalate to the human owner rather than proceeding.`;
 }
 
-export const agent = createAgent(AssociateProductManagerAgent);
+// Pinned durable identity: renaming the function later won't orphan the
+// conversation storage keyed by agent name. The meta export is this
+// repo's own bridge convention (consumed by scripts/run-agent.mjs),
+// not Flue API.
+AssociateProductManagerAgent.agentName = 'associate-product-manager';
 export const meta = {
   id: '1.3',
   name: 'Associate Product Manager',

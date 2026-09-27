@@ -9,14 +9,14 @@
   "Full Stack Development": { "tier": "container", "sandbox": "cf-container", "model": "anthropic/claude-sonnet-4-6", "mcp": ["github", "figma"], "workspace": "sqlite+r2" },
   "Mobile Development": { "tier": "container", "sandbox": "cf-container", "model": "anthropic/claude-sonnet-4-6", "mcp": ["github"], "workspace": "sqlite+r2" },
   "DevOps & Infrastructure": { "tier": "container", "sandbox": "cf-container", "model": "anthropic/claude-sonnet-4-6", "mcp": ["github", "cloudflare"], "workspace": "sqlite+r2" },
-  "Quality Assurance & Testing": { "tier": "container", "sandbox": "cf-sandbox-ephemeral", "model": "workers-ai/@cf/meta/llama-3.3-70b-instruct", "mcp": ["github"], "workspace": "sqlite+r2" },
+  "Quality Assurance & Testing": { "tier": "container", "sandbox": "cf-sandbox-ephemeral", "model": "cloudflare/@cf/meta/llama-3.3-70b-instruct", "mcp": ["github"], "workspace": "sqlite+r2" },
   "Security & Compliance": { "tier": "container", "sandbox": "cf-sandbox-ephemeral", "model": "anthropic/claude-opus-4-6", "mcp": ["github", "gdrive"], "workspace": "sqlite+r2" },
   "Data Engineering & Analytics": { "tier": "container", "sandbox": "cf-container", "model": "anthropic/claude-sonnet-4-6", "mcp": ["github", "gdrive"], "workspace": "sqlite+r2" },
-  "Documentation & Technical Writing": { "tier": "tier0", "sandbox": "none", "model": "workers-ai/@cf/meta/llama-3.3-70b-instruct", "mcp": ["github", "gdrive"], "workspace": "sqlite+r2" },
+  "Documentation & Technical Writing": { "tier": "tier0", "sandbox": "none", "model": "cloudflare/@cf/meta/llama-3.3-70b-instruct", "mcp": ["github", "gdrive"], "workspace": "sqlite+r2" },
   "Project Management": { "tier": "tier0", "sandbox": "none", "model": "anthropic/claude-sonnet-4-6", "mcp": ["jira", "slack"], "workspace": "sqlite+r2" },
   "Agile & Scrum": { "tier": "tier0", "sandbox": "none", "model": "anthropic/claude-sonnet-4-6", "mcp": ["jira", "slack"], "workspace": "sqlite+r2" },
-  "Marketing": { "tier": "tier0", "sandbox": "none", "model": "workers-ai/@cf/meta/llama-3.3-70b-instruct", "mcp": ["slack", "gdrive"], "workspace": "sqlite+r2" },
+  "Marketing": { "tier": "tier0", "sandbox": "none", "model": "cloudflare/@cf/meta/llama-3.3-70b-instruct", "mcp": ["slack", "gdrive"], "workspace": "sqlite+r2" },
   "Sales": { "tier": "tier0", "sandbox": "none", "model": "anthropic/claude-sonnet-4-6", "mcp": ["slack", "gdrive"], "workspace": "sqlite+r2" },
-  "Customer Support": { "tier": "tier0", "sandbox": "none", "model": "workers-ai/@cf/meta/llama-3.3-70b-instruct", "mcp": ["slack", "discord"], "workspace": "sqlite+r2" },
+  "Customer Support": { "tier": "tier0", "sandbox": "none", "model": "cloudflare/@cf/meta/llama-3.3-70b-instruct", "mcp": ["slack", "discord"], "workspace": "sqlite+r2" },
   "Legal & Compliance": { "tier": "tier0", "sandbox": "none", "model": "anthropic/claude-opus-4-6", "mcp": ["gdrive"], "workspace": "sqlite+r2" }
 }
