@@ -299,10 +299,27 @@ GOVERNANCE_BUDGET_CEILING_USD = "10000"
 `;
   await writeFile(path.join(ROOT, "wrangler.toml"), wranglerToml);
 
+  // role-label-map.json — deterministic Linear-label -> role-id lookup used
+  // by server/dispatch.mjs (see symphony-integration/). Generated here, not
+  // hand-maintained, so it can't drift from roles.json on the next
+  // `./skills.sh generate`.
+  const roleLabelMap = {};
+  for (const role of roles) {
+    roleLabelMap[`role/${slugify(role.name)}`] = {
+      roleId: role.id,
+      name: role.name,
+      area: role.area,
+    };
+  }
+  await writeFile(
+    path.join(ROOT, "role-label-map.json"),
+    JSON.stringify(roleLabelMap, null, 2)
+  );
+
   console.log(`Generated ${registryEntries.length} agents across ${seenAreas.size} functional areas.`);
   console.log(`  agents/   — ${registryEntries.length} Flue agent .ts files`);
   console.log(`  skills/   — ${registryEntries.length} SKILL.md files`);
-  console.log(`  registry.ts, wrangler.toml written to project root.`);
+  console.log(`  registry.ts, wrangler.toml, role-label-map.json written to project root.`);
 }
 
 main().catch((err) => {

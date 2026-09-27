@@ -102,3 +102,12 @@ npx wrangler deploy
 `wrangler.toml` declares one Durable Object class per functional area (20
 classes), a shared `AgentSessionDO` for per-run state, a Workflow binding for
 the SDLC pipeline, and a Container pool for Tier-1→Container escalation.
+
+## Symphony integration
+
+See `symphony-integration/` for a real, verified integration with
+[openai/symphony](https://github.com/openai/symphony)'s Elixir reference
+implementation: a forked `linear/agent_tool.ex` (compiles clean against the
+actual upstream source), a `WORKFLOW.flue.md`, and `server/dispatch.mjs` +
+`role-label-map.json` at the repo root as the routing bridge between
+Symphony (Elixir) and this repo's Flue agents (TypeScript).
