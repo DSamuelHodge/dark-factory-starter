@@ -94,8 +94,19 @@ without taking down the HTTP server.
 cd flue-agent-org
 pnpm install                        # @flue/runtime + @flue/cli (real deps)
 ./skills.sh generate                # if you haven't already
-export ANTHROPIC_API_KEY=...        # or one key for whichever provider
-                                    # area-config.json routes to
+# Local secrets come from `pass` (never the repo). Generate the gitignored
+# .dev.vars from your own terminal — your pinentry can prompt there, which
+# headless processes cannot do:
+{ echo "# LOCAL ONLY - generated from pass, never commit.";
+  for spec in ANTHROPIC_API_KEY:anthropic/api-key \
+                LINEAR_API_KEY:linear/api-key \
+                META_API_KEY:meta/api-key; do
+    printf '%s=%s\n' "${spec%%:*}" "$(pass show "${spec#*:}" | head -n 1)"
+  done; } > .dev.vars
+chmod 600 .dev.vars
+# There is deliberately NO OpenAI key in this project: the `meta` provider
+# (providers/meta.ts, OpenAI-compatible) stands in for OpenAI, and areas
+# route to anthropic/..., meta/..., or cloudflare/... (Workers AI) models.
 node server/dispatch.mjs &          # loopback only, port 4001 by default
 
 # 2. Symphony side (real clone, not this repo)

@@ -49,6 +49,22 @@ const mcpUrlFor = (name) =>
     cloudflare: "https://bindings.mcp.cloudflare.com/mcp",
   }[name] || `https://mcp.example.com/${name}`);
 
+// MCP servers whose auth comes from an env var (service-wide static token
+// per Flue's MCP guide). The key itself lives in pass / wrangler secrets /
+// .dev.vars — the generated code only names the variable, never a value.
+// Servers without an entry bind tools optimistically (optional: true) and
+// run without them when the route is unreachable.
+const mcpAuthEnvFor = (name) =>
+  ({
+    linear: "LINEAR_API_KEY",
+  }[name] || null);
+
+// Model providers that need a code registration (custom setProvider call)
+// instead of just a useModel() specifier. The module registers itself on
+// import; generated agents import it only when their area routes there.
+const providerImportFor = (model) =>
+  model.startsWith("meta/") ? "../../providers/meta.ts" : null;
+
 // Roles whose title signals "leadership tier" — escalate confidence
 // threshold and give them the pricier model regardless of area default.
 const LEADERSHIP_RE =
@@ -132,14 +148,16 @@ function buildAgentTs(role, cfg, isLeadership) {
   // locally under useSandbox(local()); the Cloudflare deploy target re-maps
   // these to isolates/containers via the vite flue() plugin config.
   const sandboxed = cfg.tier === "tier1" || cfg.tier === "container";
+  const providerImport = providerImportFor(cfg.model);
   const mcpLines = cfg.mcp
-    .map(
-      (m) =>
-        // optional: true degrades gracefully (tools reported unavailable)
-        // when a key or route for that server is missing, instead of
-        // failing the run and retrying on the next message.
-        `useMcpConnection({ name: '${m}', url: '${mcpUrlFor(m)}', optional: true });`
-    )
+    .map((m) => {
+      // optional: true degrades gracefully (tools reported unavailable)
+      // when a key or route for that server is missing, instead of
+      // failing the run and retrying on the next message.
+      const authVar = mcpAuthEnvFor(m);
+      const auth = authVar ? `, auth: process.env.${authVar}` : "";
+      return `useMcpConnection({ name: '${m}', url: '${mcpUrlFor(m)}'${auth}, optional: true });`;
+    })
     .join("\n  ");
 
   const confidenceThreshold = isLeadership ? 0.8 : 0.7;
@@ -154,7 +172,9 @@ import { useModel, ${
   }useSkill, useMcpConnection } from '@flue/runtime';${
     sandboxed ? "\nimport { local } from '@flue/runtime/node';" : ""
   }
-import ${skillVar} from '../../skills/${roleSlug}/SKILL.md';
+import ${skillVar} from '../../skills/${roleSlug}/SKILL.md';${
+    providerImport ? `\nimport '${providerImport}';` : ""
+  }
 
 /**
  * ${role.name}

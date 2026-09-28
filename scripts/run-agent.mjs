@@ -23,6 +23,7 @@
 // Prints: {"ok":true,"result":{...}} or {"ok":false,"error":"...","detail":"..."}
 
 import path from "node:path";
+import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { spawn } from "node:child_process";
 
@@ -64,6 +65,12 @@ function findEnvelope(stdout) {
 function runFlue(agentFile, prompt, conversationId) {
   return new Promise((resolve, reject) => {
     const args = ["run", agentFile, "-m", prompt, "--json"];
+    // Local secrets live in .dev.vars (gitignored, generated from pass) —
+    // flue run auto-loads .env but not .dev.vars, so pass it explicitly.
+    // Missing file simply means no local secrets: skip the flag.
+    if (existsSync(path.join(ROOT, ".dev.vars"))) {
+      args.push("--env", path.join(ROOT, ".dev.vars"));
+    }
     // --id names (or continues) the conversation so follow-up dispatches
     // for the same Linear issue keep talking to the same agent instance.
     if (conversationId) args.push("--id", String(conversationId));
