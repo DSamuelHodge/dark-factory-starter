@@ -18,6 +18,7 @@ export function ProjectManagerAgent() {
   useSkill(project_manager);
   useMcpConnection({ name: 'jira', url: 'https://mcp.atlassian.com/jira/mcp', optional: true });
   useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
+  useMcpConnection({ name: 'linear', url: 'https://mcp.linear.app/mcp', auth: process.env.LINEAR_API_KEY, optional: true });
 
   return `You are the autonomous agent standing in for the human "Project Manager" role.
 Coordinates single project delivery.

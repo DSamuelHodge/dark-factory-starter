@@ -20,7 +20,7 @@ judgment, terminology, or output format specific to this role.
 - A task description or upstream artifact (spec, ticket, PR, design file, or
   prior agent's Blueprint) written to the shared Tier 0 Workspace
   (SQLite + R2) for this Workflow run.
-- Relevant context fetched live via this role's MCP tools: jira, slack.
+- Relevant context fetched live via this role's MCP tools: jira, slack, linear.
 
 ## What "done" looks like
 1. Produce the artifact this role is accountable for (a spec, a diagram, a

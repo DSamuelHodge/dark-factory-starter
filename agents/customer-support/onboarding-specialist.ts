@@ -5,6 +5,7 @@
 
 import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
 import onboarding_specialist from '../../skills/onboarding-specialist/SKILL.md';
+import '../../providers/meta.ts';
 
 /**
  * Onboarding Specialist
@@ -14,10 +15,11 @@ import onboarding_specialist from '../../skills/onboarding-specialist/SKILL.md';
  *             → Workflow sleeps and routes to the human owner of this function.
  */
 export function OnboardingSpecialistAgent() {
-  useModel('cloudflare/@cf/meta/llama-3.3-70b-instruct');
+  useModel('meta/muse-spark-1.3-contributor');
   useSkill(onboarding_specialist);
   useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
   useMcpConnection({ name: 'discord', url: 'https://mcp.discord.com/mcp', optional: true });
+  useMcpConnection({ name: 'linear', url: 'https://mcp.linear.app/mcp', auth: process.env.LINEAR_API_KEY, optional: true });
 
   return `You are the autonomous agent standing in for the human "Onboarding Specialist" role.
 Helps new customers get started.

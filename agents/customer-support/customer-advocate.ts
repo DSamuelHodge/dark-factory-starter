@@ -5,6 +5,7 @@
 
 import { useModel, useSkill, useMcpConnection } from '@flue/runtime';
 import customer_advocate from '../../skills/customer-advocate/SKILL.md';
+import '../../providers/meta.ts';
 
 /**
  * Customer Advocate
@@ -14,10 +15,11 @@ import customer_advocate from '../../skills/customer-advocate/SKILL.md';
  *             → Workflow sleeps and routes to the human owner of this function.
  */
 export function CustomerAdvocateAgent() {
-  useModel('cloudflare/@cf/meta/llama-3.3-70b-instruct');
+  useModel('meta/muse-spark-1.3-contributor');
   useSkill(customer_advocate);
   useMcpConnection({ name: 'slack', url: 'https://mcp.slack.com/mcp', optional: true });
   useMcpConnection({ name: 'discord', url: 'https://mcp.discord.com/mcp', optional: true });
+  useMcpConnection({ name: 'linear', url: 'https://mcp.linear.app/mcp', auth: process.env.LINEAR_API_KEY, optional: true });
 
   return `You are the autonomous agent standing in for the human "Customer Advocate" role.
 Represents customer needs internally.

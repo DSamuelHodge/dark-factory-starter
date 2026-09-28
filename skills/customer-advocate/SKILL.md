@@ -20,7 +20,7 @@ judgment, terminology, or output format specific to this role.
 - A task description or upstream artifact (spec, ticket, PR, design file, or
   prior agent's Blueprint) written to the shared Tier 0 Workspace
   (SQLite + R2) for this Workflow run.
-- Relevant context fetched live via this role's MCP tools: slack, discord.
+- Relevant context fetched live via this role's MCP tools: slack, discord, linear.
 
 ## What "done" looks like
 1. Produce the artifact this role is accountable for (a spec, a diagram, a
@@ -43,6 +43,6 @@ judgment, terminology, or output format specific to this role.
 
 ## Notes
 - Runs at **Tier 0 — Workspace (SQLite + R2, no code execution)**.
-- Default model: `cloudflare/@cf/meta/llama-3.3-70b-instruct` (swap via `useModel()` — Flue is
+- Default model: `meta/muse-spark-1.3-contributor` (swap via `useModel()` — Flue is
   model-agnostic; route through AI Gateway for caching/fallback/cost
   tracking).

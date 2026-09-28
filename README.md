@@ -60,9 +60,12 @@ caching, fallback, and cost tracking:
   Architecture and Legal) → `anthropic/claude-opus-4-6`, confidence floor
   raised to 0.80.
 - **Core execution roles** (most dev, PM, sales) → `anthropic/claude-sonnet-4-6`.
-- **High-volume, lower-stakes roles** (support tier-1, QA execution,
-  marketing copy, docs) → a Workers AI open model
+- **High-volume, lower-stakes roles** (QA execution, marketing copy,
+  docs) → a Workers AI open model
   (`@cf/meta/llama-3.3-70b-instruct`) — no external API cost.
+- **Customer Support** → `meta/muse-spark-1.3-contributor` (Meta stands in
+  for OpenAI here — there is intentionally no OpenAI key; Anthropic credits
+  are currently depleted, so Meta is the working live route).
 
 Swap any of this by editing `area-config.json` and re-running `skills.sh`;
 no agent file is hand-edited directly.
@@ -73,6 +76,28 @@ Each area is wired to the MCP servers its function actually uses —
 GitHub for dev/DevOps/architecture, Figma for design/UX, Jira/Slack for
 PM/Agile/BA, Slack/Discord for support, Google Drive for legal/docs. Add a
 tool to an area by editing its `mcp` array in `area-config.json`.
+
+### Secrets and live verification
+No API keys live in the repo. Local secrets come from `pass`
+(`meta/api-key`, `linear/api-key`, `anthropic/api-key`) and are materialized
+into gitignored, mode-600 `.dev.vars` (never commit it).
+`scripts/run-agent.mjs` reads `{roleId, prompt, conversationId}` as JSON on
+stdin and passes `--env .dev.vars` to `flue run` when the file exists:
+```bash
+pnpm --filter flue-agent-org exec node scripts/run-agent.mjs <<'EOF'
+{"roleId":"19.2","prompt":"hello","conversationId":"SUP-1"}
+EOF
+```
+Verified live on 2026-09-28 (role 19.2, Customer Support Rep Tier 1):
+- Text replies round-trip through Meta (`SUP-1`–`SUP-4`, `PROBE-1`–`PROBE-5`).
+- Linear MCP `initialize` against `https://mcp.linear.app/mcp` returns
+  HTTP 200 with the stored key; `flue` connects, discovers, and mounts all
+  59 Linear tools (`mcp__linear__*`) into the model request — confirmed
+  forensically in `node_modules/.cache/flue/run.db`.
+- Known limitation: `muse-spark-1.3-contributor` does not emit tool calls
+  through this endpoint — even a trivial local `useTool` probe goes
+  uncalled — so end-to-end Linear actions await a tool-calling-capable
+  route. MCP mount is proven; invocation is model-blocked.
 
 ### Governance is a rule, not a role
 
